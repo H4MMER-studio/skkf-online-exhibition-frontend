@@ -10,7 +10,7 @@ interface IContainerProps {
 }
 
 const STDContainer = styled.div<IContainerProps>`
-  height: ${(props) => props.height}px;
+  min-height: ${(props) => props.height}px;
   background-color: #000;
 `;
 
