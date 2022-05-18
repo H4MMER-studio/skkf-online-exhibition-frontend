@@ -1,13 +1,15 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "noImplicitReturns": false,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
+    "noImplicitAny": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": ["dom", "es2017"],
+    "lib": ["dom", "es2017", "ESNext"],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -16,11 +18,12 @@
     "noUnusedParameters": false,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "target": "es5",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@svg": ["assets/svg/index"]
     }
   },
   "exclude": ["node_modules"],
