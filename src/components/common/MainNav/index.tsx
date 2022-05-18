@@ -42,6 +42,7 @@ const STDMenuWrapper = styled.div`
 
 const STDExhibitionInfoWrapper = styled.div`
   text-align: right;
+  cursor: pointer;
 `;
 
 const MainNav: React.FC<IProps> = ({ selectedMenu, onClickMenu }) => {
@@ -82,7 +83,7 @@ const MainNav: React.FC<IProps> = ({ selectedMenu, onClickMenu }) => {
           </button>
         </div>
       </STDMenuWrapper>
-      <STDExhibitionInfoWrapper>
+      <STDExhibitionInfoWrapper onClick={() => onClickMenu('')}>
         <p className="menu_font_style">2022 성균관대학교 예술대학</p>
         <p className="menu_font_style">의상학과 졸업패션필름</p>
         <p className="menu_font_style">좌표원점</p>
