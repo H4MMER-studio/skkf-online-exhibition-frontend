@@ -4,11 +4,10 @@
   "description": "skkf-online-exhibition-frontend",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev -p 3001",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "open-browser": "open http://localhost:3001"
+    "lint": "next lint"
   },
   "keywords": [],
   "author": "",
