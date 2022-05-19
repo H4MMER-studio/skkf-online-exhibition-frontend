@@ -27,4 +27,30 @@ export const mixins = {
     align-items: ${alignItems};
     flex-direction: ${flexDirection};
   `,
+  stopDrag: () => css`
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  `,
+  imageRendering: () => css`
+    image-rendering: -moz-crisp-edges; /* Firefox */
+    image-rendering: -o-crisp-edges; /* Opera */
+    image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+  `,
+  noScrollbar: () => css`
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; //IE and Edge
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera*/
+    }
+  `,
 };
