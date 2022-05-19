@@ -1,1 +1,2 @@
-export * from './useResize';
+export * from "./useResize";
+export * from "./useDebounce";
