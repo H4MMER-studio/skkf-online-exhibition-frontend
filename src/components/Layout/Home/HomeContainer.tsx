@@ -90,7 +90,6 @@ const HomeContainer: React.FC = () => {
     const [rowChange, setRowChange] = useState(false);
     const [column, setCoumn] = useState("");
     const debouncedRow = useDebounce(row, 1000);
-    // const debouncedRowChange = useDebounce(rowChange, 300)
     const debouncedColumn = useDebounce(column, 1000);
 
     useEffect(() => {
