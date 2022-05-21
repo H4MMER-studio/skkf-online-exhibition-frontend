@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import { useDebounce } from "@/hooks";
 
@@ -46,10 +46,6 @@ const RowColumnLocationLayout = styled.div`
     bottom: 0px;
     left: 21.5%;
     height: 50%;
-    /* max-width: 452px;
-    max-height: 289px; */
-    /* max-width: 261px; */
-    /* left: 0px; */
 `;
 
 const LogoLayout = styled.div`
@@ -73,16 +69,25 @@ const TestLayout = styled.div`
     overflow: hidden;
 `;
 
-const RowNumberContainer = styled.div<{ isChange: boolean }>`
+const RowNumberContainer = styled.div<{ isChange: boolean; countedRow: number }>`
     position: relative;
     height: 100%;
-    transition-duration: ${(props) => (props.isChange ? 4 : 0)}s;
-    bottom: ${(props) => (props.isChange ? 131 : 0)}px;
+    transition-duration: 4s;
+    /* transition-duration: ${(props) => (props.isChange ? 4 : 0)}s; */
+    /* bottom: ${(props) => (props.isChange ? "100%" : "0")}; */
+    bottom: ${(props) => props.countedRow * 100}%;
+
+    width: min-content;
+    /* width: 50%; */
+    /* width: 33.3%; */
 `;
 
-const ColumnNumberContainer = styled.div`
-    width: 100%;
+const ColumnNumberContainer = styled.div<{ countedColmn: number }>`
+    position: relative;
+    width: min-content;
     height: 100%;
+    transition-duration: 4s;
+    bottom: ${(props) => props.countedColmn * 100}%;
 `;
 
 const HomeContainer: React.FC = () => {
@@ -91,33 +96,50 @@ const HomeContainer: React.FC = () => {
     const [column, setCoumn] = useState("");
     const debouncedRow = useDebounce(row, 1000);
     const debouncedColumn = useDebounce(column, 1000);
+    const [selectedRowImageList, setSelectedRowImageList] = useState([]);
+    const [selectedColmnImageList, setSelectedColumnImageList] = useState([]);
+
+    // const [rowLayout, ref] = useRef(null)
+
+    const rowLayoutRef = useRef<HTMLDivElement | null>(null);
+    const rowLayoutEle = rowLayoutRef.current;
 
     useEffect(() => {
         if (debouncedRow) {
-            const rowParentLayout = document.getElementById("row-layout");
-            const newNumber = document.createElement("img");
-            newNumber.id = "selected-new-row";
-            newNumber.src = debouncedRow;
-            newNumber.setAttribute("height", "100%");
-            const currentRow = document.getElementById("selected-row");
-            currentRow.parentNode.insertBefore(newNumber, currentRow.nextSibling);
-            setRowChange(true);
+            const result = selectedRowImageList.concat(debouncedRow);
+            setSelectedRowImageList(result);
 
-            setTimeout(() => {
-                rowParentLayout.removeChild(currentRow);
-                setRowChange(false);
-                newNumber.id = "selected-row";
-            }, 5000);
+            // const rowParentLayout = document.getElementById("row-layout");
+            // const newNumber = document.createElement("img");
+            // newNumber.id = "selected-new-row";
+            // newNumber.src = debouncedRow;
+            // newNumber.setAttribute("height", "100%");
+            // const currentRow = document.getElementById("selected-row");
+            // currentRow
+            // currentRow.parentNode.insertBefore(newNumber, currentRow.nextSibling);
+
+            // setRowChange(true);
+
             // setTimeout(() => {
+            //     if (rowLayoutEle) {
+            //         rowLayoutEle.removeChild(currentRow);
 
-            //     // const test = document.getElementById("row-layout");
-            //     // console.log(test, "테스트");
-            //     // document.getElementById("row-layout").style.bottom = "20px";
-            // }, 500);
+            //         // rowParentLayout.removeChild(currentRow);
+            //         setRowChange(false);
+            //         newNumber.id = "selected-row";
+
+            //         console.log("테스트");
+            //     }
+            // }, 4000);
         }
     }, [debouncedRow]);
 
-    useEffect(() => {}, [debouncedColumn]);
+    useEffect(() => {
+        if (debouncedColumn) {
+            const result = selectedColmnImageList.concat(debouncedColumn);
+            setSelectedColumnImageList(result);
+        }
+    }, [debouncedColumn]);
 
     const hoverOnThumbnail = (item: {
         image: string;
@@ -159,12 +181,20 @@ const HomeContainer: React.FC = () => {
                     <Logo src={"/image/main_logo.png"} />
                     <RowColumnLocationLayout>
                         <TestLayout>
-                            <RowNumberContainer isChange={rowChange} id="row-layout">
-                                <RowNumberImage src={debouncedRow} id="selected-row" />
+                            <RowNumberContainer
+                                isChange={rowChange}
+                                id="row-layout"
+                                ref={rowLayoutRef}
+                                countedRow={selectedRowImageList.length - 1}>
+                                {selectedRowImageList.map((rowImageSrc, i) => (
+                                    <RowNumberImage key={i} src={rowImageSrc} id="selected-row" />
+                                ))}
                             </RowNumberContainer>
                             <CommaImage src={"/image/comma.svg"} />
-                            <ColumnNumberContainer>
-                                <ColumnNumberImage src={debouncedColumn} />
+                            <ColumnNumberContainer countedColmn={selectedColmnImageList.length - 1}>
+                                {selectedColmnImageList.map((columnImageSrc, i) => (
+                                    <ColumnNumberImage src={columnImageSrc} key={i} />
+                                ))}
                             </ColumnNumberContainer>
                         </TestLayout>
                     </RowColumnLocationLayout>
