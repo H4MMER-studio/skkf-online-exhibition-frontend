@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import { useDebounce } from "@/hooks";
 
@@ -18,10 +18,17 @@ const TeamLayout = styled.div`
 `;
 
 const ThumbnailItem = styled.div`
+    position: relative;
     width: 208px;
     height: 117px;
     border: 1px solid #fff;
     cursor: pointer;
+
+    &:hover {
+        img {
+            opacity: 0.4;
+        }
+    }
 `;
 
 const BottomLogoLayout = styled.div`
@@ -46,10 +53,6 @@ const RowColumnLocationLayout = styled.div`
     bottom: 0px;
     left: 21.5%;
     height: 50%;
-    /* max-width: 452px;
-    max-height: 289px; */
-    /* max-width: 261px; */
-    /* left: 0px; */
 `;
 
 const LogoLayout = styled.div`
@@ -73,14 +76,52 @@ const TestLayout = styled.div`
     overflow: hidden;
 `;
 
-const RowNumberContainer = styled.div<{ isChange: boolean }>`
+const RowNumberContainer = styled.div<{ isChange: boolean; countedRow: number }>`
     position: relative;
     height: 100%;
-    transition-duration: ${(props) => (props.isChange ? 4 : 0)}s;
-    bottom: ${(props) => (props.isChange ? 131 : 0)}px;
+    transition-duration: 4s;
+    /* transition-duration: ${(props) => (props.isChange ? 4 : 0)}s; */
+    /* bottom: ${(props) => (props.isChange ? "100%" : "0")}; */
+    bottom: ${(props) => props.countedRow * 100}%;
+
+    width: min-content;
+    /* width: 50%; */
+    /* width: 33.3%; */
 `;
 
-const ColumnNumberContainer = styled.div`
+const ColumnNumberContainer = styled.div<{ countedColmn: number }>`
+    position: relative;
+    width: min-content;
+    height: 100%;
+    transition-duration: 4s;
+    bottom: ${(props) => props.countedColmn * 100}%;
+`;
+
+const Overlay = styled.div`
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
+
+    padding: 6px 0px 0px 8px;
+    /* background-color: #fff;
+    opacity: 0.4; */
+`;
+
+const InfomationLayout = styled.div`
+    width: min-content;
+    height: 98px;
+`;
+
+const InfomationText = styled.div`
+    height: 32px;
+    padding: 4px;
+    background-color: #fff;
+    width: fit-content;
+`;
+
+const ThumbNailImage = styled.img`
     width: 100%;
     height: 100%;
 `;
@@ -89,43 +130,70 @@ const HomeContainer: React.FC = () => {
     const [row, setRow] = useState("");
     const [rowChange, setRowChange] = useState(false);
     const [column, setCoumn] = useState("");
+    const [hoveredItem, setHoveredItem] = useState<{
+        id: string;
+        image: string;
+        row: string;
+        column: string;
+        koreanName: string;
+        englishName: string;
+    }>();
     const debouncedRow = useDebounce(row, 1000);
     const debouncedColumn = useDebounce(column, 1000);
+    const [selectedRowImageList, setSelectedRowImageList] = useState([]);
+    const [selectedColmnImageList, setSelectedColumnImageList] = useState([]);
+
+    // const [rowLayout, ref] = useRef(null)
+
+    const rowLayoutRef = useRef<HTMLDivElement | null>(null);
+    const rowLayoutEle = rowLayoutRef.current;
 
     useEffect(() => {
         if (debouncedRow) {
-            const rowParentLayout = document.getElementById("row-layout");
-            const newNumber = document.createElement("img");
-            newNumber.id = "selected-new-row";
-            newNumber.src = debouncedRow;
-            newNumber.setAttribute("height", "100%");
-            const currentRow = document.getElementById("selected-row");
-            currentRow.parentNode.insertBefore(newNumber, currentRow.nextSibling);
-            setRowChange(true);
+            const result = selectedRowImageList.concat(debouncedRow);
+            setSelectedRowImageList(result);
 
-            setTimeout(() => {
-                rowParentLayout.removeChild(currentRow);
-                setRowChange(false);
-                newNumber.id = "selected-row";
-            }, 5000);
+            // const rowParentLayout = document.getElementById("row-layout");
+            // const newNumber = document.createElement("img");
+            // newNumber.id = "selected-new-row";
+            // newNumber.src = debouncedRow;
+            // newNumber.setAttribute("height", "100%");
+            // const currentRow = document.getElementById("selected-row");
+            // currentRow
+            // currentRow.parentNode.insertBefore(newNumber, currentRow.nextSibling);
+
+            // setRowChange(true);
+
             // setTimeout(() => {
+            //     if (rowLayoutEle) {
+            //         rowLayoutEle.removeChild(currentRow);
 
-            //     // const test = document.getElementById("row-layout");
-            //     // console.log(test, "테스트");
-            //     // document.getElementById("row-layout").style.bottom = "20px";
-            // }, 500);
+            //         // rowParentLayout.removeChild(currentRow);
+            //         setRowChange(false);
+            //         newNumber.id = "selected-row";
+
+            //         console.log("테스트");
+            //     }
+            // }, 4000);
         }
     }, [debouncedRow]);
 
-    useEffect(() => {}, [debouncedColumn]);
+    useEffect(() => {
+        if (debouncedColumn) {
+            const result = selectedColmnImageList.concat(debouncedColumn);
+            setSelectedColumnImageList(result);
+        }
+    }, [debouncedColumn]);
 
     const hoverOnThumbnail = (item: {
+        id: string;
         image: string;
         row: string;
         column: string;
         koreanName: string;
         englishName: string;
     }) => {
+        setHoveredItem(item);
         if (item.row !== row) {
             setRow(item.row);
         }
@@ -147,7 +215,21 @@ const HomeContainer: React.FC = () => {
                                         key={i}
                                         onMouseOver={() => {
                                             hoverOnThumbnail(item);
-                                        }}></ThumbnailItem>
+                                        }}
+                                        onMouseLeave={() => setHoveredItem(null)}>
+                                        <ThumbNailImage
+                                            src={"/image/comma.svg"}
+                                            style={{ width: "100%", height: "100%" }}
+                                        />
+
+                                        {item.id === hoveredItem?.id && (
+                                            <Overlay>
+                                                <InfomationText></InfomationText>
+                                                <InfomationText>{item.koreanName}</InfomationText>
+                                                <InfomationText>{item.englishName}</InfomationText>
+                                            </Overlay>
+                                        )}
+                                    </ThumbnailItem>
                                 );
                             })}
                         </TeamLayout>
@@ -159,12 +241,20 @@ const HomeContainer: React.FC = () => {
                     <Logo src={"/image/main_logo.png"} />
                     <RowColumnLocationLayout>
                         <TestLayout>
-                            <RowNumberContainer isChange={rowChange} id="row-layout">
-                                <RowNumberImage src={debouncedRow} id="selected-row" />
+                            <RowNumberContainer
+                                isChange={rowChange}
+                                id="row-layout"
+                                ref={rowLayoutRef}
+                                countedRow={selectedRowImageList.length - 1}>
+                                {selectedRowImageList.map((rowImageSrc, i) => (
+                                    <RowNumberImage key={i} src={rowImageSrc} id="selected-row" />
+                                ))}
                             </RowNumberContainer>
                             <CommaImage src={"/image/comma.svg"} />
-                            <ColumnNumberContainer>
-                                <ColumnNumberImage src={debouncedColumn} />
+                            <ColumnNumberContainer countedColmn={selectedColmnImageList.length - 1}>
+                                {selectedColmnImageList.map((columnImageSrc, i) => (
+                                    <ColumnNumberImage src={columnImageSrc} key={i} />
+                                ))}
                             </ColumnNumberContainer>
                         </TestLayout>
                     </RowColumnLocationLayout>
@@ -179,7 +269,9 @@ export default HomeContainer;
 const THUMBNAIL_DATA: {
     team: string;
     thumbnailList: {
+        id: string;
         image: string;
+        coordinate?: string;
         row: string;
         column: string;
         koreanName: string;
@@ -190,53 +282,67 @@ const THUMBNAIL_DATA: {
         team: "Infinitas",
         thumbnailList: [
             {
+                id: "Infinitas-1",
                 image: "",
+                coordinate: "(1,1)",
                 row: "/image/f_1.svg",
                 column: "/image/b_1.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "김혜준",
+                englishName: "Heyjune Kim",
             },
             {
+                id: "Infinitas-2",
                 image: "",
+                coordinate: "(1,2)",
                 row: "/image/f_1.svg",
                 column: "/image/b_2.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "이명훈",
+                englishName: "Myunghoon Lee",
             },
             {
+                id: "Infinitas-3",
                 image: "",
+                coordinate: "(1,3)",
                 row: "/image/f_1.svg",
                 column: "/image/b_3.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "윤담희",
+                englishName: "Damhee Yun",
             },
             {
+                id: "Infinitas-4",
                 image: "",
+                coordinate: "(1,4)",
                 row: "/image/f_1.svg",
                 column: "/image/b_4.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "박연제",
+                englishName: "Yeonje Park",
             },
             {
+                id: "Infinitas-5",
                 image: "",
+                coordinate: "(1,5)",
                 row: "/image/f_1.svg",
                 column: "/image/b_5.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "박서진",
+                englishName: "Seojin Park",
             },
             {
+                id: "Infinitas-6",
                 image: "",
+                coordinate: "(1,6)",
                 row: "/image/f_1.svg",
                 column: "/image/b_6.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "오유",
+                englishName: "Wu YU",
             },
             {
+                id: "Infinitas-7",
                 image: "",
+                coordinate: "(1,7)",
                 row: "/image/f_1.svg",
                 column: "/image/b_7.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "박선영",
+                englishName: "Sunyoung Park",
             },
         ],
     },
@@ -244,67 +350,78 @@ const THUMBNAIL_DATA: {
         team: "Spectrum",
         thumbnailList: [
             {
+                id: "Spectrum-1",
                 image: "",
+                coordinate: "(2,1)",
                 row: "/image/f_2.svg",
                 column: "/image/b_1.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "최규빈",
+                englishName: "Gyubin Choi",
             },
             {
+                id: "Spectrum-2",
                 image: "",
+
                 row: "/image/f_2.svg",
                 column: "/image/b_2.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "최희원",
+                englishName: "Heewon Choi",
             },
             {
+                id: "Spectrum-3",
                 image: "",
                 row: "/image/f_2.svg",
                 column: "/image/b_3.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "이윤창",
+                englishName: "Yunchang Lee",
             },
             {
+                id: "Spectrum-4",
                 image: "",
                 row: "/image/f_2.svg",
                 column: "/image/b_4.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "오근택",
+                englishName: "Geuntaek oh",
             },
             {
+                id: "Spectrum-5",
                 image: "",
                 row: "/image/f_2.svg",
                 column: "/image/b_5.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "김성빈",
+                englishName: "Seonbin Kim",
             },
             {
+                id: "Spectrum-6",
                 image: "",
                 row: "/image/f_2.svg",
                 column: "/image/b_6.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "이정은",
+                englishName: "Jeongun Lee",
             },
             {
+                id: "Spectrum-7",
                 image: "",
                 row: "/image/f_2.svg",
                 column: "/image/b_7.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "도비안",
+                englishName: "Nguyen Thanh Van Do",
             },
             {
+                id: "Spectrum-8",
                 image: "",
                 row: "/image/f_2.svg",
                 column: "/image/b_8.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "공정인",
+                englishName: "Jeongin Gong",
             },
             {
+                id: "Spectrum-9",
                 image: "",
                 row: "/image/f_2.svg",
                 column: "/image/b_9.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "변혜민",
+                englishName: "Hyemin Byun",
             },
         ],
     },
@@ -312,55 +429,63 @@ const THUMBNAIL_DATA: {
         team: "Teleport to",
         thumbnailList: [
             {
+                id: "TeleportTo-1",
                 image: "",
                 row: "/image/f_3.svg",
                 column: "/image/b_1.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "이주은",
+                englishName: "Jueun Lee",
             },
             {
+                id: "TeleportTo-2",
                 image: "",
                 row: "/image/f_3.svg",
                 column: "/image/b_2.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "박지완",
+                englishName: "Jiwan Park",
             },
             {
+                id: "TeleportTo-3",
                 image: "",
                 row: "/image/f_3.svg",
                 column: "/image/b_3.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "이정근",
+                englishName: "Jeonggeun Lee",
             },
             {
+                id: "TeleportTo-4",
                 image: "",
                 row: "/image/f_3.svg",
                 column: "/image/b_4.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "정서희",
+                englishName: "Seohee Jeong",
             },
             {
+                id: "TeleportTo-5",
                 image: "",
                 row: "/image/f_3.svg",
                 column: "/image/b_5.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "김민아",
+                englishName: "Minah Kim",
             },
             {
+                id: "TeleportTo-6",
                 image: "",
                 row: "/image/f_3.svg",
                 column: "/image/b_6.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "최지현",
+                englishName: "Jiyun Choi",
             },
             {
+                id: "TeleportTo-7",
                 image: "",
                 row: "/image/f_3.svg",
                 column: "/image/b_7.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "최이준",
+                englishName: "Ijun Choi",
             },
             {
+                id: "TeleportTo-8",
                 image: "",
                 row: "/image/f_3.svg",
                 column: "/image/b_8.svg",
@@ -373,46 +498,52 @@ const THUMBNAIL_DATA: {
         team: "Textureacit",
         thumbnailList: [
             {
+                id: "Textureacit-1",
                 image: "",
                 row: "/image/f_4.svg",
                 column: "/image/b_1.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "김민경",
+                englishName: "Minkyung Kim",
             },
             {
+                id: "Textureacit-2",
                 image: "",
                 row: "/image/f_4.svg",
                 column: "/image/b_2.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "최희재",
+                englishName: "Heejae Choi",
             },
             {
+                id: "Textureacit-3",
                 image: "",
                 row: "/image/f_4.svg",
                 column: "/image/b_3.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "정예송",
+                englishName: "Yesong Jung",
             },
             {
+                id: "Textureacit-4",
                 image: "",
                 row: "/image/f_4.svg",
                 column: "/image/b_4.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "구소윤",
+                englishName: "Soyoon Koo",
             },
             {
+                id: "Textureacit-5",
                 image: "",
                 row: "/image/f_4.svg",
                 column: "/image/b_5.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "홍예진",
+                englishName: "Yejin Hong",
             },
             {
+                id: "Textureacit-6",
                 image: "",
                 row: "/image/f_4.svg",
                 column: "/image/b_6.svg",
-                koreanName: "",
-                englishName: "",
+                koreanName: "한희조",
+                englishName: "Heejo Han",
             },
         ],
     },
