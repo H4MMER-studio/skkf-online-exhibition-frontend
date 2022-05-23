@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useResize, useDebounce } from '@/hooks';
+import { useDebounce } from '@/hooks';
 import { mixins } from '@/styles';
 
 const STDContainer = styled.section`
+  max-width: 1920px;
   padding: 24px 24px 30px;
+  margin: 0 auto;
   color: #fff;
 `;
 
@@ -64,12 +66,12 @@ const STDImageWrapper = styled.div`
 
 const STDVideoWrapper = styled.div`
   position: absolute;
-  left: 433px;
+  left: 23.7%;
   bottom: 0px;
-  width: 100%;
+  height: 50%;
 
   img {
-    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -97,7 +99,6 @@ const DocumentsMainContainer: React.FC = () => {
       description: `“Textureacity”는 소재의 가능성을 보여줌과 동시에 다양한 존재들의 낯설지만 아름다운 조화를 탐구한 스테이지이다. 소재를 바탕으로 8명의 디자이너가 도달하고자 하는 지향점은 다르지만, 서로의 차이를 인정하고 이를 표현하는 과정에서 모든 디자이너들의 개성은 하나의 새로운 아름다움으로 수렴되었다. 각자 다른 소재의 결합으로부터 오는 조화와 대비는 패션의 실루엣부터 분위기까지 변화시키면서 의상에서의 무한한 잠재력을 보여주고 있다.\n\n“Textureacity” is a stage that shows the potential of fabrics and explores the unfamiliar but beautiful harmony of various beings. The eight designers' goals are different based on each fabric. In the process of acknowledging and expressing their differences, however, all designers' personalities converged into one new beauty. Harmony and contrast from the combination of different fabrics change from the silhouette to the mood of style, showing the infinite potential in fashion.`,
     },
   ];
-  const windowWidth = useResize().width;
   const debounceImage = useDebounce(selectedItem, 400);
 
   return (
@@ -121,12 +122,7 @@ const DocumentsMainContainer: React.FC = () => {
       </STDContentContainer>
       <STDImageWrapper>
         <img className="image_style" src="/image/main_logo.png" />
-        <STDVideoWrapper
-          style={{
-            left: `${(windowWidth - 72) * 0.245}px`,
-            width: `${(windowWidth - 72) * 0.15}px`,
-          }}
-        >
+        <STDVideoWrapper>
           <img src={`image/documents/${debounceImage}`} />
         </STDVideoWrapper>
       </STDImageWrapper>
