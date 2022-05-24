@@ -52,13 +52,13 @@ const STDContainer = styled.div`
 `;
 
 const STDGnbButton = styled.button<{ isSelected?: boolean }>`
-  /* ${({ isSelected }) => isSelected && 'padding: 2px 0 2px;'} */
+  ${({ isSelected }) => isSelected && 'padding: 3px 0 1px;'}
   font-family: ${({ isSelected }) =>
     isSelected ? "'pp-mondwest'" : "'Open Sans'"};
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
-  line-height: ${({ isSelected }) => (isSelected ? '24px' : '24px')};
+  line-height: ${({ isSelected }) => (isSelected ? '20px' : '24px')};
   color: #fff;
   cursor: pointer;
 
