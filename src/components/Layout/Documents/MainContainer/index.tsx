@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useDebounce } from '@/hooks';
-import { mixins } from '@/styles';
+import { mixins, device } from '@/styles';
 
 const STDContainer = styled.section`
-  max-width: 1920px;
   padding: 24px 24px 30px;
   margin: 0 auto;
   color: #fff;
@@ -12,9 +11,15 @@ const STDContainer = styled.section`
 
 const STDContentContainer = styled.main`
   ${mixins.flexSet('center', 'flex-start')}
+  flex-wrap: wrap;
+
+  @media ${device.laptop} {
+    flex-wrap: nowrap;
+  }
 `;
 
 const STDContentWrapper = styled.article`
+  min-width: 320px;
   flex: 1;
   position: relative;
   margin-right: 36px;
@@ -23,9 +28,12 @@ const STDContentWrapper = styled.article`
     margin-right: 0;
   }
 
+  &:nth-child(2) {
+    margin-right: 0;
+  }
+
   .h3_style {
     margin-bottom: 12px;
-    font-family: 'PP Mondwest';
     font-style: normal;
     font-weight: 400;
     font-size: 30px;
@@ -37,12 +45,21 @@ const STDContentWrapper = styled.article`
     overflow: auto;
     ${mixins.noScrollbar()}
     white-space: pre-line;
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', 'pp-mondwest';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 180%;
     letter-spacing: -0.02em;
+  }
+
+  @media ${device.laptop} {
+    min-width: unset;
+    width: auto;
+
+    &:nth-child(2) {
+      margin-right: 36px;
+    }
   }
 `;
 
