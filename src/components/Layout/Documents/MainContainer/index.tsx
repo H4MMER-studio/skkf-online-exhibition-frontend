@@ -19,18 +19,9 @@ const STDContentContainer = styled.main`
 `;
 
 const STDContentWrapper = styled.article`
-  min-width: 320px;
+  min-width: 100%;
   flex: 1;
   position: relative;
-  margin-right: 36px;
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  &:nth-child(2) {
-    margin-right: 0;
-  }
 
   .h3_style {
     margin-bottom: 12px;
@@ -51,6 +42,19 @@ const STDContentWrapper = styled.article`
     font-size: 18px;
     line-height: 180%;
     letter-spacing: -0.02em;
+  }
+
+  @media ${device.tablet} {
+    min-width: 350px;
+    margin-right: 36px;
+
+    &:nth-child(2) {
+      margin-right: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   @media ${device.laptop} {
