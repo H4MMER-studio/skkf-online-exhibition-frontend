@@ -1,14 +1,21 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import { useDebounce } from "@/hooks";
+import { useRouter } from "next/router";
+import Router from "next/router";
+
+interface IProps {
+    isUnmountHome: Boolean;
+}
 
 const HomeContainerLayout = styled.div``;
 
 const ThumbnailListLayout = styled.div`
-    max-width: 1920px;
+    position: relative;
+    /* max-width: 1920px; */
     padding: 24px;
     padding-bottom: 260px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
 `;
 
 const TeamLayout = styled.div`
@@ -29,17 +36,29 @@ const ThumbnailItem = styled.div`
             opacity: 0.4;
         }
     }
+
+    @media (max-width: 1023px) {
+        width: 33.3%;
+        height: 185px;
+        /* max-height: 185px; */
+    }
+
+    @media (max-width: 720px) {
+        width: 50%;
+        height: 192.6px;
+    }
 `;
 
-const BottomLogoLayout = styled.div`
+const BottomLogoLayout = styled.div<{ startUnmountAnimation: boolean }>`
     position: fixed;
-    bottom: 0px;
+    bottom: ${(props) => (props.startUnmountAnimation ? "-100%" : "0px")};
     padding: 0 24px 20px;
     pointer-events: none;
     width: 100%;
     max-width: 1920px;
     left: 50%;
     transform: translateX(-50%);
+    transition-duration: 3s;
 `;
 
 const Logo = styled.img`
@@ -126,7 +145,19 @@ const ThumbNailImage = styled.img`
     height: 100%;
 `;
 
-const HomeContainer: React.FC = () => {
+const OverlayAnimation = styled.div<{ startUnmountAnimation: boolean }>`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    right: ${(props) => (props.startUnmountAnimation ? "0" : "-100%")};
+    opacity: ${(props) => (props.startUnmountAnimation ? 1 : 0)};
+    background-color: black;
+    z-index: 20;
+    transition-duration: 2s;
+`;
+
+const HomeContainer: React.FC<IProps> = ({ isUnmountHome }) => {
     const [row, setRow] = useState("");
     const [rowChange, setRowChange] = useState(false);
     const [column, setCoumn] = useState("");
@@ -138,10 +169,12 @@ const HomeContainer: React.FC = () => {
         koreanName: string;
         englishName: string;
     }>();
-    const debouncedRow = useDebounce(row, 1000);
-    const debouncedColumn = useDebounce(column, 1000);
     const [selectedRowImageList, setSelectedRowImageList] = useState([]);
     const [selectedColmnImageList, setSelectedColumnImageList] = useState([]);
+    const [startUnmountAnimation, setStartUnmountAnimation] = useState(false);
+    const debouncedRow = useDebounce(row, 1000);
+    const debouncedColumn = useDebounce(column, 1000);
+    const router = useRouter();
 
     // const [rowLayout, ref] = useRef(null)
 
@@ -185,6 +218,34 @@ const HomeContainer: React.FC = () => {
         }
     }, [debouncedColumn]);
 
+    useEffect(() => {
+        if (isUnmountHome) {
+            setStartUnmountAnimation(true);
+        } else {
+            setStartUnmountAnimation(false);
+        }
+    }, [isUnmountHome]);
+
+    // useEffect(() => {
+    //     Router.events.on("routeChangeStart", (url) => {
+    //         test(url);
+    //     });
+    // }, []);
+
+    // const test = (url: string) => {
+    //     console.log(url);
+    //     if (location.pathname === "/" && !isUnmount) {
+    //         console.log(location);
+
+    //         setTimeout(() => {
+    //             router.push(`${url}`);
+    //             setIsUnmount(true);
+    //             console.log(isUnmount, "이즈 언마운트");
+    //         }, 3000);
+    //         console.log("여기서 만 가능");
+    //     }
+    // };
+
     const hoverOnThumbnail = (item: {
         id: string;
         image: string;
@@ -217,10 +278,7 @@ const HomeContainer: React.FC = () => {
                                             hoverOnThumbnail(item);
                                         }}
                                         onMouseLeave={() => setHoveredItem(null)}>
-                                        <ThumbNailImage
-                                            src={"/image/comma.svg"}
-                                            style={{ width: "100%", height: "100%" }}
-                                        />
+                                        <ThumbNailImage src={"/image/comma.svg"} />
 
                                         {item.id === hoveredItem?.id && (
                                             <Overlay>
@@ -235,8 +293,9 @@ const HomeContainer: React.FC = () => {
                         </TeamLayout>
                     );
                 })}
+                <OverlayAnimation startUnmountAnimation={startUnmountAnimation} />
             </ThumbnailListLayout>
-            <BottomLogoLayout>
+            <BottomLogoLayout startUnmountAnimation={startUnmountAnimation}>
                 <LogoLayout>
                     <Logo src={"/image/main_logo.png"} />
                     <RowColumnLocationLayout>
