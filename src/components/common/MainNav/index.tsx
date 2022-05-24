@@ -8,12 +8,16 @@ interface IProps {
 }
 
 const STDContainer = styled.div`
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
   padding: 16px 0;
   border-bottom: 1px solid #fff;
+  background-color: black;
 
   .wrapper {
     flex-direction: column;
-    max-width: 1920px;
     padding: 0 24px;
     margin: 0 auto;
 
@@ -47,18 +51,60 @@ const STDContainer = styled.div`
   }
 `;
 
+const STDGnbButton = styled.button<{ isSelected?: boolean }>`
+  /* ${({ isSelected }) => isSelected && 'padding: 2px 0 2px;'} */
+  font-family: ${({ isSelected }) =>
+    isSelected ? "'pp-mondwest'" : "'Open Sans'"};
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: ${({ isSelected }) => (isSelected ? '24px' : '24px')};
+  color: #fff;
+  cursor: pointer;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media ${device.laptop} {
+    margin-bottom: 2px;
+    font-weight: 600;
+    font-size: 18px;
+  }
+`;
+
 const STDMenuWrapper = styled.div`
   flex: 1;
   ${mixins.flexSet('flex-start', 'flex-start')}
 `;
 
 const STDExhibitionInfoWrapperPhone = styled.div`
-  ${mixins.flexSet('flex-start', 'flex-end', 'column')}
+  ${mixins.flexSet('flex-start', 'flex-start', 'column')}
   flex: 1;
-  text-align: right;
+  margin-bottom: 16px;
 
   @media ${device.laptop} {
     display: none;
+  }
+
+  .app_menu_style {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    color: #979797;
+    cursor: pointer;
+  }
+
+  .mondwest_style {
+    font-family: 'pp-mondwest';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #979797;
+    cursor: pointer;
   }
 `;
 
@@ -72,69 +118,78 @@ const STDExhibitionInfoWrapperDesktop = styled.div`
   }
 `;
 
+const STDEmptySpace = styled.div`
+  height: 157px;
+  width: 100%;
+
+  @media ${device.laptop} {
+    height: 115px;
+  }
+`;
+
 const MainNav: React.FC<IProps> = ({ selectedMenu, onClickMenu }) => {
   return (
-    <STDContainer>
-      <div className="wrapper">
-        <STDExhibitionInfoWrapperPhone>
-          <p className="menu_font_style" onClick={() => onClickMenu('')}>
-            2022 성균관대학교 예술대학
-          </p>
-          <p className="menu_font_style" onClick={() => onClickMenu('')}>
-            의상학과 졸업패션필름
-          </p>
-          <p className="menu_font_style" onClick={() => onClickMenu('')}>
-            좌표원점
-          </p>
-        </STDExhibitionInfoWrapperPhone>
-        <STDMenuWrapper>
-          <div className="flex_column">
-            <button
-              className="menu_font_style"
-              onClick={() => onClickMenu('archive')}
-            >
-              {selectedMenu.includes('archive') ? '(Archive)' : 'Archive'}
-            </button>
-            <button
-              className="menu_font_style"
-              onClick={() => onClickMenu('documents')}
-            >
-              {selectedMenu.includes('documents') ? '(Documents)' : 'Documents'}
-            </button>
-            <button
-              className="menu_font_style"
-              onClick={() => onClickMenu('thanks')}
-            >
-              {selectedMenu.includes('thanks') ? '(Thanks to)' : 'Thanks to'}
-            </button>
-          </div>
-          <div className="flex_column">
-            <button
-              className="menu_font_style"
-              onClick={() => onClickMenu('guests')}
-            >
-              {selectedMenu.includes('guests')
-                ? "(Guest's book)"
-                : "Guest's book"}
-            </button>
-            <button className="menu_font_style" onClick={() => {}}>
-              Instagram
-            </button>
-          </div>
-        </STDMenuWrapper>
-        <STDExhibitionInfoWrapperDesktop>
-          <p className="menu_font_style" onClick={() => onClickMenu('')}>
-            2022 성균관대학교 예술대학
-          </p>
-          <p className="menu_font_style" onClick={() => onClickMenu('')}>
-            의상학과 졸업패션필름
-          </p>
-          <p className="menu_font_style" onClick={() => onClickMenu('')}>
-            좌표원점
-          </p>
-        </STDExhibitionInfoWrapperDesktop>
-      </div>
-    </STDContainer>
+    <>
+      <STDContainer>
+        <div className="wrapper">
+          <STDExhibitionInfoWrapperPhone>
+            <p className="mondwest_style" onClick={() => onClickMenu('')}>
+              2022
+            </p>
+            <p className="app_menu_style" onClick={() => onClickMenu('')}>
+              성균관대학교 예술대학 의상학과 졸업패션필름 좌표원점
+            </p>
+          </STDExhibitionInfoWrapperPhone>
+          <STDMenuWrapper>
+            <div className="flex_column">
+              <STDGnbButton
+                isSelected={selectedMenu.includes('archive')}
+                onClick={() => onClickMenu('archive')}
+              >
+                {selectedMenu.includes('archive') ? '(Archive)' : 'Archive'}
+              </STDGnbButton>
+              <STDGnbButton
+                isSelected={selectedMenu.includes('documents')}
+                onClick={() => onClickMenu('documents')}
+              >
+                {selectedMenu.includes('documents')
+                  ? '(Documents)'
+                  : 'Documents'}
+              </STDGnbButton>
+              <STDGnbButton
+                isSelected={selectedMenu.includes('thanks')}
+                onClick={() => onClickMenu('thanks')}
+              >
+                {selectedMenu.includes('thanks') ? '(Thanks to)' : 'Thanks to'}
+              </STDGnbButton>
+            </div>
+            <div className="flex_column">
+              <STDGnbButton
+                isSelected={selectedMenu.includes('guests')}
+                onClick={() => onClickMenu('guests')}
+              >
+                {selectedMenu.includes('guests')
+                  ? "(Guest's book)"
+                  : "Guest's book"}
+              </STDGnbButton>
+              <STDGnbButton onClick={() => {}}>Instagram</STDGnbButton>
+            </div>
+          </STDMenuWrapper>
+          <STDExhibitionInfoWrapperDesktop>
+            <p className="menu_font_style" onClick={() => onClickMenu('')}>
+              2022 성균관대학교 예술대학
+            </p>
+            <p className="menu_font_style" onClick={() => onClickMenu('')}>
+              의상학과 졸업패션필름
+            </p>
+            <p className="menu_font_style" onClick={() => onClickMenu('')}>
+              좌표원점
+            </p>
+          </STDExhibitionInfoWrapperDesktop>
+        </div>
+      </STDContainer>
+      <STDEmptySpace />
+    </>
   );
 };
 
