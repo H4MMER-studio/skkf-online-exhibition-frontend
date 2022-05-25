@@ -49,7 +49,7 @@ const Contents: React.VFC<IProps> = ({ headerHeight }) => {
         <Video autoPlay>
           <source
             src={
-              'https://skkf-online-exhibition.s3.ap-northeast-2.amazonaws.com/test.mp4'
+              'https://skkf-online-exhibition-files.s3.ap-northeast-2.amazonaws.com/test.mp4'
             }
             type={'video/mp4'}
           />
