@@ -17,3 +17,9 @@ import DocumentsMainContainer from "./Layout/Documents/MainContainer";
 export const Documents = {
     MainContainer: DocumentsMainContainer,
 };
+
+import ArchiveContatiner from "./Layout/Archive/ArchiveContainer";
+
+export const Archive = {
+    MaincContainer: ArchiveContatiner,
+};
