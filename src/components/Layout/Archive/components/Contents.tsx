@@ -1,30 +1,69 @@
-import React from "react";
-import styled from "styled-components";
+import { device, mixins } from '@/styles';
+import React from 'react';
+import styled from 'styled-components';
 
-const STDContentsLayout = styled.div`
-    display: flex;
+interface IProps {
+  headerHeight: number | null;
+}
+
+const STDContentsLayout = styled.div<{ height: number }>`
+  display: flex;
+  height: 100%;
+  padding: 0 16px;
+  overflow-y: scroll;
+  ${mixins.noScrollbar()}
+
+  @media ${device.laptop} {
+    height: ${(props) => `calc(100vh - ${props.height}px)`};
+    padding: 0;
+  }
+`;
+
+const STDContentWrapper = styled.div`
+  flex: 1;
 `;
 
 const Video = styled.video`
-    width: 100%;
+  width: 100%;
+  margin-bottom: 10px;
+`;
+
+const STDImage = styled.img`
+  width: 100%;
+  margin-bottom: 10px;
 `;
 
 const ScriptLayout = styled.div`
-    min-width: 411px;
+  min-width: 367px;
+  margin-left: 20px;
 `;
 
-const Contents: React.VFC = () => {
-    return (
-        <STDContentsLayout>
-            <Video autoPlay>
-                <source
-                    src={"https://skkf-online-exhibition.s3.ap-northeast-2.amazonaws.com/test.mp4"}
-                    type={"video/mp4"}
-                />
-            </Video>
-            <ScriptLayout>스크립트 들어갈곳</ScriptLayout>
-        </STDContentsLayout>
-    );
+const STDScriptExample = styled.div`
+  background-color: white;
+`;
+
+const Contents: React.VFC<IProps> = ({ headerHeight }) => {
+  return (
+    <STDContentsLayout height={headerHeight + 195 + 24}>
+      <STDContentWrapper>
+        <Video autoPlay>
+          <source
+            src={
+              'https://skkf-online-exhibition.s3.ap-northeast-2.amazonaws.com/test.mp4'
+            }
+            type={'video/mp4'}
+          />
+        </Video>
+        <STDImage src="/image/documents/temp_image1.jpeg" />
+        <STDImage src="/image/documents/temp_image2.jpeg" />
+        <STDImage src="/image/documents/temp_image3.jpeg" />
+        <STDImage src="/image/documents/temp_image4.jpeg" />
+      </STDContentWrapper>
+      <ScriptLayout>
+        <STDScriptExample>스크립트 들어갈곳</STDScriptExample>
+      </ScriptLayout>
+    </STDContentsLayout>
+  );
 };
 
 export default Contents;
