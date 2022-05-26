@@ -40,11 +40,12 @@ const ThumbnailItem = styled.div<{ mobileHeight: number }>`
 
     @media (max-width: 1023px) {
         width: 33.3%;
-        height: 185px;
+        height: ${(props) => props.mobileHeight}px;
+        /* height: 185px; */
         /* max-height: 185px; */
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 768px) {
         width: 50%;
         height: ${(props) => props.mobileHeight}px;
     }
@@ -148,6 +149,10 @@ const InfomationText = styled.div`
     padding: 4px;
     background-color: #fff;
     width: fit-content;
+
+    /* @media (max-width: 768px) {
+        height: auto;
+    } */
 `;
 
 const ThumbNailImage = styled.img`
@@ -238,10 +243,9 @@ const HomeContainer: React.FC<IProps> = ({ isUnmountHome }) => {
     }, [isUnmountHome]);
 
     useEffect(() => {
-        if (width < 768 && itemEle) {
+        if (width < 1023 && itemEle) {
             const height = (117 * itemEle.offsetWidth) / 208;
             setMobileItemHeight(height);
-            console.log(height);
         }
     }, [width]);
 
