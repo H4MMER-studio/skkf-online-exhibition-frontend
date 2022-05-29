@@ -59,6 +59,7 @@ const STDContainer = styled.div`
 
 const STDGnbButton = styled.button<{ isSelected?: boolean }>`
   ${({ isSelected }) => isSelected && 'padding: 3px 0 1px;'}
+  width: 102px;
   font-family: ${({ isSelected }) =>
     isSelected ? "'pp-mondwest'" : "'Open Sans'"};
   font-style: normal;
@@ -66,6 +67,7 @@ const STDGnbButton = styled.button<{ isSelected?: boolean }>`
   font-size: 15px;
   line-height: ${({ isSelected }) => (isSelected ? '20px' : '24px')};
   color: #fff;
+  text-align: left;
   cursor: pointer;
 
   &:last-child {
