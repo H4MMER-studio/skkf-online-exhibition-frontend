@@ -12,8 +12,9 @@ commands:
           install-yarn: true
           node-version: '16.13'
       - node/install-packages
-      - node/run:
-          yarn-run: build
+      - run:
+          name: Build source code
+          command: yarn build
 
   deploy_source_code:
     steps:
