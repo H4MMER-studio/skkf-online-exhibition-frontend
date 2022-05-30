@@ -39,6 +39,8 @@ commands:
 
 jobs:
   deploy:
+    docker:
+      - image: 'cimg/base:stable'
     steps:
       - checkout
       - build_source_code
