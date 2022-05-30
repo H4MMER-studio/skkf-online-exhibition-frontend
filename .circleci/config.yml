@@ -49,7 +49,7 @@ jobs:
       - build_source_code
       - deploy_source_code
       - notify_slack_pass
-      - notify_slack_pass
+      - notify_slack_error
 
 workflows:
   ci-cd:
