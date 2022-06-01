@@ -1,25 +1,31 @@
 //Home
-import HomeContainer from "./Layout/Home/HomeContainer";
+import HomeContainer from './Layout/Home/HomeContainer';
 
 export const Home = {
-    Container: HomeContainer,
+  Container: HomeContainer,
 };
 //common
 
-import MainNav from "./common/MainNav";
+import MainNav from './common/MainNav';
 
 export { MainNav };
 
 // documents
 
-import DocumentsMainContainer from "./Layout/Documents/MainContainer";
+import DocumentsMainContainer from './Layout/Documents/MainContainer';
 
 export const Documents = {
-    MainContainer: DocumentsMainContainer,
+  MainContainer: DocumentsMainContainer,
 };
 
-import ArchiveContatiner from "./Layout/Archive/ArchiveContainer";
+import DesignersContainer from './Layout/Designers/DesignersContainer';
+
+export const Designers = {
+  MaincContainer: DesignersContainer,
+};
+
+import ArchiveContainer from './Layout/Archive/ArchiveContainer';
 
 export const Archive = {
-    MaincContainer: ArchiveContatiner,
+  MaincContainer: ArchiveContainer,
 };
