@@ -1,10 +1,15 @@
-import React, { useEffect } from "react";
-import { NextPage } from "next";
-import Router from "next/router";
-import { Archive } from "@/components";
+import React, { useEffect } from 'react';
+import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 const ArchivePage: NextPage = () => {
-    return <Archive.MaincContainer />;
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace('/archive/origin-of-coordinate');
+  }, []);
+
+  return <div></div>;
 };
 
 export default ArchivePage;

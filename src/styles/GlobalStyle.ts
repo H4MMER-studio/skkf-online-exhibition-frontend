@@ -193,4 +193,8 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-appearance: none;
   }
 
+  .pp-mondwest{
+    font-family: 'pp-mondwest'
+  }
+
 `;

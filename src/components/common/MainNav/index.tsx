@@ -187,10 +187,12 @@ const MainNav: React.FC<IProps> = ({ selectedMenu, onClickMenu }) => {
           >
             <div className="flex_column">
               <STDGnbButton
-                isSelected={selectedMenu.includes('archive')}
-                onClick={() => onClickMenu('archive')}
+                isSelected={selectedMenu.includes('designers')}
+                onClick={() => onClickMenu('designers')}
               >
-                {selectedMenu.includes('archive') ? '(Archive)' : 'Archive'}
+                {selectedMenu.includes('designers')
+                  ? '(Designers)'
+                  : 'Designers'}
               </STDGnbButton>
               <STDGnbButton
                 isSelected={selectedMenu.includes('documents')}
@@ -201,10 +203,10 @@ const MainNav: React.FC<IProps> = ({ selectedMenu, onClickMenu }) => {
                   : 'Documents'}
               </STDGnbButton>
               <STDGnbButton
-                isSelected={selectedMenu.includes('thanks')}
-                onClick={() => onClickMenu('thanks')}
+                isSelected={selectedMenu.includes('archive')}
+                onClick={() => onClickMenu('archive')}
               >
-                {selectedMenu.includes('thanks') ? '(Thanks to)' : 'Thanks to'}
+                {selectedMenu.includes('archive') ? '(Archive)' : 'Archive'}
               </STDGnbButton>
             </div>
             <div className="flex_column">
