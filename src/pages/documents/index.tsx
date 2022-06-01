@@ -6,6 +6,7 @@ const DocumentsPage: NextPage = () => {
   return (
     <>
       <Documents.MainContainer />
+      <div>테스트</div>
     </>
   );
 };
