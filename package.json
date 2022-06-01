@@ -1,11 +1,11 @@
 {
   "name": "skkf-online-exhibition-frontend",
-  "version": "1.0.0-v1",
+  "version": "1.0.0-test",
   "description": "skkf-online-exhibition-frontend",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
@@ -21,8 +21,8 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^5.5.0",
-    "@types/styled-components": "^5.1.15",
     "@types/react": "18.0.1",
+    "@types/styled-components": "^5.1.15",
     "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.13.2"
   }
