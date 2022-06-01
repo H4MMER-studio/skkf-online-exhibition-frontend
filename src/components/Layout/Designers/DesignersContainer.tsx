@@ -75,7 +75,7 @@ const CONTENTS_DATA: {
   startTime: number;
 }[] = [
   {
-    id: 'Infinitas-1',
+    id: 'Heyjune_Kim',
     image: '',
     coordinate: '(1,1)',
     row: '/image/f_1.svg',
@@ -85,7 +85,7 @@ const CONTENTS_DATA: {
     startTime: 0,
   },
   {
-    id: 'Infinitas-2',
+    id: 'Myunghoon_Lee',
     image: '',
     coordinate: '(1,2)',
     row: '/image/f_1.svg',
@@ -95,7 +95,7 @@ const CONTENTS_DATA: {
     startTime: 300,
   },
   {
-    id: 'Infinitas-3',
+    id: 'Damhee_Yun',
     image: '',
     coordinate: '(1,3)',
     row: '/image/f_1.svg',
@@ -105,7 +105,7 @@ const CONTENTS_DATA: {
     startTime: 600,
   },
   {
-    id: 'Infinitas-4',
+    id: 'Yeonje_Park',
     image: '',
     coordinate: '(1,4)',
     row: '/image/f_1.svg',
@@ -115,7 +115,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'Infinitas-5',
+    id: 'Seojin_Park',
     image: '',
     coordinate: '(1,5)',
     row: '/image/f_1.svg',
@@ -125,7 +125,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'Infinitas-6',
+    id: 'Wu_YU',
     image: '',
     coordinate: '(1,6)',
     row: '/image/f_1.svg',
@@ -135,7 +135,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'Infinitas-7',
+    id: 'Sunyoung_Park',
     image: '',
     coordinate: '(1,7)',
     row: '/image/f_1.svg',
@@ -145,7 +145,7 @@ const CONTENTS_DATA: {
     startTime: 100,
   },
   {
-    id: 'Spectrum-1',
+    id: 'Gyubin_Choi',
     image: '',
     coordinate: '(2,1)',
     row: '/image/f_2.svg',
@@ -155,7 +155,7 @@ const CONTENTS_DATA: {
     startTime: 10,
   },
   {
-    id: 'Spectrum-2',
+    id: 'Heewon_Choi',
     image: '',
     coordinate: '(2,2)',
     row: '/image/f_2.svg',
@@ -165,7 +165,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'Spectrum-3',
+    id: 'Yunchang_Lee',
     image: '',
     coordinate: '(2,3)',
     row: '/image/f_2.svg',
@@ -175,7 +175,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'Spectrum-4',
+    id: 'Geuntaek_oh',
     image: '',
     coordinate: '(2,4)',
     row: '/image/f_2.svg',
@@ -185,7 +185,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'Spectrum-5',
+    id: 'Seonbin_Kim',
     image: '',
     coordinate: '(2,5)',
     row: '/image/f_2.svg',
@@ -195,7 +195,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'Spectrum-6',
+    id: 'Jeongun_Lee',
     image: '',
     coordinate: '(2,6)',
     row: '/image/f_2.svg',
@@ -205,7 +205,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'Spectrum-7',
+    id: 'Nguyen_Thanh_Van_Do',
     image: '',
     coordinate: '(2,7)',
     row: '/image/f_2.svg',
@@ -215,7 +215,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'Spectrum-8',
+    id: 'Jeongin_Gong',
     image: '',
     coordinate: '(2,8)',
     row: '/image/f_2.svg',
@@ -225,7 +225,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'Spectrum-9',
+    id: 'Hyemin_Byun',
     image: '',
     coordinate: '(2,9)',
     row: '/image/f_2.svg',
@@ -236,7 +236,7 @@ const CONTENTS_DATA: {
   },
 
   {
-    id: 'TeleportTo-1',
+    id: 'Jueun_Lee',
     image: '',
     coordinate: '(3,1)',
     row: '/image/f_3.svg',
@@ -246,7 +246,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'TeleportTo-2',
+    id: 'Jiwan_Park',
     image: '',
     coordinate: '(3,2)',
     row: '/image/f_3.svg',
@@ -256,7 +256,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'TeleportTo-3',
+    id: 'Jeonggeun_Lee',
     image: '',
     coordinate: '(3,3)',
     row: '/image/f_3.svg',
@@ -266,7 +266,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'TeleportTo-4',
+    id: 'Seohee_Jeong',
     image: '',
     coordinate: '(3,4)',
     row: '/image/f_3.svg',
@@ -276,7 +276,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'TeleportTo-5',
+    id: 'Minah_Kim',
     image: '',
     coordinate: '(3,5)',
     row: '/image/f_3.svg',
@@ -286,7 +286,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'TeleportTo-6',
+    id: 'Jiyun_Choi',
     image: '',
     coordinate: '(3,6)',
     row: '/image/f_3.svg',
@@ -296,7 +296,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'TeleportTo-7',
+    id: 'Ijun_Choi',
     image: '',
     coordinate: '(3,7)',
     row: '/image/f_3.svg',
@@ -306,17 +306,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'TeleportTo-8',
-    image: '',
-    coordinate: '(3,8)',
-    row: '/image/f_3.svg',
-    column: '/image/b_8.svg',
-    koreanName: '',
-    englishName: '',
-    startTime: 1000,
-  },
-  {
-    id: 'Textureacit-1',
+    id: 'Minkyung_Kim',
     image: '',
     coordinate: '(4,1)',
     row: '/image/f_4.svg',
@@ -326,7 +316,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'Textureacit-2',
+    id: 'Heejae_Choi',
     image: '',
     coordinate: '(4,2)',
     row: '/image/f_4.svg',
@@ -336,7 +326,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'Textureacit-3',
+    id: 'Yesong_Jung',
     image: '',
     coordinate: '(4,3)',
     row: '/image/f_4.svg',
@@ -346,7 +336,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'Textureacit-4',
+    id: 'Soyoon_Koo',
     image: '',
     coordinate: '(4,4)',
     row: '/image/f_4.svg',
@@ -356,7 +346,7 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'Textureacit-5',
+    id: 'Yejin_Hong',
     image: '',
     coordinate: '(4,5)',
     row: '/image/f_4.svg',
@@ -366,13 +356,33 @@ const CONTENTS_DATA: {
     startTime: 1000,
   },
   {
-    id: 'Textureacit-6',
+    id: 'Heejo_Han',
     image: '',
     coordinate: '(4,6)',
     row: '/image/f_4.svg',
     column: '/image/b_6.svg',
     koreanName: '한희조',
     englishName: 'Heejo Han',
+    startTime: 1000,
+  },
+  {
+    id: 'HeeSung_Kim',
+    image: '',
+    coordinate: '(4,7)',
+    row: '/image/f_4.svg',
+    column: '/image/b_7.svg',
+    koreanName: '김희성',
+    englishName: 'HeeSung Kim',
+    startTime: 1000,
+  },
+  {
+    id: 'Leyi_ji',
+    image: '',
+    coordinate: '(4,8)',
+    row: '/image/f_4.svg',
+    column: '/image/b_8.svg',
+    koreanName: '지레이',
+    englishName: 'Leyi ji',
     startTime: 1000,
   },
 ];
