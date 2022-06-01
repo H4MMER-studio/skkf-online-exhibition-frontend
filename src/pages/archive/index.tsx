@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
-import { NextPage } from "next";
-import Router from "next/router";
-import { Archive } from "@/components";
+import React from 'react';
+import { NextPage } from 'next';
 
-const ArchivePage: NextPage = () => {
-    return <Archive.MaincContainer />;
+const ThanksPage: NextPage = () => {
+  return <div>먼데</div>;
 };
 
-export default ArchivePage;
+export default ThanksPage;
