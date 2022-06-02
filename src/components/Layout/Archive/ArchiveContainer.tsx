@@ -4,6 +4,7 @@ import ThanksToContents from './ThanksTo/ThanksToContents';
 import MenuBar from './components/MenuBar';
 import { useRouter } from 'next/router';
 import CoordinateContents from './Coordinate/CoordinateContents';
+import CelebrationContents from './Celebration/CelebrationContents';
 
 const STDContainer = styled.div`
   display: flex;
@@ -25,6 +26,9 @@ const ArchiveContainer: React.VFC = () => {
     switch (queryParams.menu) {
       case 'origin-of-coordinate':
         return <CoordinateContents />;
+
+      case 'celebration':
+        return <CelebrationContents />;
 
       case 'thanks-to':
         return <ThanksToContents />;

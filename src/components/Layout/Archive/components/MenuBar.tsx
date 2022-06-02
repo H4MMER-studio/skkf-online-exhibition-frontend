@@ -32,7 +32,7 @@ const STDMenuBarInnerLayout = styled.div`
 
   @media (max-width: 768px) {
     display: flex;
-    width: 770px;
+    width: 361px;
     border-right: none;
   }
 `;
@@ -75,7 +75,7 @@ const CopyRightLayout = styled.div`
   bottom: 0px;
 
   @media (max-width: 768px) {
-    position: relative;
+    display: none;
   }
 `;
 
