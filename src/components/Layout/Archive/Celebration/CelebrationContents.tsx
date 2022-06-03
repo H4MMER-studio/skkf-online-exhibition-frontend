@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+interface IProps {
+  scrollState: 'DOWN' | 'UP' | null;
+}
+
 const STDCelebrationContainer = styled.div`
   position: relative;
   display: flex;
@@ -51,6 +55,13 @@ const DescriptionLayout = styled.div`
   padding-left: 30px;
   height: 100%;
   overflow-y: scroll;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    min-width: 0px;
+    max-width: none;
+    padding-left: 0px;
+  }
 `;
 
 const MainText = styled.div`
@@ -69,7 +80,7 @@ const Title = styled.div`
   color: #fff;
 `;
 
-const CoordinateImage = styled.img`
+const CoordinateImage = styled.img<{ scrollState: 'DOWN' | 'UP' | null }>`
   position: absolute;
   width: 100%;
   height: auto;
@@ -80,6 +91,16 @@ const CoordinateImage = styled.img`
   @media (max-width: 1024px) {
     display: none;
   }
+
+  @media (max-width: 768px) {
+    position: fixed;
+    bottom: ${(props) => (props.scrollState === 'DOWN' ? '-100%' : '0px')};
+    left: 0px;
+    display: block;
+    width: 100%;
+    padding: 0px 16px 10px;
+    transition-duration: 1s;
+  }
 `;
 
 const EndText = styled.div`
@@ -88,9 +109,13 @@ const EndText = styled.div`
   font-size: 22px;
   color: #fff;
   padding-bottom: 300px;
+
+  @media (max-width: 768px) {
+    padding-bottom: 125px;
+  }
 `;
 
-const CelebrationContents: React.FC = () => {
+const CelebrationContents: React.FC<IProps> = ({ scrollState }) => {
   return (
     <STDCelebrationContainer>
       <ImageLayout>
@@ -139,7 +164,10 @@ const CelebrationContents: React.FC = () => {
           <br />신 동 렬
         </EndText>
       </DescriptionLayout>
-      <CoordinateImage src={'/image/archive/celebration.png'} />
+      <CoordinateImage
+        src={'/image/archive/celebration.png'}
+        scrollState={'UP'}
+      />
     </STDCelebrationContainer>
   );
 };

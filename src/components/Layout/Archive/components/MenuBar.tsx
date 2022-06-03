@@ -21,6 +21,10 @@ const STDMenuBarLayout = styled.div<{ navHeight: number }>`
     overflow-y: hidden;
     padding: 0px 18px 0px 18px;
     margin-top: 16px;
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;
 
