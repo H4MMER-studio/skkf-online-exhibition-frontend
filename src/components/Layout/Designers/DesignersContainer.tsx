@@ -25,7 +25,7 @@ const DesignersContainer: React.VFC = () => {
   const [videoEle, setVideEle] = useState<HTMLVideoElement>();
   const { width } = useResize();
   const router = useRouter();
-  const query = router.query as { designer: string };
+  const { designer } = router.query as { designer: string };
 
   useEffect(() => {
     const nav = document.getElementById('nav-bar');
@@ -33,16 +33,33 @@ const DesignersContainer: React.VFC = () => {
   }, [width]);
 
   useEffect(() => {
-    if (query.designer && videoEle) {
-      const currentTime = CONTENTS_DATA.find((c) => c.id === query.designer)
-        .startTime;
+    if (designer && videoEle) {
+      const currentTime = CONTENTS_DATA.find((c) => c.id === designer).time;
       clickMoveVideo(currentTime);
     }
-  }, [query.designer]);
+  }, [designer, videoEle]);
 
-  const clickMoveVideo = (time: number) => {
-    videoEle.currentTime = time;
+  const clickMoveVideo = ({
+    firstStartTime,
+    firstEndTime,
+    secondStartTime,
+    secondEndTime,
+  }: {
+    firstStartTime: number;
+    firstEndTime: number;
+    secondStartTime: number;
+    secondEndTime: number;
+  }) => {
+    videoEle.currentTime = firstStartTime;
     videoEle.autoplay = true;
+    videoEle.ontimeupdate = () => {
+      if (Math.round(videoEle.currentTime) === firstEndTime) {
+        videoEle.currentTime = secondStartTime;
+      }
+      if (Math.round(videoEle.currentTime) === secondEndTime) {
+        videoEle.currentTime = firstStartTime;
+      }
+    };
   };
 
   return (
@@ -58,7 +75,10 @@ const DesignersContainer: React.VFC = () => {
           headerHeight={headerHeight}
           setVideoEle={setVideEle}
         />
-        <BottomContentList />
+        <BottomContentList
+          dataList={CONTENTS_DATA}
+          clickMoveVideo={clickMoveVideo}
+        />
       </STDContentsWrapper>
     </STDContainer>
   );
@@ -75,7 +95,12 @@ export type ContentsData = {
   koreanName: string;
   englishName: string;
   email: string | null;
-  startTime: number;
+  time: {
+    firstStartTime: number;
+    firstEndTime: number;
+    secondStartTime: number;
+    secondEndTime: number;
+  };
   contents: { url: string; type: 'row' | 'column'; order: string }[][];
   contentsText: { kor: string; eng: string };
   title: {
@@ -87,14 +112,19 @@ export type ContentsData = {
 const CONTENTS_DATA: ContentsData = [
   {
     id: 'Heyjune_Kim',
-    image: '',
+    image: '/image/thumbs/thumb_1_1.jpg',
     coordinate: '(1,1)',
     row: '/image/f_1.svg',
     column: '/image/b_1.svg',
     email: 'june_kim515@naver.com',
     koreanName: '김혜준',
     englishName: 'Hyejune Kim',
-    startTime: 0,
+    time: {
+      firstStartTime: 332,
+      firstEndTime: 342,
+      secondStartTime: 350,
+      secondEndTime: 364,
+    },
     contents: [
       [
         {
@@ -127,14 +157,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Myunghoon_Lee',
-    image: '',
+    image: '/image/thumbs/thumb_1_2.jpg',
     coordinate: '(1,2)',
     row: '/image/f_1.svg',
     column: '/image/b_2.svg',
     email: 'myunghoon3@g.skku.edu',
     koreanName: '이명훈',
     englishName: 'Myunghoon Lee',
-    startTime: 300,
+    time: {
+      firstStartTime: 278,
+      firstEndTime: 284,
+      secondStartTime: 278,
+      secondEndTime: 284,
+    },
     contents: [
       [
         {
@@ -167,14 +202,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Damhee_Yun',
-    image: '',
+    image: '/image/thumbs/thumb_1_3.jpg',
     coordinate: '(1,3)',
     row: '/image/f_1.svg',
     column: '/image/b_3.svg',
     email: 'himykem@naver.com',
     koreanName: '윤담희',
     englishName: 'Damhee Yun',
-    startTime: 600,
+    time: {
+      firstStartTime: 310,
+      firstEndTime: 325,
+      secondStartTime: 310,
+      secondEndTime: 325,
+    },
     contents: [
       [
         {
@@ -207,14 +247,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Yeonje_Park',
-    image: '',
+    image: '/image/thumbs/thumb_1_4.jpg',
     coordinate: '(1,4)',
     row: '/image/f_1.svg',
     column: '/image/b_4.svg',
     email: 'yunje98@gmail.com',
     koreanName: '박연제',
     englishName: 'Yeonje Park',
-    startTime: 1000,
+    time: {
+      firstStartTime: 326,
+      firstEndTime: 331,
+      secondStartTime: 342,
+      secondEndTime: 349,
+    },
     contents: [
       [
         {
@@ -247,14 +292,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Seojin_Park',
-    image: '',
+    image: '/image/thumbs/thumb_1_5.jpg',
     coordinate: '(1,5)',
     row: '/image/f_1.svg',
     column: '/image/b_5.svg',
     email: 'joj3566@naver.com',
     koreanName: '박서진',
     englishName: 'Seojin Park',
-    startTime: 1000,
+    time: {
+      firstStartTime: 285,
+      firstEndTime: 301,
+      secondStartTime: 285,
+      secondEndTime: 301,
+    },
     contents: [
       [
         {
@@ -287,14 +337,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Wu_YU',
-    image: '',
+    image: '/image/thumbs/thumb_1_6.jpg',
     coordinate: '(1,6)',
     row: '/image/f_1.svg',
     column: '/image/b_6.svg',
     email: 'muyouyu3_@naver.com',
     koreanName: '오유',
-    englishName: 'Wu YU',
-    startTime: 1000,
+    englishName: 'Wu Yu',
+    time: {
+      firstStartTime: 272,
+      firstEndTime: 278,
+      secondStartTime: 272,
+      secondEndTime: 278,
+    },
     contents: [
       [
         {
@@ -327,14 +382,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Sunyoung_Park',
-    image: '',
+    image: '/image/thumbs/thumb_1_7.jpg',
     coordinate: '(1,7)',
     row: '/image/f_1.svg',
     column: '/image/b_7.svg',
     email: 'parksunyoung0619@gmail.com',
     koreanName: '박선영',
     englishName: 'Sunyoung Park',
-    startTime: 100,
+    time: {
+      firstStartTime: 302,
+      firstEndTime: 309,
+      secondStartTime: 302,
+      secondEndTime: 309,
+    },
     contents: [
       [
         {
@@ -367,14 +427,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Gyubin_Choi',
-    image: '',
+    image: '/image/thumbs/thumb_2_1.jpg',
     coordinate: '(2,1)',
     row: '/image/f_2.svg',
     column: '/image/b_1.svg',
     email: 'annatris2000@gmail.com',
     koreanName: '최규빈',
     englishName: 'Gyubin Choi',
-    startTime: 10,
+    time: {
+      firstStartTime: 225,
+      firstEndTime: 232,
+      secondStartTime: 225,
+      secondEndTime: 232,
+    },
     contents: [
       [
         {
@@ -407,14 +472,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Heewon_Choi',
-    image: '',
+    image: '/image/thumbs/thumb_2_2.jpg',
     coordinate: '(2,2)',
     row: '/image/f_2.svg',
     column: '/image/b_2.svg',
     email: 'gldjsldjs@naver.com',
     koreanName: '최희원',
     englishName: 'Heewon Choi',
-    startTime: 1000,
+    time: {
+      firstStartTime: 238,
+      firstEndTime: 246,
+      secondStartTime: 238,
+      secondEndTime: 246,
+    },
     contents: [
       [
         {
@@ -447,14 +517,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Yunchang_Lee',
-    image: '',
+    image: '/image/thumbs/thumb_2_3.jpg',
     coordinate: '(2,3)',
     row: '/image/f_2.svg',
     column: '/image/b_3.svg',
     email: 'dbfj7132@naver.com',
     koreanName: '이윤창',
     englishName: 'Yunchang Lee',
-    startTime: 1000,
+    time: {
+      firstStartTime: 210,
+      firstEndTime: 224,
+      secondStartTime: 210,
+      secondEndTime: 224,
+    },
     contents: [
       [
         {
@@ -487,14 +562,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Geuntaek_oh',
-    image: '',
+    image: '/image/thumbs/thumb_2_4.jpg',
     coordinate: '(2,4)',
     row: '/image/f_2.svg',
     column: '/image/b_4.svg',
     email: 'xortm9277@naver.com',
     koreanName: '오근택',
     englishName: 'Geuntaek oh',
-    startTime: 1000,
+    time: {
+      firstStartTime: 238,
+      firstEndTime: 246,
+      secondStartTime: 150,
+      secondEndTime: 157,
+    },
     contents: [
       [
         {
@@ -527,14 +607,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Seonbin_Kim',
-    image: '',
+    image: '/image/thumbs/thumb_2_5.jpg',
     coordinate: '(2,5)',
     row: '/image/f_2.svg',
     column: '/image/b_5.svg',
     email: 'asrv5898@naver.com',
     koreanName: '김성빈',
     englishName: 'Seonbin Kim',
-    startTime: 1000,
+    time: {
+      firstStartTime: 146,
+      firstEndTime: 148,
+      secondStartTime: 158,
+      secondEndTime: 175,
+    },
     contents: [
       [
         {
@@ -567,14 +652,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Jeongun_Lee',
-    image: '',
+    image: '/image/thumbs/thumb_2_6.jpg',
     coordinate: '(2,6)',
     row: '/image/f_2.svg',
     column: '/image/b_6.svg',
     email: 'iam5941@naver.com',
     koreanName: '이정은',
     englishName: 'Jeongun Lee',
-    startTime: 1000,
+    time: {
+      firstStartTime: 195,
+      firstEndTime: 208,
+      secondStartTime: 195,
+      secondEndTime: 208,
+    },
     contents: [
       [
         {
@@ -607,14 +697,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Nguyen_Thanh_Van_Do',
-    image: '',
+    image: '/image/thumbs/thumb_2_7.jpg',
     coordinate: '(2,7)',
     row: '/image/f_2.svg',
     column: '/image/b_7.svg',
     email: 'kloude@g.skku.edu',
     koreanName: '도비안',
     englishName: 'Nguyen Thanh Van Do',
-    startTime: 1000,
+    time: {
+      firstStartTime: 233,
+      firstEndTime: 238,
+      secondStartTime: 233,
+      secondEndTime: 238,
+    },
     contents: [
       [
         {
@@ -647,14 +742,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Jeongin_Gong',
-    image: '',
+    image: '/image/thumbs/thumb_2_8.jpg',
     coordinate: '(2,8)',
     row: '/image/f_2.svg',
     column: '/image/b_8.svg',
     email: 'jay.jeongin.g@gmail.com',
     koreanName: '공정인',
     englishName: 'Jeongin Gong',
-    startTime: 1000,
+    time: {
+      firstStartTime: 116,
+      firstEndTime: 145,
+      secondStartTime: 116,
+      secondEndTime: 145,
+    },
     contents: [
       [
         {
@@ -692,14 +792,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Hyemin_Byun',
-    image: '',
+    image: '/image/thumbs/thumb_2_9.jpg',
     coordinate: '(2,9)',
     row: '/image/f_2.svg',
     column: '/image/b_9.svg',
     email: 'hyemin000807@naver.com',
     koreanName: '변혜민',
     englishName: 'Hyemin Byun',
-    startTime: 1000,
+    time: {
+      firstStartTime: 176,
+      firstEndTime: 194,
+      secondStartTime: 176,
+      secondEndTime: 194,
+    },
     contents: [
       [
         {
@@ -733,14 +838,19 @@ const CONTENTS_DATA: ContentsData = [
 
   {
     id: 'Jueun_Lee',
-    image: '',
+    image: '/image/thumbs/thumb_3_1.jpg',
     coordinate: '(3,1)',
     row: '/image/f_3.svg',
     column: '/image/b_1.svg',
     email: 'suisei-@naver.com',
     koreanName: '이주은',
     englishName: 'Jueun Lee',
-    startTime: 1000,
+    time: {
+      firstStartTime: 61,
+      firstEndTime: 77,
+      secondStartTime: 98,
+      secondEndTime: 110,
+    },
     contents: [
       [
         {
@@ -773,14 +883,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Jiwan_Park',
-    image: '',
+    image: '/image/thumbs/thumb_3_2.jpg',
     coordinate: '(3,2)',
     row: '/image/f_3.svg',
     column: '/image/b_2.svg',
     email: 'pinata1012@g.skku.edu',
     koreanName: '박지완',
     englishName: 'Jiwan Park',
-    startTime: 1000,
+    time: {
+      firstStartTime: 19,
+      firstEndTime: 20,
+      secondStartTime: 29,
+      secondEndTime: 38,
+    },
     contents: [
       [
         {
@@ -813,14 +928,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Jeonggeun_Lee',
-    image: '',
+    image: '/image/thumbs/thumb_3_3.jpg',
     coordinate: '(3,3)',
     row: '/image/f_3.svg',
     column: '/image/b_3.svg',
     email: 'vyxii@naver.com',
     koreanName: '이정근',
     englishName: 'Jeonggeun Lee',
-    startTime: 1000,
+    time: {
+      firstStartTime: 51,
+      firstEndTime: 54,
+      secondStartTime: 51,
+      secondEndTime: 54,
+    },
     contents: [
       [
         {
@@ -853,14 +973,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Seohee_Jeong',
-    image: '',
+    image: '/image/thumbs/thumb_3_4.jpg',
     coordinate: '(3,4)',
     row: '/image/f_3.svg',
     column: '/image/b_4.svg',
     email: 'shjeong0707@naver.com',
     koreanName: '정서희',
     englishName: 'Seohee Jeong',
-    startTime: 1000,
+    time: {
+      firstStartTime: 22,
+      firstEndTime: 28,
+      secondStartTime: 39,
+      secondEndTime: 47,
+    },
     contents: [
       [
         {
@@ -893,14 +1018,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Minah_Kim',
-    image: '',
+    image: '/image/thumbs/thumb_3_5.jpg',
     coordinate: '(3,5)',
     row: '/image/f_3.svg',
     column: '/image/b_5.svg',
     email: 'kmina0116@naver.com',
     koreanName: '김민아',
     englishName: 'Minah Kim',
-    startTime: 1000,
+    time: {
+      firstStartTime: 15,
+      firstEndTime: 18,
+      secondStartTime: 79,
+      secondEndTime: 84,
+    },
     contents: [
       [
         {
@@ -933,14 +1063,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Jiyun_Choi',
-    image: '',
+    image: '/image/thumbs/thumb_3_6.jpg',
     coordinate: '(3,6)',
     row: '/image/f_3.svg',
     column: '/image/b_6.svg',
     email: 'jessica0406@naver.com',
     koreanName: '최지현',
     englishName: 'Jiyun Choi',
-    startTime: 1000,
+    time: {
+      firstStartTime: 11,
+      firstEndTime: 14,
+      secondStartTime: 90,
+      secondEndTime: 97,
+    },
     contents: [
       [
         {
@@ -973,14 +1108,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Ijun_Choi',
-    image: '',
+    image: '/image/thumbs/thumb_3_7.jpg',
     coordinate: '(3,7)',
     row: '/image/f_3.svg',
     column: '/image/b_7.svg',
     email: null,
     koreanName: '최이준',
     englishName: 'Ijun Choi',
-    startTime: 1000,
+    time: {
+      firstStartTime: 47,
+      firstEndTime: 50,
+      secondStartTime: 85,
+      secondEndTime: 89,
+    },
     contents: [
       [
         {
@@ -1013,14 +1153,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Minkyung_Kim',
-    image: '',
+    image: '/image/thumbs/thumb_4_1.jpg',
     coordinate: '(4,1)',
     row: '/image/f_4.svg',
     column: '/image/b_1.svg',
     email: 'jinmingeng12@daum.net',
     koreanName: '김민경',
     englishName: 'Minkyung Kim',
-    startTime: 1000,
+    time: {
+      firstStartTime: 434,
+      firstEndTime: 437,
+      secondStartTime: 442,
+      secondEndTime: 446,
+    },
     contents: [
       [
         {
@@ -1053,14 +1198,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Heejae_Choi',
-    image: '',
+    image: '/image/thumbs/thumb_4_2.jpg',
     coordinate: '(4,2)',
     row: '/image/f_4.svg',
     column: '/image/b_2.svg',
     email: 'mchj421@hotmail.com',
     koreanName: '최희재',
     englishName: 'Heejae Choi',
-    startTime: 1000,
+    time: {
+      firstStartTime: 415,
+      firstEndTime: 417,
+      secondStartTime: 447,
+      secondEndTime: 451,
+    },
     contents: [
       [
         {
@@ -1093,14 +1243,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Yesong_Jung',
-    image: '',
+    image: '/image/thumbs/thumb_4_3.jpg',
     coordinate: '(4,3)',
     row: '/image/f_4.svg',
     column: '/image/b_3.svg',
     email: 'ellenjys@naver.com',
     koreanName: '정예송',
     englishName: 'Yesong Jung',
-    startTime: 1000,
+    time: {
+      firstStartTime: 385,
+      firstEndTime: 392,
+      secondStartTime: 385,
+      secondEndTime: 392,
+    },
     contents: [
       [
         {
@@ -1133,14 +1288,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Soyoon_Koo',
-    image: '',
+    image: '/image/thumbs/thumb_4_4.jpg',
     coordinate: '(4,4)',
     row: '/image/f_4.svg',
     column: '/image/b_4.svg',
     email: 'aalslthdbs17@naver.com',
     koreanName: '구소윤',
     englishName: 'Soyoon Koo',
-    startTime: 1000,
+    time: {
+      firstStartTime: 404,
+      firstEndTime: 414,
+      secondStartTime: 404,
+      secondEndTime: 414,
+    },
     contents: [
       [
         {
@@ -1173,14 +1333,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Yejin_Hong',
-    image: '',
+    image: '/image/thumbs/thumb_4_5.jpg',
     coordinate: '(4,5)',
     row: '/image/f_4.svg',
     column: '/image/b_5.svg',
     email: null,
     koreanName: '홍예진',
     englishName: 'Yejin Hong',
-    startTime: 1000,
+    time: {
+      firstStartTime: 419,
+      firstEndTime: 421,
+      secondStartTime: 429,
+      secondEndTime: 433,
+    },
     contents: [
       [
         {
@@ -1213,14 +1378,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Heejo_Han',
-    image: '',
+    image: '/image/thumbs/thumb_4_6.jpg',
     coordinate: '(4,6)',
     row: '/image/f_4.svg',
     column: '/image/b_6.svg',
     email: 'heejo4343@nate.com',
     koreanName: '한희조',
     englishName: 'Heejo Han',
-    startTime: 1000,
+    time: {
+      firstStartTime: 393,
+      firstEndTime: 395,
+      secondStartTime: 422,
+      secondEndTime: 427,
+    },
     contents: [
       [
         {
@@ -1253,14 +1423,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'HeeSung_Kim',
-    image: '',
+    image: '/image/thumbs/thumb_4_7.jpg',
     coordinate: '(4,7)',
     row: '/image/f_4.svg',
     column: '/image/b_7.svg',
     email: 'heesungday@naver.com',
     koreanName: '김희성',
     englishName: 'HeeSung Kim',
-    startTime: 1000,
+    time: {
+      firstStartTime: 396,
+      firstEndTime: 403,
+      secondStartTime: 438,
+      secondEndTime: 441,
+    },
     contents: [
       [
         {
@@ -1293,14 +1468,19 @@ const CONTENTS_DATA: ContentsData = [
   },
   {
     id: 'Leyi_ji',
-    image: '',
+    image: '/image/thumbs/thumb_4_8.jpg',
     coordinate: '(4,8)',
     row: '/image/f_4.svg',
     column: '/image/b_8.svg',
     email: 'ley802@yeah.net',
     koreanName: '지레이',
     englishName: 'Leyi ji',
-    startTime: 1000,
+    time: {
+      firstStartTime: 378,
+      firstEndTime: 384,
+      secondStartTime: 378,
+      secondEndTime: 384,
+    },
     contents: [
       [
         {

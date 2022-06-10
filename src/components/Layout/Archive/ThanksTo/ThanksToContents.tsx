@@ -17,7 +17,7 @@ const STDContentsInnerLayout = styled.div`
   height: 77vh;
   overflow-y: scroll;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     padding-right: 16px;
     padding-left: 16px;
     padding-bottom: 110px;
@@ -27,14 +27,14 @@ const STDContentsInnerLayout = styled.div`
   .last {
     margin-bottom: 100px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       margin-bottom: 48px;
     }
   }
 `;
 
 const ItemLayout = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     margin-bottom: 24px;
   }
 `;
@@ -44,7 +44,7 @@ const FlexLayout = styled.div`
   width: 100%;
   margin-bottom: 118px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: block;
     margin-bottom: 0px;
   }
@@ -71,23 +71,24 @@ const ProfileDescription = styled.div`
   line-height: 22.5px;
   color: #c3c3c3;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     font-size: 13px;
   }
 `;
 
 const TypoImage = styled.img<{ scrollState: string }>`
   position: absolute;
-  width: 100%;
+  width: calc(100% - 36px);
   bottom: 32px;
   pointer-events: none;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     position: fixed;
     bottom: 0px;
     padding: 0 16px 10px;
-    bottom: ${(props) => (props.scrollState === 'down' ? '-100%' : '0px')};
-    transition-duration: 0.5s;
+    transform: ${({ scrollState }) =>
+      `translateY(${scrollState === 'down' ? 100 : 0}%)`};
+    transition: all 0.8s ease-in-out;
   }
 `;
 

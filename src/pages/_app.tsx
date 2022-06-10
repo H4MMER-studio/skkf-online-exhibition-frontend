@@ -37,6 +37,14 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   };
 
+  const onClickDesigner = (name: string) => {
+    setIsUnmountHome(true);
+    setTimeout(() => {
+      router.push(`/designers?designer=${name}`);
+      setIsUnmountHome(false);
+    }, 2500);
+  };
+
   return (
     <>
       <Head>
@@ -67,7 +75,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <STDContainer height={height}>
         <MainNav selectedMenu={selectedMenu} onClickMenu={onClickMenu} />
-        <Component {...pageProps} isUnmountHome={isUnmountHome} />
+        <Component
+          {...pageProps}
+          isUnmountHome={isUnmountHome}
+          onClickDesigner={onClickDesigner}
+        />
       </STDContainer>
     </>
   );

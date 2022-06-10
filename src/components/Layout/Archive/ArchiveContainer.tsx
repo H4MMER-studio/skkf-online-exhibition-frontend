@@ -16,7 +16,7 @@ import { useScrollDirection, useResize } from '@/hooks';
 const STDContainer = styled.div`
   display: flex;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     display: block;
 
     ::-webkit-scrollbar {

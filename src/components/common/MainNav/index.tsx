@@ -13,7 +13,7 @@ const STDContainer = styled.div`
   top: 0;
   z-index: 1000;
   width: 100%;
-  padding: 16px 0 0;
+  padding: 12px 0 0;
   border-bottom: 1px solid #fff;
   background-color: black;
 
@@ -23,12 +23,13 @@ const STDContainer = styled.div`
 
   .wrapper {
     flex-direction: column;
-    padding: 0 24px;
+    padding: 0 16px;
     margin: 0 auto;
     overflow: hidden;
 
     @media ${device.laptop} {
       ${mixins.flexSet('space-between')}
+      padding: 0 24px;
     }
   }
 
@@ -49,17 +50,22 @@ const STDContainer = styled.div`
 
   .flex_column {
     ${mixins.flexSet('center', 'flex-start', 'column')}
-    margin-right: 36px;
+    width: 100px;
+    margin-right: 4px;
 
     &:last-child {
       margin-right: 0;
+    }
+
+    @media ${device.laptop} {
+      width: 120px;
+      margin-right: 8px;
     }
   }
 `;
 
 const STDGnbButton = styled.button<{ isSelected?: boolean }>`
   ${({ isSelected }) => isSelected && 'padding: 3px 0 1px;'}
-  width: 102px;
   font-family: ${({ isSelected }) =>
     isSelected ? "'pp-mondwest'" : "'Open Sans'"};
   font-style: normal;
@@ -91,12 +97,13 @@ const STDMenuWrapper = styled.div<MenuWrapperProps>`
   flex: 1;
   max-height: ${({ isDownScroll, gnbHeight }) =>
     isDownScroll ? 0 : gnbHeight}px;
-  margin-bottom: ${({ isDownScroll }) => (isDownScroll ? 0 : 16)}px;
+  margin-bottom: ${({ isDownScroll }) => (isDownScroll ? 0 : 12)}px;
   transition: all 0.4s ease-in-out;
 
   @media ${device.laptop} {
     padding-top: 0;
     max-height: unset;
+    margin-bottom: 0;
   }
 `;
 
@@ -179,6 +186,9 @@ const MainNav: React.FC<IProps> = ({ selectedMenu, onClickMenu }) => {
             <p className="app_menu_style" onClick={() => onClickMenu('')}>
               성균관대학교 예술대학 의상학과 졸업패션필름 좌표원점
             </p>
+            <p className="app_menu_style" onClick={() => onClickMenu('')}>
+              «좌표원점 : origin of Coordinate»
+            </p>
           </STDExhibitionInfoWrapperPhone>
           <STDMenuWrapper
             ref={gnbElement}
@@ -218,7 +228,15 @@ const MainNav: React.FC<IProps> = ({ selectedMenu, onClickMenu }) => {
                   ? "(Guest's book)"
                   : "Guest's book"}
               </STDGnbButton>
-              <STDGnbButton onClick={() => {}}>Instagram</STDGnbButton>
+              <STDGnbButton
+                onClick={() =>
+                  window.open(
+                    'https://www.instagram.com/_u/skku_ff_2022/?hl=ko'
+                  )
+                }
+              >
+                Instagram
+              </STDGnbButton>
             </div>
           </STDMenuWrapper>
           <STDExhibitionInfoWrapperDesktop>
@@ -229,7 +247,7 @@ const MainNav: React.FC<IProps> = ({ selectedMenu, onClickMenu }) => {
               의상학과 졸업패션필름
             </p>
             <p className="menu_font_style" onClick={() => onClickMenu('')}>
-              좌표원점
+              «좌표원점 : origin of Coordinate»
             </p>
           </STDExhibitionInfoWrapperDesktop>
         </div>

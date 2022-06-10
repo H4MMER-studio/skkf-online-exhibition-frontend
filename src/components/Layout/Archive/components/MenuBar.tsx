@@ -14,7 +14,7 @@ const STDMenuBarLayout = styled.div<{ navHeight: number }>`
   height: ${(props) => `calc(100vh - ${props.navHeight}px)`};
   padding: 24px 0px 24px 24px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     width: 100%;
     height: 80px;
     overflow-x: scroll;
@@ -34,7 +34,7 @@ const STDMenuBarInnerLayout = styled.div`
   height: 100%;
   border-right: 1px solid #fff;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     display: flex;
     width: 361px;
     border-right: none;
@@ -57,7 +57,7 @@ const MenuItemLayout = styled.div<{ selected: boolean }>`
     } */
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     margin-right: 24px;
     margin-bottom: 0px;
   }
@@ -67,10 +67,21 @@ const Text = styled.div`
   padding: 4px;
   color: #fff;
   font-size: 20px;
+  line-height: 110%;
   width: fit-content;
+  white-space: nowrap;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     font-size: 16px;
+  }
+
+  &.pp-mondwest {
+    font-size: 22px;
+    line-height: 110%;
+
+    @media (max-width: 1023px) {
+      font-size: 18px;
+    }
   }
 `;
 
@@ -78,7 +89,7 @@ const CopyRightLayout = styled.div`
   position: absolute;
   bottom: 0px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     display: none;
   }
 `;
@@ -105,7 +116,7 @@ const MenuBar: React.VFC<IProps> = ({ selectedMenu, clickMenu }) => {
           selected={selectedMenu === 'origin-of-coordinate'}
           onClick={() => clickMenu('origin-of-coordinate')}
         >
-          <Text>1</Text>
+          <Text className="pp-mondwest">1</Text>
           <Text>좌표원점</Text>
           <Text className="pp-mondwest">origin of Coordinate</Text>
         </MenuItemLayout>
@@ -113,7 +124,7 @@ const MenuBar: React.VFC<IProps> = ({ selectedMenu, clickMenu }) => {
           selected={selectedMenu === 'celebration'}
           onClick={() => clickMenu('celebration')}
         >
-          <Text>2</Text>
+          <Text className="pp-mondwest">2</Text>
           <Text>축사</Text>
           <Text className="pp-mondwest">Celebration</Text>
         </MenuItemLayout>
@@ -121,7 +132,7 @@ const MenuBar: React.VFC<IProps> = ({ selectedMenu, clickMenu }) => {
           selected={selectedMenu === 'thanks-to'}
           onClick={() => clickMenu('thanks-to')}
         >
-          <Text>3</Text>
+          <Text className="pp-mondwest">3</Text>
           <Text>감사</Text>
           <Text className="pp-mondwest">Thanks to</Text>
         </MenuItemLayout>

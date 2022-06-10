@@ -1,3 +1,4 @@
+import { mixins } from '@/styles';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -12,7 +13,7 @@ const STDCoordinateContentsLayout = styled.div`
   padding: 24px 32px 0px 20px;
   width: 100%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: block;
     padding: 16px;
   }
@@ -28,7 +29,7 @@ const MainImage = styled.img`
     min-height: 172px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     margin-bottom: 30px;
   }
 `;
@@ -41,9 +42,11 @@ const DescriptionLayout = styled.div<{ headHeight: number }>`
   height: ${(props) => `calc(100vh - ${props.headHeight + 25}px)`};
   overflow-y: scroll;
   padding-bottom: 290px;
+  ${mixins.noScrollbar()}
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     width: 100%;
+    height: 100%;
     max-width: none;
     height: 100%;
     padding-left: 0px;
@@ -85,12 +88,13 @@ const CoordinateImage = styled.img<{ scrollState: string }>`
     display: none;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     position: fixed;
     display: block;
     padding-bottom: 10px;
-    bottom: ${(props) => (props.scrollState === 'down' ? '-100%' : '0px')};
-    transition-duration: 0.5s;
+    transform: ${({ scrollState }) =>
+      `translateY(${scrollState === 'down' ? 100 : 0}%)`};
+    transition: all 0.8s ease-in-out;
   }
 `;
 
@@ -104,7 +108,7 @@ const MediaQueryMainLogoImage = styled.img`
     top: 131px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 `;

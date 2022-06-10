@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { useRouter } from 'next/router';
-import { useResize } from '@/hooks';
 import { device, mixins } from '@/styles';
+import { ContentsData } from '../DesignersContainer';
 
 interface IProps {
-  dataList: {
-    id: string;
-    image: string;
-    coordinate?: string;
-    row: string;
-    column: string;
-    koreanName: string;
-    englishName: string;
-    startTime: number;
-  }[];
+  dataList: ContentsData;
   headerHeight: number | null;
-  clickMoveVideo: (time: number) => void;
+  clickMoveVideo: (time: {
+    firstStartTime: number;
+    firstEndTime: number;
+    secondStartTime: number;
+    secondEndTime: number;
+  }) => void;
 }
 
 const STDContainer = styled.div<{ height: number }>`
@@ -49,11 +45,14 @@ const ListLayout = styled.div`
 
 const ItemLayout = styled.div<{ isSelected?: boolean }>`
   ${mixins.flexSet('flex-start', 'flex-start', 'column')}
-  min-width: 125px;
-  margin-bottom: 30px;
+  margin-right: 24px;
+  white-space: nowrap;
   cursor: pointer;
 
   @media ${device.laptop} {
+    min-width: 125px;
+    margin-bottom: 30px;
+    margin-right: 0px;
     &:hover {
       div {
         color: #7e7e7e;
@@ -74,13 +73,14 @@ const ItemLayout = styled.div<{ isSelected?: boolean }>`
 const ItemT = styled.div<{ isModwestFont: boolean }>`
   color: #fff;
   padding: 4px;
-  font-size: 18px;
+  font-size: ${({ isModwestFont }) => (isModwestFont ? 18 : 16)}px;
   line-height: 110%;
   /* font-family: ${(props) =>
     props.isModwestFont ? "pp-mondwest'" : 'Open Sans'}; */
 
   @media ${device.laptop} {
-    font-size: 22px;
+    font-size: ${({ isModwestFont }) => (isModwestFont ? 22 : 20)}px;
+    line-height: 110%;
   }
 `;
 
@@ -116,12 +116,12 @@ const DesignerList: React.VFC<IProps> = ({
               isSelected={data.id === (designer ?? dataList[0].id)}
               onClick={() => {
                 router.push(`/designers?designer=${data.id}`);
-                clickMoveVideo(data.startTime);
+                clickMoveVideo(data.time);
               }}
             >
               <ItemT isModwestFont>{data.coordinate}</ItemT>
               <ItemT isModwestFont={false}>{data.koreanName}</ItemT>
-              <ItemT isModwestFont={false}>{data.englishName}</ItemT>
+              <ItemT isModwestFont={true}>{data.englishName}</ItemT>
             </ItemLayout>
           );
         })}

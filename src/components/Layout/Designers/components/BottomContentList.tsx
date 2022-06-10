@@ -2,6 +2,17 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { mixins, device } from '@/styles';
+import { ContentsData } from '../DesignersContainer';
+
+interface IProps {
+  dataList: ContentsData;
+  clickMoveVideo: (time: {
+    firstStartTime: number;
+    firstEndTime: number;
+    secondStartTime: number;
+    secondEndTime: number;
+  }) => void;
+}
 
 const STDContainer = styled.div`
   width: 100%;
@@ -37,15 +48,26 @@ const STDImageWrapper = styled.div`
   }
 `;
 
-const STDImage = styled.img`
+const STDImage = styled.img<{ isSelected: boolean }>`
   width: 120px;
   height: 120px;
-  object-fit: contain;
+  object-fit: cover;
   margin-right: 8px;
   cursor: pointer;
+  opacity: ${({ isSelected }) => (isSelected ? 0.7 : 1)};
+
+  &:active {
+    opacity: 0.7;
+  }
+
+  @media ${device.laptop} {
+    &:hover {
+      opacity: 0.7;
+    }
+  }
 `;
 
-const BottomContentList: React.VFC = () => {
+const BottomContentList: React.VFC<IProps> = ({ dataList, clickMoveVideo }) => {
   const router = useRouter();
   const { designer } = router.query as { designer: string };
 
@@ -61,28 +83,18 @@ const BottomContentList: React.VFC = () => {
     <STDContainer>
       <STDTitle>And others →</STDTitle>
       <STDImageWrapper>
-        <STDImage
-          id="Heyjune_Kim_Bottom"
-          src="/image/documents/temp_image1.jpeg"
-        />
-        <STDImage src="/image/documents/temp_image2.jpeg" />
-        <STDImage src="/image/documents/temp_image3.jpeg" />
-        <STDImage src="/image/documents/temp_image4.jpeg" />
-        <STDImage src="/image/documents/temp_image1.jpeg" />
-        <STDImage src="/image/documents/temp_image2.jpeg" />
-        <STDImage src="/image/documents/temp_image3.jpeg" />
-        <STDImage src="/image/documents/temp_image4.jpeg" />
-        <STDImage src="/image/documents/temp_image1.jpeg" />
-        <STDImage src="/image/documents/temp_image2.jpeg" />
-        <STDImage src="/image/documents/temp_image3.jpeg" />
-        <STDImage
-          id="Jeonggeun_Lee_Bottom"
-          src="/image/documents/temp_image4.jpeg"
-        />
-        <STDImage src="/image/documents/temp_image1.jpeg" />
-        <STDImage src="/image/documents/temp_image2.jpeg" />
-        <STDImage src="/image/documents/temp_image3.jpeg" />
-        <STDImage src="/image/documents/temp_image4.jpeg" />
+        {dataList.map((data) => (
+          <STDImage
+            key={data.id}
+            id={`${data.id}_Bottom`}
+            src={data.image}
+            isSelected={data.id === designer}
+            onClick={() => {
+              router.push(`/designers?designer=${data.id}`);
+              clickMoveVideo(data.time);
+            }}
+          />
+        ))}
       </STDImageWrapper>
     </STDContainer>
   );

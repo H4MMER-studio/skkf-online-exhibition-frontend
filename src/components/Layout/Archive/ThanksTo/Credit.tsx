@@ -5,7 +5,7 @@ const STDCreditContainer = styled.div`
   display: flex;
   width: 100%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: block;
   }
 `;

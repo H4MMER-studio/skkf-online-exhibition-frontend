@@ -10,7 +10,7 @@ interface IProps {
   setVideoEle: (videoEle: HTMLVideoElement) => void;
 }
 
-const STDVideoWrapper = styled.div`
+const STDVideoContainer = styled.div`
   margin-bottom: 24px;
 `;
 
@@ -67,8 +67,20 @@ const STDContentWrapper = styled.div`
   flex: 1;
 `;
 
-const Video = styled.video`
+// const STDVideoWrapper = styled.div`
+//   ${mixins.flexSet()}
+//   flex-direction: column;
+
+//   @media ${device.laptop} {
+//     display: block;
+//     flex-direction: row;
+//   }
+// `;
+
+const STDVideo = styled.video`
+  flex: 1;
   width: 100%;
+  /* margin-right: 12px; */
 `;
 
 const STDImageWrapper = styled.div`
@@ -264,19 +276,19 @@ const Contents: React.VFC<IProps> = ({
       <STDGradient />
       <STDContentsLayout height={headerHeight + 195 + 24}>
         <STDContentWrapper>
-          <STDVideoWrapper ref={contentElement}>
-            <Video ref={videoRef} autoPlay controls muted>
-              <source src={`film_full_ver.mp4#t=${''}`} type={'video/mp4'} />
-            </Video>
+          <STDVideoContainer ref={contentElement}>
+            <STDVideo ref={videoRef} autoPlay controls muted>
+              <source src={`film_full_ver.mp4`} type={'video/mp4'} />
+            </STDVideo>
             <STDImageTitle>
               <div>
                 <p className="kor">{currentData.title.kor}</p>
                 <p className="eng">{currentData.title.eng}</p>
               </div>
             </STDImageTitle>
-          </STDVideoWrapper>
+          </STDVideoContainer>
           {currentData.contents.map((contents, index1) => (
-            <STDImageWrapper key={index1}>
+            <STDImageWrapper key={currentData.id + index1}>
               {contents.map(({ url, type, order }) => (
                 <>
                   <STDImageBox key={url}>

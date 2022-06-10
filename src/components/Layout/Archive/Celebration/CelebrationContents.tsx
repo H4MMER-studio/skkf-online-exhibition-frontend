@@ -1,3 +1,4 @@
+import { mixins } from '@/styles';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -12,7 +13,7 @@ const STDCelebrationContainer = styled.div`
   padding: 24px 32px 0px 20px;
   width: 100%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: block;
     padding: 16px;
   }
@@ -33,7 +34,7 @@ const MainImage = styled.img`
     min-height: 172px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     margin-bottom: 30px;
   }
 `;
@@ -48,7 +49,7 @@ const MediaQueryMainLogoImage = styled.img`
     top: 131px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 `;
@@ -60,12 +61,15 @@ const DescriptionLayout = styled.div<{ headHeight: number }>`
   padding-left: 30px;
   height: ${(props) => `calc(100vh - ${props.headHeight + 25}px)`};
   overflow-y: scroll;
+  ${mixins.noScrollbar()}
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     width: 100%;
+    height: 100%;
     min-width: 0px;
     max-width: none;
     padding-left: 0px;
+    overflow-y: auto;
   }
 `;
 
@@ -98,14 +102,15 @@ const CoordinateImage = styled.img<{ scrollState: string }>`
     display: none;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     position: fixed;
-    bottom: ${(props) => (props.scrollState === 'down' ? '-100%' : '0px')};
+    transform: ${({ scrollState }) =>
+      `translateY(${scrollState === 'down' ? 100 : 0}%)`};
     left: 0px;
     display: block;
     width: 100%;
     padding: 0px 16px 10px;
-    transition-duration: 0.5s;
+    transition: all 0.8s ease-in-out;
   }
 `;
 

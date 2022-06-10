@@ -49,6 +49,11 @@ export default class MyDocument extends Document {
             type="text/css"
             href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
           />
+          <link
+            href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,300"
+            rel="stylesheet"
+            type="text/css"
+          />
         </Head>
         <body>
           <Main />
