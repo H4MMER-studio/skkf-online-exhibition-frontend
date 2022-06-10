@@ -92,7 +92,7 @@ const STDMenuWrapper = styled.div<MenuWrapperProps>`
   max-height: ${({ isDownScroll, gnbHeight }) =>
     isDownScroll ? 0 : gnbHeight}px;
   margin-bottom: ${({ isDownScroll }) => (isDownScroll ? 0 : 16)}px;
-  transition: all 1s ease-in-out;
+  transition: all 0.4s ease-in-out;
 
   @media ${device.laptop} {
     padding-top: 0;

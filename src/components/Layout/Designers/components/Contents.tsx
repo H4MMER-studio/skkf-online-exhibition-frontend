@@ -9,12 +9,14 @@ interface IProps {
 
 const STDContentsLayout = styled.div<{ height: number }>`
   display: flex;
+  flex-direction: column;
   height: 100%;
   padding: 0 16px;
   overflow-y: scroll;
   ${mixins.noScrollbar()}
 
   @media ${device.laptop} {
+    flex-direction: row;
     height: ${(props) => `calc(100vh - ${props.height}px)`};
     padding: 0;
   }
@@ -36,7 +38,10 @@ const STDImage = styled.img`
 
 const ScriptLayout = styled.div`
   min-width: 367px;
-  margin-left: 20px;
+
+  @media ${device.laptop} {
+    margin-left: 20px;
+  }
 `;
 
 const STDScriptExample = styled.div`
@@ -56,13 +61,8 @@ const Contents: React.VFC<IProps> = ({ headerHeight, setVideoEle }) => {
   return (
     <STDContentsLayout height={headerHeight + 195 + 24}>
       <STDContentWrapper>
-        <Video ref={videoRef} autoPlay>
-          <source
-            src={
-              'https://skkf-online-exhibition-files.s3.ap-northeast-2.amazonaws.com/test.mp4'
-            }
-            type={'video/mp4'}
-          />
+        <Video ref={videoRef} autoPlay controls>
+          <source src={'/image/main_video.mp4'} type={'video/mp4'} />
         </Video>
         <STDImage src="/image/documents/temp_image1.jpeg" />
         <STDImage src="/image/documents/temp_image2.jpeg" />
