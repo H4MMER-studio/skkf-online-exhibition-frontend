@@ -99,16 +99,17 @@ const ImageLayout = styled.div`
 
 const CoordinateImage = styled.img<{ scrollState: string }>`
   position: absolute;
-  width: calc(100% - 32px);
+  width: calc(100% - 20px);
   height: auto;
   bottom: 0px;
   padding-right: 32px;
   pointer-events: none;
 
   @media (max-width: 1024px) {
-    display: none;
     position: fixed;
     display: block;
+    width: calc(100% - 32px);
+    padding-right: 0px;
     padding-bottom: 10px;
     transform: ${({ scrollState }) =>
       `translateY(${scrollState === 'down' ? 100 : 0}%)`};
@@ -124,10 +125,6 @@ const MediaQueryMainLogoImage = styled.img`
     display: block;
     position: absolute;
     top: 131px;
-  }
-
-  @media (max-width: 1024px) {
-    display: none;
   }
 `;
 

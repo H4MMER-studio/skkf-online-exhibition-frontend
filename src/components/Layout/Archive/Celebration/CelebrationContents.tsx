@@ -140,7 +140,7 @@ const Title = styled.div`
 
 const CoordinateImage = styled.img<{ scrollState: string }>`
   position: absolute;
-  width: calc(100% - 32px);
+  width: calc(100% - 20px);
   height: auto;
   bottom: 0px;
   padding-right: 32px;
