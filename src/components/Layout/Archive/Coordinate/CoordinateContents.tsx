@@ -78,7 +78,7 @@ const ImageLayout = styled.div`
 
 const CoordinateImage = styled.img<{ scrollState: string }>`
   position: absolute;
-  width: 100%;
+  width: calc(100% - 32px);
   height: auto;
   bottom: 0px;
   padding-right: 32px;
@@ -86,9 +86,6 @@ const CoordinateImage = styled.img<{ scrollState: string }>`
 
   @media (max-width: 1024px) {
     display: none;
-  }
-
-  @media (max-width: 1024px) {
     position: fixed;
     display: block;
     padding-bottom: 10px;

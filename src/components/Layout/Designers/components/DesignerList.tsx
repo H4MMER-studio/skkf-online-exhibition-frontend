@@ -32,7 +32,7 @@ const ListLayout = styled.div`
   width: 100%;
   height: 100%;
   overflow-y: scroll;
-  padding: 24px;
+  padding: 0 24px 24px;
   ${mixins.noScrollbar()}
 
   @media (max-width: 1023px) {
@@ -45,14 +45,20 @@ const ListLayout = styled.div`
 
 const ItemLayout = styled.div<{ isSelected?: boolean }>`
   ${mixins.flexSet('flex-start', 'flex-start', 'column')}
-  margin-right: 24px;
+  margin-right: 8px;
+  padding-left: 16px;
   white-space: nowrap;
   cursor: pointer;
+
+  &:first-child {
+    padding-left: 0;
+  }
 
   @media ${device.laptop} {
     min-width: 125px;
     margin-bottom: 30px;
     margin-right: 0px;
+    padding-left: 0px;
     &:hover {
       div {
         color: #7e7e7e;

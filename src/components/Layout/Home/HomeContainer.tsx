@@ -31,7 +31,7 @@ const ThumbnailItem = styled.div<{ mobileHeight: number }>`
   position: relative;
   width: 208px;
   height: 117px;
-  border: 1px solid #fff;
+  border: 1px solid black;
   cursor: pointer;
 
   &:hover {

@@ -91,7 +91,7 @@ const Title = styled.div`
 
 const CoordinateImage = styled.img<{ scrollState: string }>`
   position: absolute;
-  width: 100%;
+  width: calc(100% - 32px);
   height: auto;
   bottom: 0px;
   padding-right: 32px;
@@ -100,9 +100,6 @@ const CoordinateImage = styled.img<{ scrollState: string }>`
 
   @media (max-width: 1024px) {
     display: none;
-  }
-
-  @media (max-width: 1024px) {
     position: fixed;
     transform: ${({ scrollState }) =>
       `translateY(${scrollState === 'down' ? 100 : 0}%)`};
@@ -121,7 +118,7 @@ const EndText = styled.div`
   color: #fff;
   padding-bottom: 300px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     padding-bottom: 125px;
   }
 `;

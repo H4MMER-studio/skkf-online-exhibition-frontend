@@ -38,11 +38,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
 
   const onClickDesigner = (name: string) => {
-    setIsUnmountHome(true);
-    setTimeout(() => {
-      router.push(`/designers?designer=${name}`);
-      setIsUnmountHome(false);
-    }, 2500);
+    // setIsUnmountHome(true);
+    // setTimeout(() => {
+    router.push(`/designers?designer=${name}`);
+    // setIsUnmountHome(false);
+    // }, 2500);
   };
 
   return (

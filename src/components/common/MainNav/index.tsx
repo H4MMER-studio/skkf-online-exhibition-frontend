@@ -230,9 +230,7 @@ const MainNav: React.FC<IProps> = ({ selectedMenu, onClickMenu }) => {
               </STDGnbButton>
               <STDGnbButton
                 onClick={() =>
-                  window.open(
-                    'https://www.instagram.com/_u/skku_ff_2022/?hl=ko'
-                  )
+                  window.open('https://www.instagram.com/skku_ff_2022/?hl=ko')
                 }
               >
                 Instagram
