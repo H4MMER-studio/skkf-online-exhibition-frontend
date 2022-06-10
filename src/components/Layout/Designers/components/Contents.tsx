@@ -304,7 +304,7 @@ const Contents: React.VFC<IProps> = ({
         <ScriptLayout>
           <STDContentTitleWrapper>
             <STDContentTitle className="eng">
-              {currentData.coordinate.split(',').join('/')}
+              {currentData.coordinate}
             </STDContentTitle>
             <STDContentTitle className="kor">
               {currentData.koreanName}
