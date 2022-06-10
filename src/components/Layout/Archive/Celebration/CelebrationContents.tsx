@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 interface IProps {
   scrollState: string;
+  headHeight: number;
 }
 
 const STDCelebrationContainer = styled.div`
@@ -31,6 +32,10 @@ const MainImage = styled.img`
     min-width: 281px;
     min-height: 172px;
   }
+
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+  }
 `;
 
 const MediaQueryMainLogoImage = styled.img`
@@ -48,12 +53,12 @@ const MediaQueryMainLogoImage = styled.img`
   }
 `;
 
-const DescriptionLayout = styled.div`
+const DescriptionLayout = styled.div<{ headHeight: number }>`
   /* width: 100%; */
   min-width: 405px;
   max-width: 410px;
   padding-left: 30px;
-  height: 100%;
+  height: ${(props) => `calc(100vh - ${props.headHeight + 25}px)`};
   overflow-y: scroll;
 
   @media (max-width: 768px) {
@@ -87,6 +92,7 @@ const CoordinateImage = styled.img<{ scrollState: string }>`
   bottom: 0px;
   padding-right: 32px;
   padding-bottom: 24px;
+  pointer-events: none;
 
   @media (max-width: 1024px) {
     display: none;
@@ -99,7 +105,7 @@ const CoordinateImage = styled.img<{ scrollState: string }>`
     display: block;
     width: 100%;
     padding: 0px 16px 10px;
-    transition-duration: 1s;
+    transition-duration: 0.5s;
   }
 `;
 
@@ -115,14 +121,14 @@ const EndText = styled.div`
   }
 `;
 
-const CelebrationContents: React.FC<IProps> = ({ scrollState }) => {
+const CelebrationContents: React.FC<IProps> = ({ scrollState, headHeight }) => {
   return (
     <STDCelebrationContainer>
       <ImageLayout>
         <MainImage src={'/image/archive/celebration_con.png'} />
         <MediaQueryMainLogoImage src={'/image/main_logo.png'} />
       </ImageLayout>
-      <DescriptionLayout>
+      <DescriptionLayout headHeight={headHeight}>
         <Title>
           2022 성균관대학교 예술대학
           <br />
