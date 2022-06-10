@@ -1,7 +1,7 @@
-import { device, mixins } from '@/styles';
 import React, { useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
+import { device, mixins } from '@/styles';
 import { ContentsData } from '../DesignersContainer';
 
 interface IProps {
@@ -140,10 +140,10 @@ const STDEmptySpace = styled.div`
 `;
 
 const ScriptLayout = styled.div`
-  min-width: 405px;
   margin-top: 46px;
 
   @media ${device.laptop} {
+    min-width: 405px;
     max-width: 405px;
     margin-left: 30px;
     margin-top: 0px;
@@ -244,10 +244,14 @@ const Contents: React.VFC<IProps> = ({
     contentsData.find(({ id }) => id === designer) ?? contentsData[0];
 
   useEffect(() => {
-    if (contentElement) {
-      contentElement.current.scrollIntoView({ block: 'start' });
+    if (window.innerWidth > 1023) {
+      if (contentElement) {
+        contentElement.current.scrollIntoView({ block: 'start' });
+      }
+    } else {
+      window.scrollTo({ top: 0 });
     }
-  }, []);
+  }, [designer]);
 
   useEffect(() => {
     if (videoEle) {
@@ -258,9 +262,9 @@ const Contents: React.VFC<IProps> = ({
   return (
     <STDContainer height={headerHeight + 195 + 24}>
       <STDGradient />
-      <STDContentsLayout ref={contentElement} height={headerHeight + 195 + 24}>
+      <STDContentsLayout height={headerHeight + 195 + 24}>
         <STDContentWrapper>
-          <STDVideoWrapper>
+          <STDVideoWrapper ref={contentElement}>
             <Video ref={videoRef} autoPlay controls>
               <source src={'/image/main_video.mp4'} type={'video/mp4'} />
             </Video>
@@ -269,14 +273,11 @@ const Contents: React.VFC<IProps> = ({
                 <p className="kor">{currentData.title.kor}</p>
                 <p className="eng">{currentData.title.eng}</p>
               </div>
-              <STDNumerBox className="eng">
-                {currentData.coordinate.split(',').join('/')}
-              </STDNumerBox>
             </STDImageTitle>
           </STDVideoWrapper>
           {currentData.contents.map((contents, index1) => (
             <STDImageWrapper key={index1}>
-              {contents.map(({ url, type }) => (
+              {contents.map(({ url, type, order }) => (
                 <>
                   <STDImageBox key={url}>
                     <img src={url} />
@@ -285,9 +286,7 @@ const Contents: React.VFC<IProps> = ({
                         <p className="kor">{currentData.title.kor}</p>
                         <p className="eng">{currentData.title.eng}</p>
                       </div>
-                      <STDNumerBox className="eng">
-                        {currentData.coordinate.split(',').join('/')}
-                      </STDNumerBox>
+                      <STDNumerBox className="eng">{order}</STDNumerBox>
                     </STDImageTitle>
                   </STDImageBox>
                   {type === 'row' && contents.length === 1 ? (

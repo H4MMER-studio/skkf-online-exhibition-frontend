@@ -96,7 +96,11 @@ const DesignerList: React.VFC<IProps> = ({
     setTimeout(() => {
       const seletcedDesigner = document.getElementById(designer);
       if (seletcedDesigner) {
-        seletcedDesigner.scrollIntoView({ behavior: 'smooth' });
+        seletcedDesigner.scrollIntoView({
+          behavior: 'smooth',
+          inline: 'start',
+          block: window.innerWidth < 1024 ? 'center' : 'start',
+        });
       }
     });
   }, [designer]);

@@ -36,7 +36,6 @@ const DesignersContainer: React.VFC = () => {
     if (query.designer && videoEle) {
       const currentTime = CONTENTS_DATA.find((c) => c.id === query.designer)
         .startTime;
-      console.log(currentTime, '현재 시간');
       clickMoveVideo(currentTime);
     }
   }, [query.designer]);
@@ -77,7 +76,7 @@ export type ContentsData = {
   englishName: string;
   email: string | null;
   startTime: number;
-  contents: { url: string; type: 'row' | 'column' }[][];
+  contents: { url: string; type: 'row' | 'column'; order: string }[][];
   contentsText: { kor: string; eng: string };
   title: {
     kor: string;
@@ -98,10 +97,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 0,
     contents: [
       [
-        { url: '/image/designers/designer_1_1_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_1_1_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_1_1_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_1_1_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_1_1_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_1_1_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `“비대칭 균형”은 비대칭적인 선의 아름다움을 컨셉으로 정형화된 기존 옷의 구성을 해체한 디자인이다. 트윌 조직의 울 혼방 소재로 직선적이고 깔끔한 실루엣을 표현하고, 그레이 컬러를 베이스로 차분하고 모던한 분위기를 연출했다. 로얄 블루 라인의 디테일 배색은 비대칭성을 강조해 단조로운 분위기를 전환해준다.`,
@@ -124,10 +137,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 300,
     contents: [
       [
-        { url: '/image/designers/designer_1_2_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_1_2_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_1_2_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_1_2_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_1_2_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_1_2_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `“소통”은 블라우스와 스커트, 팬츠로 구성되어 있다. 얇은 실크 블라우스는 햇빛이 들어오는 한옥의 ‘창살’을 재구성하여 옷과 착장자의 소통을 표현했다. 플리츠가 들어간 스커트와 팬츠는 길고 곧은 기운을 더하면서 블라우스와의 시너지를 의도하였다.`,
@@ -150,10 +177,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 600,
     contents: [
       [
-        { url: '/image/designers/designer_1_3_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_1_3_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_1_3_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_1_3_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_1_3_3.jpg', type: 'column' }],
+      [
+        {
+          url: '/image/designers/designer_1_3_3.jpg',
+          type: 'column',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `하늘의 태양, 숲의 잎사귀, 강의 폭포수. 자연이 그려내는 수많은 선들은 조화롭게 공존하고, 동시에 교차하며 새로운 형태의 시작점이 된다. 그 시작과 조응하는 순간 터져 나오는 자연의 생동감과 활기, 그리고 풍성함을 레이어링 한 오간자와 부드럽게 흐르는 새틴으로 형상화했다.`,
@@ -176,10 +217,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_1_4_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_1_4_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_1_4_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_1_4_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_1_4_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_1_4_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `십이시 중 어슴푸레한 새벽빛이 들어오는 묘시(卯時)의 창틀을 디자인으로 형상화했다. 구속받지 않는 편안한 실루엣 속에 오간자 셔츠의 시접과 팬츠의 핀턱이 반복된다. 선 외의 기타 디자인 요소의 절제를 통해 ‘선’을 강조하는 “묘시”는 창틀 너머로 새롭게 도래할 아침을 상상하게 한다.`,
@@ -202,10 +257,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_1_5_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_1_5_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_1_5_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_1_5_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_1_5_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_1_5_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `선의 전진은 그 방향에 따라 무한한 절개를 만든다. 새로운 절개를 통해 독립적 분리를 시도한 두 디자인은 해체를 넘어 의복의 구성에 대한 끝없는 가능성을 보여준다.`,
@@ -228,10 +297,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_1_6_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_1_6_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_1_6_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_1_6_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_1_6_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_1_6_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `서양 복식의 실루엣에 중국 전통복식 치파오를 표현하였다. 치파오 칼라와 테일러드 칼라, 상하 바디스에서의 대담한 절개선이 교차되면서 동서양의 의상이 부딪히는 접점을 증폭시켜 준다.`,
@@ -254,10 +337,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 100,
     contents: [
       [
-        { url: '/image/designers/designer_1_7_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_1_7_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_1_7_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_1_7_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_1_7_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_1_7_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `세련된 클래식 무드가 보여주는 절제된 아름다움을 표현하는 디자인이다. 기능과 실용성, 동시에 심미감을 창출하는 본질적인 디자인 요소로서 ‘선’에 접근하고 있다. 이탈리아에서 제작한 울 혼합 소재 위에 레더 트리밍을 더하여 섬세하고 우아한 분위기가 느껴지도록 했다. 과도한 장식을 덜어내고 유연함이 느껴지는 supple straight silhouette 으로 완성해 미니멀한 감성을 전달하고자 하였다.`,
@@ -280,10 +377,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 10,
     contents: [
       [
-        { url: '/image/designers/designer_2_1_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_2_1_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_2_1_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_2_1_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_2_1_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_2_1_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `"여자의 애착"은 무채색이 주는 강인함을 도출하여 여성의 여리함과 조화를 시도한 디자인이다. 블랙 에나멜 원단을 사용해 건조해 보일 수 있는 검정색을 활동적으로 보이도록 하였다. 자칫 흑백의 대비에서 느껴질 수 있는 단조로움을 퍼프와 카울의 볼륨으로 여성스러운 실루엣을 강렬하게 표현하고 있다.`,
@@ -306,10 +417,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_2_2_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_2_2_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_2_2_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_2_2_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_2_2_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_2_2_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `대관식"은 비통한 시기는 떠나 보내고 자유롭고 활기찬 미래를 염원하는 디자이너의 마음을 표현하였다. 작품 전반의 동화적인 컨셉은 밝은 희망의 메세지를 더욱 돋보이게 한다. 특히 인디고와 화이트 컬러, 절제된 실루엣과 화려한 레이스 소재, 두 착장 사이의 영민한 대비는 코로나가 종식과 더불어 일상 회복이라는 희망과 통쾌함을 선사한다.`,
@@ -332,10 +457,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_2_3_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_2_3_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_2_3_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_2_3_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_2_3_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_2_3_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `감출수록 드러나는 것, 모호함에서 느끼는 매력, 어둠에 대한 경외를 이해하고 통제할 때 은닉은 아름다움을 형용하는 수단이 된다. 부풀려진 검정의 외피 속에 신체를 숨겼지만 안으로 접힌 주름은 숨겨진 것에 대한 일말의 관심을 환기한다.`,
@@ -358,10 +497,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_2_4_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_2_4_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_2_4_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_2_4_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_2_4_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_2_4_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `생명을 다 하여 그 존재가 희미해진 것들에도 아름다움이 있다. 메마른 꽃잎의 비정형적인 형태와 바래진 색감에 주목하여 크리즈(crease)가공 소재의 주름진 질감, 개더, 셔링, 탈색, 다색의  핸드다잉 기법을 통해 시들어가는 꽃의 아름다움을 형상화하고자 하였다.`,
@@ -384,10 +537,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_2_5_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_2_5_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_2_5_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_2_5_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_2_5_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_2_5_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `“痕”은 자연에게 풍화되고 부식되면서도 자연을 감인하고 지구해 낸 인간에게 남은 흔적을 표현한 디자인이다. 밀리터리 기반의 아웃도어룩의 형상 안에서, 인간 본연의 빛깔을 풀빛과 흙빛으로 규정하고 이 빛깔을 탈색과 염색 기법을 통해 재현하였다.`,
@@ -410,10 +577,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_2_6_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_2_6_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_2_6_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_2_6_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_2_6_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_2_6_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `해질녘 노을과 선선한 가을 바람이 만들어내는 따뜻한 황금빛 물결을 표현하였다. 디자인에서 주색으로 사용된 골드 컬러와 강렬한 색상 대비를 이루는 스티치와 늘어뜨려진 실은 노을 빛을 받으며 흔들리는 들판 위 벼의 모습을 연상케 한다. 디자인의 불규칙한 형태와 구조는 외부 자극에 자유로이 흔들리며 자연이 연주하는 우연적이고 경쾌한 리듬의 표현이다.`,
@@ -436,10 +617,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_2_7_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_2_7_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_2_7_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_2_7_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_2_7_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_2_7_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `여성의 자연스러운 몸매를 돋보이게 하는 클래식하고 우아한 웨딩 드레스에서 영감을 받은 “결백”은 순수함과 낭만적인 이미지의 여성을 연상시키는 디자인이다. 새로운 시작을 상징하는 하얀색을 사용해 고유의 미니멀한 분위기를 표현하고자 하였다. 심플한 실루엣에 디자이너의 창작적 노력과 정성이 담은 꽃 디테일이 포인트가 된다.`,
@@ -462,12 +657,28 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_2_8_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_2_8_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_2_8_1.jpg',
+          type: 'row',
+          order: '(1/4)',
+        },
+        {
+          url: '/image/designers/designer_2_8_2.jpg',
+          type: 'row',
+          order: '(2/4)',
+        },
       ],
       [
-        { url: '/image/designers/designer_2_8_3.jpg', type: 'row' },
-        { url: '/image/designers/designer_2_8_4.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_2_8_3.jpg',
+          type: 'row',
+          order: '(3/4)',
+        },
+        {
+          url: '/image/designers/designer_2_8_4.jpg',
+          type: 'row',
+          order: '(4/4)',
+        },
       ],
     ],
     contentsText: {
@@ -491,10 +702,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_2_9_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_2_9_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_2_9_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_2_9_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_2_9_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_2_9_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `“내면의 창”은 인간 내면을 시각적으로 표현해 보자는 생각에서 출발한 디자인으로, 슬림한 T 자형 실루엣의 파워숄더가 포인트인 여성용 정장이다. 아이보리색의 메인 원단과 푸른색 원단의 조화를 시도하였으며, 탈색 및 염색 기법으로 비정형적인 구조의 절개를 통해 개인의 무한한 내면의 사유를 재현하였다.`,
@@ -518,10 +743,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_3_1_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_3_1_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_3_1_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_3_1_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_3_1_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_3_1_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `키보드를 손에 쥐고 서로를 공격하는 21 세기 성별 전쟁에서 영감을 받은 여성복이다. 강한 남성성의 상징인 트라이벌 타투를 형상화한 메인 아이템과 골반 패드, 쥬얼리, 인조 속눈썹 등 현대에서 터부시되는 ‘여성스러운’ 디테일들을 대립시켜 마초 문화와 탈코르셋 담론을 이중적으로 꼬집는다.`,
@@ -544,10 +783,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_3_2_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_3_2_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_3_2_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_3_2_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_3_2_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_3_2_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `“향수”라는 개념의 비논리성과 고향에 대한 감정의 진실성을 탐구하기 위하여 남성의 몸에 파편화된 구조들을 조합하고 소재를 개발하여 고향의 풍경을 재현하였다. 두 피스의 자켓은 디자이너의 고향에 대한 기억에서 등장하는 형태로서 원을 잘라 모듈화하고 재구성하여 완성되었다. 정형화된 형태에서 벗어난 팬츠의 실루엣은 드레이핑 기법을 통해 구체화 되었으며 고향에 대한 파편의 기억들은 많은 절개의 디테일로 “하원”의 구조에 삽입되었다.`,
@@ -570,10 +823,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_3_3_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_3_3_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_3_3_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_3_3_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_3_3_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_3_3_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `디지털 환경 속에서 모든 것이 빠르게 복제·전파되는 현상을 '유희'의 과정으로 바라보았다. 이러한 사이버스페이스 속의 새로운 삶의 표준을 패션으로 표현한 "가상"은 격자 패턴의 나일론 소재와 고무 피복 등의 디테일로 사이버 혹은 기계적인 분위기를 연출했다. 아트워크와 타이포그래피를 프린팅과 자수로 자유롭게 배치함으로써 사이버 스페이스 속의 창작 문화를 패션 아이디어로 제안하였다.`,
@@ -596,10 +863,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_3_4_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_3_4_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_3_4_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_3_4_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_3_4_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_3_4_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `현대사회를 피폐한 디스토피아로 인식하여 이 속에서 생존해 나가는 인간상을 표현하고 있다. 디자인 전반에 걸친 개더 디테일은 상처입고 불안정한 인류의 모습을, 신축성의 스판 원단은 인간의 연약한 본모습을, 그리고 하드한 느낌의 소재들은 끈질긴 생존력과 굳은 의지의 상징적 표현이다. 새로운 유토피아로 텔레포트하려는 자발적 발걸음을 담은 두 디자인은 현인류의 현실과 이상형을 동시에 표명하고 있다.`,
@@ -622,10 +903,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_3_5_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_3_5_2.jpg', type: 'column' },
+        {
+          url: '/image/designers/designer_3_5_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_3_5_2.jpg',
+          type: 'column',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_3_5_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_3_5_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `벨 에포크는 프랑스 황금시대의 풍요로움을 패션으로 담아낸 디자인이다. 퍼프 슬리브와 벌룬 스커트의 풍성한 실루엣으로 풍요를 패션으로 이미지화 하였으며, 칼라의 화려한 러플을 통해 찬란했던 시절의 아름다움을 담아냈다.`,
@@ -648,10 +943,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_3_6_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_3_6_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_3_6_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_3_6_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_3_6_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_3_6_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `Origin 으로의 이동은 가장 기본이 되는 곳, '기점'으로 돌아감을 의미한다. 가장 '나' 다울 수 있는 곳, 본연의 아름다움을 이끌어내는 곳으로의 순간 이동을 나타낸다. 자연을 상징하는 녹색 실크와 꽃자수가 새겨진 레이스를 활용하여 언발란스한 기장과 러플 디테일을 강조하였다.  유연한 소재들로 인해 느껴지는 발랄함이 숲 속의 요정을 연상하게 한다.`,
@@ -674,10 +983,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_3_7_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_3_7_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_3_7_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_3_7_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_3_7_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_3_7_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `“지베르니 정원”은 클로드 모네의 지베르니 정원으로부터 영감을 받은 디자이너의 자연을 향한 애정을 패션화한 작품이다. 크로셰 모티브로 제작한 재킷과 베스트는 보라색을 악센트 컬러로 조합하여 모네의 정원을 담아내었다. 각기 다른 짜임의 크로셰 기법이 모네가 표현한 정원의 입체감 재현에 적용되었으며, 스커트의 플리츠 디테일을 통해 물의 정원을 표현하였다.`,
@@ -700,10 +1023,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_4_1_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_4_1_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_4_1_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_4_1_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_4_1_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_4_1_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `어둡고 고요한 밤이 지난 후 별과 달이 빛나는 새벽의 시간을 포멀한 모던 컨셉의 자켓과 스커트로 형상화하였다. 다크 칼라의 매트한 소재는 새벽 하늘을, 밝은 크림 색상의 실키(silky)한 소재의 블라우스는 환하게 빛나는 달빛을, 그리 고 자켓 어깨 위에 더해진 실버톤의 큐빅은 무수하게 빛나는 별들의 표현이다.`,
@@ -726,10 +1063,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_4_2_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_4_2_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_4_2_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_4_2_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_4_2_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_4_2_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `에너지 넘치고 반항적이며 자기 표현에 거침없는 에티튜드를 지닌 당찬 여성을 패션으로 표현하고자 하였다. 본연의 여성스러움을 뷔스티에와 코르셋의 아이템으로 구성하였고, 전체적으로 여성의 곡선이 강조될 수 있도록 S-curve 실루엣으로 디자인하였다. 에코 레더와 망사 등 물성과 질감이 다른 이질감 있는 소재를 이용하여 “반항”을 표현하였다. 어지러운 체크 패턴 배치와 비정형적으로 레이어드된 망사는 에너지 넘치고 반항적인 무드를 표현하려 했다.`,
@@ -752,10 +1103,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_4_3_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_4_3_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_4_3_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_4_3_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_4_3_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_4_3_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `겹겹이 중첩된 산맥과 능선을 적갈색의 레이온과 코튼으로 표현하였다. 따뜻한 적갈색의 메인 소재로 대지를 표현하고, 산맥의 강렬한 바람은 적갈색과 대비되는 흰색의 원단을 통해 드러냄으로써 자연의 역동성을 전달한다. 백색의 코튼 재킷은 풍성한 개더로 첩첩이 둘러싸인 능선 위의 구름의 표현이다.`,
@@ -778,10 +1143,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_4_4_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_4_4_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_4_4_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_4_4_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_4_4_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_4_4_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `"글루터리”는 풀, 염료 및 반짝이 풀의 혼합물을 통해 트위드의 입체적인 질감을 강조한다. 곡선과 직선을 넘나드는 디자인과 피스를 분리할 수 있는 직선의 탈착 끈은 자유로운 무드를 연출한다. 곡선의 여밈 선과 실루엣을 직선적인 디테일과 대비하여 상반된 조화를 의도한 “글루터리”는 전체적으로 트위드의 클래식한 분위기와 주요 소재인 펄 트위드 원단의 도트 무늬를 통해 독특하며 고풍스러운 분위기를 보여주고 있다.`,
@@ -804,10 +1183,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_4_5_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_4_5_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_4_5_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_4_5_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_4_5_3.jpg', type: 'column' }],
+      [
+        {
+          url: '/image/designers/designer_4_5_3.jpg',
+          type: 'column',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `서로 다른 특성을 가진 데님과 퍼 소재를 혼합하여 선의 정교함과 풍성함을 나타내었다. 실크사 탑스티치로 디테일을 더하는 동시에 하의는 울소재를 바탕으로 교차하는 선의 실루엣을 살려 모던하고 트렌디한 여성복과 남성복의 스타일을 제안하였다. “완결”은 서로 다른 물성과 질감의 미완결된 소재를 믹스 매치함으로써 새로운 아름다움을 재창조하는 동시에 그 아름다움이 어느 한 성별의 전유물이 되지 않길 바라는 디자이너의 견해가 담긴 표현이다.`,
@@ -830,10 +1223,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_4_6_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_4_6_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_4_6_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_4_6_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_4_6_3.jpg', type: 'column' }],
+      [
+        {
+          url: '/image/designers/designer_4_6_3.jpg',
+          type: 'column',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `긴 시간 속을 여행해 온 한복은 비로소 재탄생의 준비를 마쳤다. 캐주얼의 상징인 데님과 고전적인 실크 및 오간자가 어우러져 소재들간의 독특한 균형을 시도하였다. 곡선의 실루엣을 따라 각각의 소재들이 만나는 접점에서 과거와 현대는 공존하며, 우리 고유의 전통으로 수렴한다.`,
@@ -855,10 +1262,24 @@ const CONTENTS_DATA: ContentsData = [
     englishName: 'HeeSung Kim',
     startTime: 1000,
     contents: [
-      [{ url: '/image/designers/designer_4_7_1.jpg', type: 'column' }],
       [
-        { url: '/image/designers/designer_4_7_2.jpg', type: 'row' },
-        { url: '/image/designers/designer_4_7_3.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_4_7_1.jpg',
+          type: 'column',
+          order: '(1/3)',
+        },
+      ],
+      [
+        {
+          url: '/image/designers/designer_4_7_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
+        {
+          url: '/image/designers/designer_4_7_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
       ],
     ],
     contentsText: {
@@ -882,10 +1303,24 @@ const CONTENTS_DATA: ContentsData = [
     startTime: 1000,
     contents: [
       [
-        { url: '/image/designers/designer_4_8_1.jpg', type: 'row' },
-        { url: '/image/designers/designer_4_8_2.jpg', type: 'row' },
+        {
+          url: '/image/designers/designer_4_8_1.jpg',
+          type: 'row',
+          order: '(1/3)',
+        },
+        {
+          url: '/image/designers/designer_4_8_2.jpg',
+          type: 'row',
+          order: '(2/3)',
+        },
       ],
-      [{ url: '/image/designers/designer_4_8_3.jpg', type: 'row' }],
+      [
+        {
+          url: '/image/designers/designer_4_8_3.jpg',
+          type: 'row',
+          order: '(3/3)',
+        },
+      ],
     ],
     contentsText: {
       kor: `영화 매트릭스(Matrix)’ 에서 두 여성 캐릭터 트리니티(Trinity) 와 페르세포네(Persephone) “를 뮤즈로 한 글리치(glitch)” 는 동일색 톤의 질감이 다른 가죽소재를 적용한 디자인이다. 매트와 광택의 결합이 강한 매트릭스 스타일을 드러내고 있으며, 바디라인의 아름다움이 특징이다.`,

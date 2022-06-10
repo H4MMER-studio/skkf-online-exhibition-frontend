@@ -50,9 +50,10 @@ const BottomContentList: React.VFC = () => {
   const { designer } = router.query as { designer: string };
 
   useEffect(() => {
+    if (window.innerWidth < 1024) return;
     const seletcedDesigner = document.getElementById(designer + '_Bottom');
     if (seletcedDesigner) {
-      seletcedDesigner.scrollIntoView();
+      seletcedDesigner.scrollIntoView({ inline: 'start' });
     }
   }, [designer]);
 
