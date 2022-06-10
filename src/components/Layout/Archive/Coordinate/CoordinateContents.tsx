@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+interface IProps {
+  scrollState: string;
+}
+
 const STDCoordinateContentsLayout = styled.div`
   position: relative;
   display: flex;
@@ -78,7 +82,7 @@ const MediaQueryMainLogoImage = styled.img`
   }
 `;
 
-const CoordinateContents: React.VFC = () => {
+const CoordinateContents: React.VFC<IProps> = ({ scrollState }) => {
   return (
     <STDCoordinateContentsLayout>
       <ImageLayout>

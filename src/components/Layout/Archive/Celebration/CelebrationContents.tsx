@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface IProps {
-  scrollState: 'DOWN' | 'UP' | null;
+  scrollState: string;
 }
 
 const STDCelebrationContainer = styled.div`
@@ -80,7 +80,7 @@ const Title = styled.div`
   color: #fff;
 `;
 
-const CoordinateImage = styled.img<{ scrollState: 'DOWN' | 'UP' | null }>`
+const CoordinateImage = styled.img<{ scrollState: string }>`
   position: absolute;
   width: 100%;
   height: auto;
@@ -94,7 +94,7 @@ const CoordinateImage = styled.img<{ scrollState: 'DOWN' | 'UP' | null }>`
 
   @media (max-width: 768px) {
     position: fixed;
-    bottom: ${(props) => (props.scrollState === 'DOWN' ? '-100%' : '0px')};
+    bottom: ${(props) => (props.scrollState === 'down' ? '-100%' : '0px')};
     left: 0px;
     display: block;
     width: 100%;
@@ -166,7 +166,7 @@ const CelebrationContents: React.FC<IProps> = ({ scrollState }) => {
       </DescriptionLayout>
       <CoordinateImage
         src={'/image/archive/celebration.png'}
-        scrollState={'UP'}
+        scrollState={scrollState}
       />
     </STDCelebrationContainer>
   );
