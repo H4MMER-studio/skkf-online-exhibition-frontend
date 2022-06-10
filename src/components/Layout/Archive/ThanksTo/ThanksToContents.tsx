@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useResize } from '@/hooks';
+import Credit from './Credit';
 
 interface IProps {
   scrollState: string;
@@ -21,6 +22,14 @@ const STDContentsInnerLayout = styled.div`
     padding-left: 16px;
     padding-bottom: 110px;
     height: 100%;
+  }
+
+  .last {
+    margin-bottom: 100px;
+
+    @media (max-width: 768px) {
+      margin-bottom: 48px;
+    }
   }
 `;
 
@@ -82,6 +91,13 @@ const TypoImage = styled.img<{ scrollState: string }>`
   }
 `;
 
+const Line = styled.div`
+  height: 1px;
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 48px;
+`;
+
 const ThanksToContents: React.VFC<IProps> = ({ scrollState }) => {
   const { width } = useResize();
 
@@ -134,7 +150,7 @@ const ThanksToContents: React.VFC<IProps> = ({ scrollState }) => {
             </ProfileDescriptionLayout>
           </ItemLayout>
         </FlexLayout>
-        <FlexLayout>
+        <FlexLayout className="last">
           <ItemLayout style={{ marginRight: width < 768 ? 0 : 16 }}>
             <ProfileImg src={'/image/archive/teleportto.png'} />
             <ProfileDescriptionLayout>
@@ -158,6 +174,8 @@ const ThanksToContents: React.VFC<IProps> = ({ scrollState }) => {
             </ProfileDescriptionLayout>
           </ItemLayout>
         </FlexLayout>
+        <Line />
+        <Credit />
       </STDContentsInnerLayout>
       <TypoImage
         scrollState={scrollState}
