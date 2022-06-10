@@ -281,6 +281,7 @@ const HomeContainer: React.FC<IProps> = ({
 
     if (item.column !== column) {
       setCoumn(item.column);
+      console.log('');
     }
   };
 
