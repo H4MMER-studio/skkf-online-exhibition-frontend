@@ -20,7 +20,7 @@ const STDMenuBarLayout = styled.div<{ navHeight: number }>`
     overflow-x: scroll;
     overflow-y: hidden;
     padding: 0px 18px 0px 18px;
-    margin-top: 16px;
+    margin-top: 24px;
 
     ::-webkit-scrollbar {
       display: none;
@@ -88,6 +88,7 @@ const Text = styled.div`
 const CopyRightLayout = styled.div`
   position: absolute;
   bottom: 0px;
+  margin-right: 24px;
 
   @media (max-width: 1023px) {
     display: none;

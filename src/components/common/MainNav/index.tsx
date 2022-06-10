@@ -70,7 +70,7 @@ const STDGnbButton = styled.button<{ isSelected?: boolean }>`
     isSelected ? "'pp-mondwest'" : "'Open Sans'"};
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
+  font-size: ${({ isSelected }) => (isSelected ? 17 : 15)}px;
   line-height: ${({ isSelected }) => (isSelected ? '20px' : '24px')};
   color: #fff;
   text-align: left;
@@ -83,7 +83,7 @@ const STDGnbButton = styled.button<{ isSelected?: boolean }>`
   @media ${device.laptop} {
     margin-bottom: 2px;
     font-weight: 600;
-    font-size: 18px;
+    font-size: ${({ isSelected }) => (isSelected ? 20 : 18)}px;
   }
 `;
 

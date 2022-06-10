@@ -146,6 +146,14 @@ const STDGifImage = styled.img`
   }
 `;
 
+const STDEmptySpace = styled.div`
+  height: 100px;
+
+  @media ${device.laptop} {
+    display: none;
+  }
+`;
+
 const DocumentsMainContainer: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState('temp_image1.jpeg');
   const DATA = [
@@ -220,6 +228,7 @@ const DocumentsMainContainer: React.FC = () => {
           </STDVideoWrapper>
         </STDImageWrapper>
       </STDImageContainer>
+      <STDEmptySpace />
     </STDContainer>
   );
 };

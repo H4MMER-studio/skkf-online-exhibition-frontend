@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useResize } from '@/hooks';
 import Credit from './Credit';
+import { mixins } from '@/styles';
 
 interface IProps {
   scrollState: string;
@@ -16,6 +17,7 @@ const STDContentsInnerLayout = styled.div`
   /* height: calc(100% - 125px); */
   height: 77vh;
   overflow-y: scroll;
+  ${mixins.noScrollbar()}
 
   @media (max-width: 1024px) {
     padding-right: 16px;
@@ -53,6 +55,7 @@ const FlexLayout = styled.div`
 const ProfileImg = styled.img`
   width: 100%;
   height: 100%;
+  object-fit: cover;
 `;
 
 const ProfileDescriptionLayout = styled.div`
@@ -78,7 +81,8 @@ const ProfileDescription = styled.div`
 
 const TypoImage = styled.img<{ scrollState: string }>`
   position: absolute;
-  width: calc(100% - 36px);
+  padding: 0 32px 0 20px;
+  width: calc(100%);
   bottom: 32px;
   pointer-events: none;
 
@@ -106,7 +110,7 @@ const ThanksToContents: React.VFC<IProps> = ({ scrollState }) => {
     <STDContentsLayout>
       <STDContentsInnerLayout>
         <FlexLayout>
-          <ItemLayout style={{ marginRight: width < 768 ? 0 : 16 }}>
+          <ItemLayout style={{ marginRight: width < 1024 ? 0 : 16 }}>
             <ProfileImg src={'/image/archive/teamLeader.png'} />
             <ProfileDescriptionLayout>
               <ProfileTitle>Team Leader</ProfileTitle>
@@ -128,7 +132,7 @@ const ThanksToContents: React.VFC<IProps> = ({ scrollState }) => {
           </ItemLayout>
         </FlexLayout>
         <FlexLayout>
-          <ItemLayout style={{ marginRight: width < 768 ? 0 : 16 }}>
+          <ItemLayout style={{ marginRight: width < 1024 ? 0 : 16 }}>
             <ProfileImg src={'/image/archive/infinitas.png'} />
             <ProfileDescriptionLayout>
               <ProfileTitle>Infinitas</ProfileTitle>
@@ -140,7 +144,7 @@ const ThanksToContents: React.VFC<IProps> = ({ scrollState }) => {
           <ItemLayout>
             <ProfileImg
               src={'/image/archive/spectrum.png'}
-              style={{ marginRight: width < 768 ? 0 : 16 }}
+              style={{ marginRight: width < 1024 ? 0 : 16 }}
             />
             <ProfileDescriptionLayout>
               <ProfileTitle>Spectrum</ProfileTitle>
@@ -152,7 +156,7 @@ const ThanksToContents: React.VFC<IProps> = ({ scrollState }) => {
           </ItemLayout>
         </FlexLayout>
         <FlexLayout className="last">
-          <ItemLayout style={{ marginRight: width < 768 ? 0 : 16 }}>
+          <ItemLayout style={{ marginRight: width < 1024 ? 0 : 16 }}>
             <ProfileImg src={'/image/archive/teleportto.png'} />
             <ProfileDescriptionLayout>
               <ProfileTitle>Infinitas</ProfileTitle>
@@ -164,7 +168,7 @@ const ThanksToContents: React.VFC<IProps> = ({ scrollState }) => {
           <ItemLayout>
             <ProfileImg
               src={'/image/archive/textureacity.png'}
-              style={{ marginRight: width < 768 ? 0 : 16 }}
+              style={{ marginRight: width < 1024 ? 0 : 16 }}
             />
             <ProfileDescriptionLayout>
               <ProfileTitle>Spectrum</ProfileTitle>

@@ -38,7 +38,7 @@ const ListLayout = styled.div`
   @media (max-width: 1023px) {
     ${mixins.flexSet('flex-start')}
     width: 100%;
-    padding: 0 0 0 16px;
+    padding: 0 0 0 0px;
     overflow-x: scroll;
   }
 `;
@@ -49,10 +49,6 @@ const ItemLayout = styled.div<{ isSelected?: boolean }>`
   padding-left: 16px;
   white-space: nowrap;
   cursor: pointer;
-
-  &:first-child {
-    padding-left: 0;
-  }
 
   @media ${device.laptop} {
     min-width: 125px;

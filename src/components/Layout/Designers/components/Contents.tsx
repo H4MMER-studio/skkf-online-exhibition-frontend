@@ -12,6 +12,11 @@ interface IProps {
 
 const STDVideoContainer = styled.div`
   margin-bottom: 24px;
+  margin-top: 18px;
+
+  @media ${device.laptop} {
+    margin-top: 0px;
+  }
 `;
 
 const STDContainer = styled.div<{ height: number }>`
@@ -252,8 +257,9 @@ const Contents: React.VFC<IProps> = ({
   const contentElement = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const videoEle = videoRef.current;
-  const currentData =
-    contentsData.find(({ id }) => id === designer) ?? contentsData[0];
+  const currentData = contentsData.find(
+    ({ id }) => id === (designer ?? 'Heyjune_Kim')
+  );
 
   useEffect(() => {
     if (window.innerWidth > 1023) {

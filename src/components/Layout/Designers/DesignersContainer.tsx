@@ -33,8 +33,10 @@ const DesignersContainer: React.VFC = () => {
   }, [width]);
 
   useEffect(() => {
-    if (designer && videoEle) {
-      const currentTime = CONTENTS_DATA.find((c) => c.id === designer).time;
+    if (videoEle) {
+      const currentTime = CONTENTS_DATA.find(
+        (c) => c.id === (designer ?? 'Heyjune_Kim')
+      ).time;
       clickMoveVideo(currentTime);
     }
   }, [designer, videoEle]);
