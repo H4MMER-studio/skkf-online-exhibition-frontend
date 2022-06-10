@@ -92,12 +92,22 @@ const DesignerList: React.VFC<IProps> = ({
   const router = useRouter();
   const { designer } = router.query as { designer: string };
 
+  useEffect(() => {
+    setTimeout(() => {
+      const seletcedDesigner = document.getElementById(designer);
+      if (seletcedDesigner) {
+        seletcedDesigner.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }, [designer]);
+
   return (
     <STDContainer height={headerHeight + 24}>
       <ListLayout>
         {dataList.map((data) => {
           return (
             <ItemLayout
+              id={data.id}
               key={data.id}
               isSelected={data.id === (designer ?? dataList[0].id)}
               onClick={() => {

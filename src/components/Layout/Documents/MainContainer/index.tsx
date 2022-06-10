@@ -47,6 +47,10 @@ const STDContentWrapper = styled.article`
     }
 
     @media ${device.laptop} {
+      max-height: 450px;
+    }
+
+    @media ${device.laptopL} {
       max-height: 300px;
     }
   }
@@ -74,6 +78,13 @@ const STDGradientBox = styled.div`
   }
 `;
 
+const STDImageContainer = styled.div`
+  position: fixed;
+  bottom: 0;
+  z-index: 10000;
+  width: 100%;
+`;
+
 const STDImageWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -91,6 +102,10 @@ const STDVideoWrapper = styled.div`
 
   img {
     height: 100%;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 `;
 
@@ -139,12 +154,14 @@ const DocumentsMainContainer: React.FC = () => {
           </STDContentWrapper>
         ))}
       </STDContentContainer>
-      <STDImageWrapper>
-        <img className="image_style" src="/image/main_logo.png" />
-        <STDVideoWrapper>
-          <img src={`image/documents/${debounceImage}`} />
-        </STDVideoWrapper>
-      </STDImageWrapper>
+      <STDImageContainer>
+        <STDImageWrapper>
+          <img className="image_style" src="/image/main_logo.png" />
+          <STDVideoWrapper>
+            <img src={`image/documents/${debounceImage}`} />
+          </STDVideoWrapper>
+        </STDImageWrapper>
+      </STDImageContainer>
     </STDContainer>
   );
 };
