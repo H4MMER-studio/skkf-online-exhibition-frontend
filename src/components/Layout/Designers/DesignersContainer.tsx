@@ -93,7 +93,7 @@ const CONTENTS_DATA: ContentsData = [
     column: '/image/b_1.svg',
     email: 'june_kim515@naver.com',
     koreanName: '김혜준',
-    englishName: 'Heyjune Kim',
+    englishName: 'Hyejune Kim',
     startTime: 0,
     contents: [
       [
