@@ -249,26 +249,6 @@ const HomeContainer: React.FC<IProps> = ({ isUnmountHome }) => {
     }
   }, [width]);
 
-  // useEffect(() => {
-  //     Router.events.on("routeChangeStart", (url) => {
-  //         test(url);
-  //     });
-  // }, []);
-
-  // const test = (url: string) => {
-  //     console.log(url);
-  //     if (location.pathname === "/" && !isUnmount) {
-  //         console.log(location);
-
-  //         setTimeout(() => {
-  //             router.push(`${url}`);
-  //             setIsUnmount(true);
-  //             console.log(isUnmount, "이즈 언마운트");
-  //         }, 3000);
-  //         console.log("여기서 만 가능");
-  //     }
-  // };
-
   const hoverOnThumbnail = (item: {
     id: string;
     image: string;

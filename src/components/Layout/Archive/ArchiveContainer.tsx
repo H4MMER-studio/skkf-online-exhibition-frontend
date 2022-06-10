@@ -11,7 +11,7 @@ import MenuBar from './components/MenuBar';
 import { useRouter } from 'next/router';
 import CoordinateContents from './Coordinate/CoordinateContents';
 import CelebrationContents from './Celebration/CelebrationContents';
-import { useDebounce, useScrollDirection } from '@/hooks';
+import { useScrollDirection, useResize } from '@/hooks';
 
 const STDContainer = styled.div`
   display: flex;
@@ -26,8 +26,6 @@ const STDContainer = styled.div`
 `;
 
 const ArchiveContainer: React.VFC = () => {
-  const [prevScrollTop, setPrevScrollTop] = useState(0);
-  const [scrollState, setScrollState] = useState<'DOWN' | 'UP' | null>(null);
   const router = useRouter();
   const queryParams = router.query as {
     menu: 'origin-of-coordinate' | 'celebration' | 'thanks-to';
@@ -37,17 +35,34 @@ const ArchiveContainer: React.VFC = () => {
     thresholdPixels: 10,
     off: false,
   });
+  const { width } = useResize();
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  useEffect(() => {
+    const nav = document.getElementById('nav-bar');
+    setHeaderHeight(nav.offsetHeight);
+  }, [width]);
 
   const renderContents = () => {
     switch (queryParams.menu) {
       case 'origin-of-coordinate':
-        return <CoordinateContents scrollState={scrollDir} />;
+        return (
+          <CoordinateContents
+            scrollState={scrollDir}
+            headHeight={headerHeight}
+          />
+        );
 
       case 'celebration':
-        return <CelebrationContents scrollState={scrollDir} />;
+        return (
+          <CelebrationContents
+            scrollState={scrollDir}
+            headHeight={headerHeight}
+          />
+        );
 
       case 'thanks-to':
-        return <ThanksToContents />;
+        return <ThanksToContents scrollState={scrollDir} />;
       default:
         break;
     }
