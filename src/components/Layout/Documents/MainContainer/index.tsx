@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useDebounce } from '@/hooks';
+import { useDebounce, useScrollDirection } from '@/hooks';
 import { mixins, device } from '@/styles';
 
 const STDContainer = styled.section`
@@ -78,11 +78,17 @@ const STDGradientBox = styled.div`
   }
 `;
 
-const STDImageContainer = styled.div`
+const STDImageContainer = styled.div<{ isDownScroll: boolean }>`
   position: fixed;
   bottom: 0;
   z-index: 10000;
-  width: 100%;
+  width: calc(100% - 48px);
+
+  @media (max-width: 768px) {
+    transform: ${({ isDownScroll }) =>
+      `translateY(${isDownScroll ? 100 : 0}%)`};
+    transition: transform 0.8s ease-in-out;
+  }
 `;
 
 const STDImageWrapper = styled.div`
@@ -134,6 +140,10 @@ const DocumentsMainContainer: React.FC = () => {
     },
   ];
   const debounceImage = useDebounce(selectedItem, 400);
+  const { scrollDir } = useScrollDirection({
+    initialDirection: 'up',
+    off: false,
+  });
 
   return (
     <STDContainer>
@@ -154,7 +164,7 @@ const DocumentsMainContainer: React.FC = () => {
           </STDContentWrapper>
         ))}
       </STDContentContainer>
-      <STDImageContainer>
+      <STDImageContainer isDownScroll={scrollDir === 'down'}>
         <STDImageWrapper>
           <img className="image_style" src="/image/main_logo.png" />
           <STDVideoWrapper>
