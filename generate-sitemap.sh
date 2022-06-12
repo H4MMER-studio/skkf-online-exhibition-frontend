@@ -30,5 +30,5 @@ node ./sitemap.js
 echo "sitemap 압축 완료"
 
 # Google 서치콘솔에 sitemap 업데이트 핑 전송
-# curl http://google.com/ping?sitemap=https://2022skkfdoc.com/sitemap.xml
+curl http://google.com/ping?sitemap=https://2022skkfdoc.com/sitemap.xml
 echo "Google에 sitemap 핑 전송"
