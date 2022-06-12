@@ -283,7 +283,7 @@ const Contents: React.VFC<IProps> = ({
       <STDContentsLayout height={headerHeight + 195 + 24}>
         <STDContentWrapper>
           <STDVideoContainer ref={contentElement}>
-            <STDVideo ref={videoRef} autoPlay controls muted>
+            <STDVideo ref={videoRef} autoPlay controls muted playsInline>
               <source src={`film_full_ver.mp4`} type={'video/mp4'} />
             </STDVideo>
             <STDImageTitle>

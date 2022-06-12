@@ -210,13 +210,11 @@ const DocumentsMainContainer: React.FC = () => {
             <div className="text_style">
               <p className="kor_style">{description.kor}</p>
               <p className="eng_style">{description.eng}</p>
+              <br />
+              <br />
+              <br />
+              <br />
             </div>
-            {/* <p className="text_style">
-              {description}
-              <br />
-              <br />
-              <br />
-            </p> */}
           </STDContentWrapper>
         ))}
       </STDContentContainer>

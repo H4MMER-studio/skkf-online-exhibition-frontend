@@ -23,6 +23,8 @@ const MainImage = styled.img`
   /* height: 66.67%; */
   /* height: 100%; */
   width: 100%;
+  max-height: 720px;
+  object-fit: contain;
 
   @media (max-width: 1024px) {
     min-width: 281px;

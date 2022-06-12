@@ -19,6 +19,10 @@ const ThumbnailListLayout = styled.div`
   padding: 24px;
   padding-bottom: 260px;
   /* margin: 0 auto; */
+
+  @media (max-width: 1024px) {
+    padding: 24px 16px 24px;
+  }
 `;
 
 const TeamLayout = styled.div`
@@ -63,6 +67,10 @@ const BottomLogoLayout = styled.div<{ startUnmountAnimation: boolean }>`
   left: 50%;
   transform: translateX(-50%);
   transition-duration: 3s;
+
+  @media (max-width: 1024px) {
+    padding: 0 16px 20px;
+  }
 `;
 
 const Logo = styled.img`
@@ -152,9 +160,9 @@ const InfomationText = styled.div`
   background-color: #fff;
   width: fit-content;
 
-  /* @media (max-width: 768px) {
-        height: auto;
-    } */
+  @media (max-width: 400px) {
+    height: 28px;
+  }
 `;
 
 const ThumbNailImage = styled.img`

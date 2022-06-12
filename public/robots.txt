@@ -1,0 +1,6 @@
+
+User-agent: *
+Disallow:
+
+Sitemap: http://2022skkfdoc.com/sitemap.xml
+Sitemap: http://www.2022skkfdoc.com/sitemap.xml

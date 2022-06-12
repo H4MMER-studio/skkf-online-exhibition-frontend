@@ -1,3 +1,4 @@
+import { device } from '@/styles';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -17,13 +18,25 @@ const Title = styled.div`
 
   .korean {
     font-family: 'Pretendard';
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 170%;
     margin-right: 4px;
+
+    @media (max-width: 1024px) {
+      font-size: 16px;
+      line-height: 174%;
+    }
   }
 
   .english {
     font-family: 'pp-mondwest';
     font-size: 22px;
+    line-height: 140%;
+
+    @media (max-width: 1024px) {
+      font-size: 18px;
+      line-height: 145%;
+    }
   }
 `;
 
@@ -33,13 +46,25 @@ const Name = styled.div`
 
   .korean {
     font-family: 'Pretendard';
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 170%;
     margin-right: 4px;
+
+    @media (max-width: 1024px) {
+      font-size: 16px;
+      line-height: 174%;
+    }
   }
 
   .english {
     font-family: 'pp-mondwest';
     font-size: 22px;
+    line-height: 140%;
+
+    @media (max-width: 1024px) {
+      font-size: 18px;
+      line-height: 145%;
+    }
   }
 `;
 

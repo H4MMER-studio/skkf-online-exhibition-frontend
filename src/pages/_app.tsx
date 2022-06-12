@@ -49,29 +49,41 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <meta
-          content="성균관 대학교 온라인 졸업 전시회"
+          content="성균관대학교 예술대학 의상학과 졸업패션필름"
           name="description"
           key="description"
         />
         <meta
-          content="성균관 대학교 온라인 졸업 전시회"
+          content="성균관대학교 예술대학 의상학과 졸업패션필름"
           property="og:description"
           key="og:description"
         />
         <meta
-          content="성균관 대학교 온라인 졸업 전시회"
+          content="성균관대학교 예술대학 의상학과 졸업패션필름"
           name="twitter:description"
           key="twitter:description"
         />
         <meta
-          content="성균관대학교, 좌표원점, 졸업전시회, 졸전, 온라인 전시회, 졸업 전시, 디자이너, 패션"
+          content="성균관대학교, 좌표원점, 졸업전시회, 졸전, 온라인 전시회, 졸업 전시, 디자이너, 패션, origin of coordinate"
           name="keywords"
         />
-        <title>좌표원점</title>
-        <meta content="좌표원점" property="og:title" key="og:title" />
-        <meta content="좌표원점" name="twitter:title" key="twitter:title" />
-        <meta content="좌표원점" name="author" key="author" />
-        <meta content="좌표원점" property="og:site_name" key="og:site_name" />
+        <title>origin of coordinate</title>
+        <meta
+          content="origin of coordinate"
+          property="og:title"
+          key="og:title"
+        />
+        <meta
+          content="origin of coordinate"
+          name="twitter:title"
+          key="twitter:title"
+        />
+        <meta content="origin of coordinate" name="author" key="author" />
+        <meta
+          content="origin of coordinate"
+          property="og:site_name"
+          key="og:site_name"
+        />
       </Head>
       <STDContainer height={height}>
         <MainNav selectedMenu={selectedMenu} onClickMenu={onClickMenu} />
