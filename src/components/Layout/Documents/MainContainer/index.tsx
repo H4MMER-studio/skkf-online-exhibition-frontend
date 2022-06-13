@@ -33,6 +33,10 @@ const STDContentWrapper = styled.article`
     font-weight: 400;
     font-size: 30px;
     line-height: 30px;
+
+    @media (max-width: 1024px) {
+      font-size: 26px;
+    }
   }
 
   .text_style {
