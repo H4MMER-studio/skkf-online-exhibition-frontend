@@ -1,3 +1,2 @@
-# skkf-online-exhibition-frontend
+# 성균관대학교 의상학과 온라인 졸업 전시회
 
-성균관대 온라인 전시회
