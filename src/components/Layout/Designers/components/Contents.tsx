@@ -311,8 +311,8 @@ const Contents: React.VFC<IProps> = ({
           {currentData.contents.map((contents, index1) => (
             <STDImageWrapper key={currentData.id + index1}>
               {contents.map(({ url, type, order }) => (
-                <>
-                  <STDImageBox key={url}>
+                <React.Fragment key={url}>
+                  <STDImageBox>
                     <img src={url} />
                     <STDImageTitle>
                       <div>
@@ -327,7 +327,7 @@ const Contents: React.VFC<IProps> = ({
                   ) : (
                     <></>
                   )}
-                </>
+                </React.Fragment>
               ))}
             </STDImageWrapper>
           ))}

@@ -29,3 +29,9 @@ import ArchiveContainer from './Layout/Archive/ArchiveContainer';
 export const Archive = {
   MaincContainer: ArchiveContainer,
 };
+
+//Guset
+
+import GusetContainer from './Layout/Guest/GuestContainer';
+
+export { GusetContainer };
