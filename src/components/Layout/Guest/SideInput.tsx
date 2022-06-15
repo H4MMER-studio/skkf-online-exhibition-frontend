@@ -156,7 +156,7 @@ const SideInput: React.VFC<IProps> = ({ navHeight, pageRefresh }) => {
       <STDSideInputWrapper>
         <STDReviewBox>
           <STDReviewerName
-            placeholder="작성자 닉네임"
+            placeholder="작성자 닉네임 (10자 이내)"
             value={guestName}
             onChange={(e) => {
               if (!(e.target.value.length > 10)) {
@@ -165,7 +165,7 @@ const SideInput: React.VFC<IProps> = ({ navHeight, pageRefresh }) => {
             }}
           />
           <STDReviewText
-            placeholder="축하 메세지를 남겨보세요!"
+            placeholder="축하 메세지를 남겨보세요! (300자 이내)"
             value={guestText}
             onChange={(e) => {
               if (!(e.target.value.length > 300)) {
