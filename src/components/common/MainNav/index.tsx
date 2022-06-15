@@ -245,7 +245,7 @@ const MainNav: React.FC<IProps> = ({ selectedMenu, onClickMenu }) => {
               의상학과 졸업패션필름
             </p>
             <p className="menu_font_style" onClick={() => onClickMenu('')}>
-              «좌표원점 : origin of Coordinate»
+              «원점 : Origin of Coordinate»
             </p>
           </STDExhibitionInfoWrapperDesktop>
         </div>

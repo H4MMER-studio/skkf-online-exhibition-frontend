@@ -156,7 +156,7 @@ const CoordinateContents: React.VFC<IProps> = ({ scrollState, headHeight }) => {
           <p className="kor_style">
             마치 무수히 다양한 좌표 위의 점들이 모두 원점으로 향하는 모양과
             같이, 성균관대학교 예술대학 의상학과 학생들의 영감과 사유가 졸업작품
-            프로젝트 {'<좌표원점>'}을 향해 모였습니다.
+            프로젝트 {'<원점>'}을 향해 모였습니다.
           </p>
           <br />
           <p className="kor_style">
@@ -175,7 +175,7 @@ const CoordinateContents: React.VFC<IProps> = ({ scrollState, headHeight }) => {
             Just as the points on conuntless coordinates all head for the origin
             the inspiraion and thoughts of students in the Deparment of Fashion
             design, SungKyunKwan University College of Art have gathered to
-            wards the graduation project {'<Coordinate Origin>'}
+            wards the graduation project {'<Origin of Coordinate>'}
           </p>
           <br />
           <p className="eng_style">

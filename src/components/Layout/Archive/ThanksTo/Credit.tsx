@@ -212,11 +212,11 @@ const DESIGNERS = [
   },
   {
     koreanName: '김성빈',
-    englishName: 'Seonbin Kim',
+    englishName: 'Seongbin Kim',
   },
   {
     koreanName: '이정은',
-    englishName: 'Jeongun Lee',
+    englishName: 'Jeongeun Lee',
   },
   {
     koreanName: '도비안',
@@ -253,11 +253,11 @@ const DESIGNERS = [
   },
   {
     koreanName: '최지현',
-    englishName: 'Jiyun Choi',
+    englishName: 'Jihyun Choi',
   },
   {
     koreanName: '최이준',
-    englishName: 'Ijun Choi',
+    englishName: 'Ijun Choe',
   },
   {
     koreanName: '김민경',
@@ -289,7 +289,7 @@ const DESIGNERS = [
   },
   {
     koreanName: '지레이',
-    englishName: 'Leyi ji',
+    englishName: 'Leyi Ji',
   },
 ];
 

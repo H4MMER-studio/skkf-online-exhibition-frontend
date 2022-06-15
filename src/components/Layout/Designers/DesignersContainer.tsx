@@ -615,7 +615,7 @@ const CONTENTS_DATA: ContentsData = [
     column: '/image/b_5.svg',
     email: 'asrv5898@naver.com',
     koreanName: '김성빈',
-    englishName: 'Seonbin Kim',
+    englishName: 'Seongbin Kim',
     time: {
       firstStartTime: 146,
       firstEndTime: 148,
@@ -660,7 +660,7 @@ const CONTENTS_DATA: ContentsData = [
     column: '/image/b_6.svg',
     email: 'iam5941@naver.com',
     koreanName: '이정은',
-    englishName: 'Jeongun Lee',
+    englishName: 'Jeongeun Lee',
     time: {
       firstStartTime: 195,
       firstEndTime: 208,
@@ -1071,7 +1071,7 @@ const CONTENTS_DATA: ContentsData = [
     column: '/image/b_6.svg',
     email: 'jessica0406@naver.com',
     koreanName: '최지현',
-    englishName: 'Jiyun Choi',
+    englishName: 'Jihyun Choi',
     time: {
       firstStartTime: 11,
       firstEndTime: 14,
@@ -1116,7 +1116,7 @@ const CONTENTS_DATA: ContentsData = [
     column: '/image/b_7.svg',
     email: null,
     koreanName: '최이준',
-    englishName: 'Ijun Choi',
+    englishName: 'Ijun Choe',
     time: {
       firstStartTime: 47,
       firstEndTime: 50,
@@ -1476,7 +1476,7 @@ const CONTENTS_DATA: ContentsData = [
     column: '/image/b_8.svg',
     email: 'ley802@yeah.net',
     koreanName: '지레이',
-    englishName: 'Leyi ji',
+    englishName: 'Leyi Ji',
     time: {
       firstStartTime: 378,
       firstEndTime: 384,
