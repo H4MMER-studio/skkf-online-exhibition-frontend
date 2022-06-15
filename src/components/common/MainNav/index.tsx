@@ -184,10 +184,10 @@ const MainNav: React.FC<IProps> = ({ selectedMenu, onClickMenu }) => {
               2022
             </p>
             <p className="app_menu_style" onClick={() => onClickMenu('')}>
-              성균관대학교 예술대학 의상학과 졸업패션필름 좌표원점
+              성균관대학교 예술대학 의상학과 졸업패션필름
             </p>
             <p className="app_menu_style" onClick={() => onClickMenu('')}>
-              «좌표원점 : origin of Coordinate»
+              «원점 : Origin of Coordinate»
             </p>
           </STDExhibitionInfoWrapperPhone>
           <STDMenuWrapper

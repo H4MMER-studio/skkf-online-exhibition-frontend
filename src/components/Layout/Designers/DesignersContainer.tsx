@@ -464,11 +464,11 @@ const CONTENTS_DATA: ContentsData = [
       ],
     ],
     contentsText: {
-      kor: `"여자의 애착"은 무채색이 주는 강인함을 도출하여 여성의 여리함과 조화를 시도한 디자인이다. 블랙 에나멜 원단을 사용해 건조해 보일 수 있는 검정색을 활동적으로 보이도록 하였다. 자칫 흑백의 대비에서 느껴질 수 있는 단조로움을 퍼프와 카울의 볼륨으로 여성스러운 실루엣을 강렬하게 표현하고 있다.`,
+      kor: `"여심"은 무채색이 주는 강인함을 도출하여 여성의 여리함과 조화를 시도한 디자인이다. 블랙 에나멜 원단을 사용해 건조해 보일 수 있는 검정색을 활동적으로 보이도록 하였다. 자칫 흑백의 대비에서 느껴질 수 있는 단조로움을 퍼프와 카울의 볼륨으로 여성스러운 실루엣을 강렬하게 표현하고 있다.`,
       eng: `The work, “Women's affection" is an attempt to harmonize the intensity of achromatic hues with the delicate softness of women. By employing black enamel cloth, the color 'black' was made to appear vibrant and energetic, rather than dull. The monotony that can be felt in the contrast of black and white is intensely expressed with the volume of puff and cowl that highlights a feminine silhouette.`,
     },
     title: {
-      kor: '여자의 애착',
+      kor: '여심',
       eng: 'Women’s affection',
     },
   },
@@ -555,7 +555,8 @@ const CONTENTS_DATA: ContentsData = [
     ],
     contentsText: {
       kor: `감출수록 드러나는 것, 모호함에서 느끼는 매력, 어둠에 대한 경외를 이해하고 통제할 때 은닉은 아름다움을 형용하는 수단이 된다. 부풀려진 검정의 외피 속에 신체를 숨겼지만 안으로 접힌 주름은 숨겨진 것에 대한 일말의 관심을 환기한다.`,
-      eng: `concealment becomes a means of articulating beauty. The inflated black coat hides the body, but the pleats within draw attention to what is concealed.`,
+      eng: `When one understands and controls what is revealed the more we hide it, the charm we feel from ambiguity, and the awe of the dark, concealment becomes a means of articulating beauty.
+      The inflated black coat hides the body, but the pleats within draw attention to what is concealed. concealment becomes a means of articulating beauty. The inflated black coat hides the body, but the pleats within draw attention to what is concealed.`,
     },
     title: {
       kor: '은닉',
