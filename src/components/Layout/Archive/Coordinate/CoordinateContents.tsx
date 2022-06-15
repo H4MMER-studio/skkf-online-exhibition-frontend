@@ -23,6 +23,8 @@ const MainImage = styled.img`
   /* height: 66.67%; */
   /* height: 100%; */
   width: 100%;
+  max-height: 720px;
+  object-fit: contain;
 
   @media (max-width: 1024px) {
     min-width: 281px;
@@ -113,7 +115,7 @@ const CoordinateImage = styled.img<{ scrollState: string }>`
     padding-bottom: 10px;
     transform: ${({ scrollState }) =>
       `translateY(${scrollState === 'down' ? 100 : 0}%)`};
-    transition: all 0.8s ease-in-out;
+    transition: transform 0.8s ease-in-out;
   }
 `;
 
@@ -122,7 +124,7 @@ const MediaQueryMainLogoImage = styled.img`
   width: 100%;
 
   @media (max-width: 1024px) {
-    display: block;
+    display: none;
     position: absolute;
     top: 131px;
   }

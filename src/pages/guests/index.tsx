@@ -1,8 +1,13 @@
 import React from 'react';
 import { NextPage } from 'next';
+import { GusetContainer } from '@/components';
 
 const GuestsPage: NextPage = () => {
-  return <div></div>;
+  return (
+    <>
+      <GusetContainer />
+    </>
+  );
 };
 
 export default GuestsPage;

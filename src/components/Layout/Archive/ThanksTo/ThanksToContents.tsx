@@ -44,7 +44,7 @@ const ItemLayout = styled.div`
 const FlexLayout = styled.div`
   display: flex;
   width: 100%;
-  margin-bottom: 118px;
+  margin-bottom: 36px;
 
   @media (max-width: 1024px) {
     display: block;
@@ -54,7 +54,6 @@ const FlexLayout = styled.div`
 
 const ProfileImg = styled.img`
   width: 100%;
-  height: 100%;
   object-fit: cover;
 `;
 

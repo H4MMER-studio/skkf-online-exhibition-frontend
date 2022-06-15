@@ -33,6 +33,10 @@ const STDContentWrapper = styled.article`
     font-weight: 400;
     font-size: 30px;
     line-height: 30px;
+
+    @media (max-width: 1024px) {
+      font-size: 26px;
+    }
   }
 
   .text_style {
@@ -155,7 +159,7 @@ const STDEmptySpace = styled.div`
 `;
 
 const DocumentsMainContainer: React.FC = () => {
-  const [selectedItem, setSelectedItem] = useState('temp_image1.jpeg');
+  const [selectedItem, setSelectedItem] = useState('1.gif');
   const DATA = [
     {
       id: 'Infinitas',
@@ -210,13 +214,11 @@ const DocumentsMainContainer: React.FC = () => {
             <div className="text_style">
               <p className="kor_style">{description.kor}</p>
               <p className="eng_style">{description.eng}</p>
+              <br />
+              <br />
+              <br />
+              <br />
             </div>
-            {/* <p className="text_style">
-              {description}
-              <br />
-              <br />
-              <br />
-            </p> */}
           </STDContentWrapper>
         ))}
       </STDContentContainer>

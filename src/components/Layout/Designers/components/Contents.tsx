@@ -136,6 +136,10 @@ const STDImageTitle = styled.div`
     font-size: 18px;
     line-height: 110%;
     color: #ffffff;
+
+    @media (max-width: 1024px) {
+      font-size: 16px;
+    }
   }
 
   .eng {
@@ -145,11 +149,26 @@ const STDImageTitle = styled.div`
     font-size: 20px;
     line-height: 20px;
     color: #ffffff;
+
+    @media (max-width: 1024px) {
+      font-size: 18px;
+    }
   }
 `;
 
 const STDNumerBox = styled.div`
   margin-left: 8px;
+  font-family: 'pp-mondwest';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  color: #ffffff;
+
+  @media (max-width: 1024px) {
+    font-size: 17px;
+    line-height: 100%;
+  }
 `;
 
 const STDEmptySpace = styled.div`
@@ -166,10 +185,6 @@ const ScriptLayout = styled.div`
     margin-top: 0px;
     margin-right: 32px;
   }
-`;
-
-const STDScriptExample = styled.div`
-  background-color: white;
 `;
 
 const STDContentTitleWrapper = styled.div`
@@ -283,7 +298,7 @@ const Contents: React.VFC<IProps> = ({
       <STDContentsLayout height={headerHeight + 195 + 24}>
         <STDContentWrapper>
           <STDVideoContainer ref={contentElement}>
-            <STDVideo ref={videoRef} autoPlay controls muted>
+            <STDVideo ref={videoRef} autoPlay controls muted playsInline>
               <source src={`film_full_ver.mp4`} type={'video/mp4'} />
             </STDVideo>
             <STDImageTitle>
@@ -296,15 +311,15 @@ const Contents: React.VFC<IProps> = ({
           {currentData.contents.map((contents, index1) => (
             <STDImageWrapper key={currentData.id + index1}>
               {contents.map(({ url, type, order }) => (
-                <>
-                  <STDImageBox key={url}>
+                <React.Fragment key={url}>
+                  <STDImageBox>
                     <img src={url} />
                     <STDImageTitle>
                       <div>
                         <p className="kor">{currentData.title.kor}</p>
                         <p className="eng">{currentData.title.eng}</p>
                       </div>
-                      <STDNumerBox className="eng">{order}</STDNumerBox>
+                      <STDNumerBox>{order}</STDNumerBox>
                     </STDImageTitle>
                   </STDImageBox>
                   {type === 'row' && contents.length === 1 ? (
@@ -312,7 +327,7 @@ const Contents: React.VFC<IProps> = ({
                   ) : (
                     <></>
                   )}
-                </>
+                </React.Fragment>
               ))}
             </STDImageWrapper>
           ))}
