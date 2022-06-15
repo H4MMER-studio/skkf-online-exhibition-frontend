@@ -49,15 +49,15 @@ const STDReviewBox = styled.div`
 
 const STDReviewerName = styled.input`
   width: 100%;
-  padding: 12px 20px;
-  margin-bottom: 15px;
+  padding: 12px 20px 12px 16px;
+  margin-bottom: 16px;
   border: 1px solid #ffffff;
-  border-radius: 13px;
-  font-family: initial;
+  border-radius: 8px;
+  font-family: inherit;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 170%;
+  font-size: 16px;
+  line-height: 174%;
   color: white;
   /* identical to box height, or 31px */
 
@@ -69,15 +69,15 @@ const STDReviewerName = styled.input`
 const STDReviewText = styled.textarea`
   width: 100%;
   height: 169px;
-  padding: 16px 20px;
-  margin-bottom: 32px;
+  padding: 12px 20px 12px 16px;
+  margin-bottom: 16px;
   border: 1px solid #ffffff;
-  border-radius: 13px;
+  border-radius: 8px;
   font-family: inherit;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 170%;
+  font-size: 16px;
+  line-height: 174%;
   color: white;
   /* identical to box height, or 31px */
 
@@ -86,12 +86,8 @@ const STDReviewText = styled.textarea`
     font-family: inherit;
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
-
-    @media (max-width: 1024px) {
-      font-size: 16px;
-      line-height: 174%;
-    }
+    font-size: 16px;
+    line-height: 174%;
   }
 
   @media (max-width: 1024px) {
@@ -106,12 +102,12 @@ const STDSubmitButton = styled.div`
   .button_style {
     padding: 8px 20px;
     border: 1px solid #ffffff;
-    border-radius: 13px;
+    border-radius: 22px;
     font-family: inherit;
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
-    line-height: 170%;
+    font-size: 16px;
+    line-height: 174%;
     color: white;
   }
 `;
@@ -162,12 +158,20 @@ const SideInput: React.VFC<IProps> = ({ navHeight, pageRefresh }) => {
           <STDReviewerName
             placeholder="작성자 닉네임"
             value={guestName}
-            onChange={(e) => setGuestName(e.target.value)}
+            onChange={(e) => {
+              if (!(e.target.value.length > 10)) {
+                setGuestName(e.target.value);
+              }
+            }}
           />
           <STDReviewText
             placeholder="축하 메세지를 남겨보세요!"
             value={guestText}
-            onChange={(e) => setGuestText(e.target.value)}
+            onChange={(e) => {
+              if (!(e.target.value.length > 300)) {
+                setGuestText(e.target.value);
+              }
+            }}
           />
           <STDSubmitButton>
             <button className="button_style" onClick={onClickSubmitButton}>
