@@ -159,7 +159,7 @@ const STDEmptySpace = styled.div`
 `;
 
 const DocumentsMainContainer: React.FC = () => {
-  const [selectedItem, setSelectedItem] = useState('temp_image1.jpeg');
+  const [selectedItem, setSelectedItem] = useState('1.gif');
   const DATA = [
     {
       id: 'Infinitas',
