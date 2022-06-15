@@ -13,13 +13,14 @@ const STDCreditContainer = styled.div`
 
 const Title = styled.div`
   background-color: #fff;
+  padding: 4px;
   width: fit-content;
   margin-bottom: 16px;
 
   .korean {
     font-family: 'Pretendard';
-    font-size: 18px;
-    line-height: 170%;
+    font-size: 20px;
+    line-height: 110%;
     margin-right: 4px;
 
     @media (max-width: 1024px) {
@@ -31,11 +32,11 @@ const Title = styled.div`
   .english {
     font-family: 'pp-mondwest';
     font-size: 22px;
-    line-height: 140%;
+    line-height: 110%;
 
     @media (max-width: 1024px) {
       font-size: 18px;
-      line-height: 145%;
+      line-height: 110%;
     }
   }
 `;
@@ -66,10 +67,30 @@ const Name = styled.div`
       line-height: 145%;
     }
   }
+
+  @media (max-width: 1024px) {
+    margin-bottom: 12px;
+  }
 `;
 
 const Layout = styled.div`
   width: 100%;
+`;
+
+const STDSubTitle = styled.p`
+  margin-bottom: 8px;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 110%;
+  /* or 14px */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #bebebe;
 `;
 
 const Credit: React.VFC = () => {
@@ -90,18 +111,39 @@ const Credit: React.VFC = () => {
         })}
       </Layout>
       <Layout>
-        <Title>
-          <span className="korean">운영</span>
-          <span className="english">Operation</span>
-        </Title>
-        {Operation.map((d) => {
-          return (
-            <Name key={d.englishName}>
-              <span className="korean">{d.koreanName}</span>
-              <span className="english">{d.englishName}</span>
-            </Name>
-          );
-        })}
+        <div>
+          <Title>
+            <span className="korean">지도교수</span>
+            <span className="english">Professor</span>
+          </Title>
+          <Name>
+            <span className="korean">조경숙</span>
+            <span className="english">Kyeongsook Cho</span>
+          </Name>
+          <Name>
+            <span className="korean">장성은</span>
+            <span className="english">Sunny Jang</span>
+          </Name>
+        </div>
+        <div>
+          <Title>
+            <span className="korean">준비위원회</span>
+            <span className="english">Preparatory committee</span>
+          </Title>
+          {Operation.map(({ id, list }) => (
+            <React.Fragment key={id}>
+              <STDSubTitle>{id}</STDSubTitle>
+              {list.map((d) => {
+                return (
+                  <Name key={d.englishName}>
+                    <span className="korean">{d.koreanName}</span>
+                    <span className="english">{d.englishName}</span>
+                  </Name>
+                );
+              })}
+            </React.Fragment>
+          ))}
+        </div>
       </Layout>
       <Layout>
         <div>
@@ -134,12 +176,22 @@ const Credit: React.VFC = () => {
         </div>
         <div>
           <Title>
+            <span className="korean">필름, 사진 연출</span>
+            <span className="english">Director</span>
+          </Title>
+          <Name>
+            <span className="korean">황토</span>
+            <span className="english">Hwangtoe Studios</span>
+          </Name>
+        </div>
+        <div>
+          <Title>
             <span className="korean">도움</span>
             <span className="english">Support</span>
           </Title>
           <Name>
             <span className="korean">고주은</span>
-            <span className="english">Jooun Ko</span>
+            <span className="english">Jooeun Ko</span>
           </Name>
           <Name>
             <span className="korean">김태욱</span>
@@ -147,7 +199,7 @@ const Credit: React.VFC = () => {
           </Name>
           <Name>
             <span className="korean">김태헌</span>
-            <span className="english">Taehoon Kim</span>
+            <span className="english">Taeheon Kim</span>
           </Name>
           <Name>
             <span className="korean">이종혁</span>
@@ -156,6 +208,40 @@ const Credit: React.VFC = () => {
           <Name>
             <span className="korean">임민재</span>
             <span className="english">Minjae Lim</span>
+          </Name>
+        </div>
+        <div>
+          <Title>
+            <span className="korean">후원</span>
+            <span className="english">Support</span>
+          </Title>
+          <Name>
+            <span className="korean">네이버그린스토어</span>
+            <span className="english">anteok.com</span>
+          </Name>
+          <Name>
+            <span className="korean">비쥬빌라</span>
+            <span className="english">bijouvilla.com</span>
+          </Name>
+          <Name>
+            <span className="korean">디아쎄르</span>
+            <span className="english">instagram.com/de_hacer</span>
+          </Name>
+          <Name>
+            <span className="korean">로우그로브</span>
+            <span className="english">lowgrove.co.kr</span>
+          </Name>
+          <Name>
+            <span className="korean">링키래버토리</span>
+            <span className="english">linkylaboratory.com</span>
+          </Name>
+          <Name>
+            <span className="korean">한글안경</span>
+            <span className="english">hangle-eyewear.com</span>
+          </Name>
+          <Name>
+            <span className="korean">한결기획</span>
+            <span className="english">xn--p89am2ar37f68a.kr</span>
           </Name>
         </div>
       </Layout>
@@ -295,67 +381,102 @@ const DESIGNERS = [
 
 const Operation = [
   {
-    koreanName: '최희재',
-    englishName: 'Heejae Choi',
+    id: '준비위원장',
+    list: [
+      {
+        koreanName: '최희재',
+        englishName: 'Heejae Choi',
+      },
+    ],
   },
   {
-    koreanName: '이윤창',
-    englishName: 'Yunchang Lee',
+    id: '기획팀',
+    list: [
+      {
+        koreanName: '이윤창',
+        englishName: 'Yunchang Lee',
+      },
+    ],
   },
   {
-    koreanName: '이주은',
-    englishName: 'Jueun Lee',
+    id: '도록영상팀',
+    list: [
+      {
+        koreanName: '이주은',
+        englishName: 'Jueun Lee',
+      },
+      {
+        koreanName: '박지완',
+        englishName: 'Jiwan Park',
+      },
+      {
+        koreanName: '박서진',
+        englishName: 'Seojin Park',
+      },
+    ],
   },
   {
-    koreanName: '박지완',
-    englishName: 'Jiwan Park',
+    id: '대외협력팀',
+    list: [
+      {
+        koreanName: '정예송',
+        englishName: 'Yesong Jung',
+      },
+      {
+        koreanName: '구소윤',
+        englishName: 'Soyoon Koo',
+      },
+      {
+        koreanName: '김민경',
+        englishName: 'Minkyung Kim',
+      },
+    ],
   },
   {
-    koreanName: '박서진',
-    englishName: 'Seojin Park',
+    id: '진행팀',
+    list: [
+      {
+        koreanName: '김성빈',
+        englishName: 'Seongbin Kim',
+      },
+      {
+        koreanName: '오근택',
+        englishName: 'Geuntaek Oh',
+      },
+      {
+        koreanName: '정서희',
+        englishName: 'Seohee Jeong',
+      },
+      {
+        koreanName: '최규빈',
+        englishName: 'Gyubin Choi',
+      },
+    ],
   },
   {
-    koreanName: '정예송',
-    englishName: 'Yesong Jung',
+    id: '홍보팀',
+    list: [
+      {
+        koreanName: '이정근',
+        englishName: 'Jeonggen Lee',
+      },
+      {
+        koreanName: '김혜준',
+        englishName: 'Jeonggenun Lee',
+      },
+      {
+        koreanName: '공정인',
+        englishName: 'Jeongin Gong',
+      },
+    ],
   },
   {
-    koreanName: '구소윤',
-    englishName: 'Soyoon Koo',
-  },
-  {
-    koreanName: '김민경',
-    englishName: 'Minkyung Kim',
-  },
-  {
-    koreanName: '김성빈',
-    englishName: 'Seongbin Kim',
-  },
-  {
-    koreanName: '오근택',
-    englishName: 'Geuntaek Oh',
-  },
-  {
-    koreanName: '정서희',
-    englishName: 'Seohee Jeong',
-  },
-  {
-    koreanName: '최규빈',
-    englishName: 'Gyubin Choi',
-  },
-  {
-    koreanName: '이정근',
-    englishName: 'Jeonggen Lee',
-  },
-  {
-    koreanName: '김혜준',
-    englishName: 'Jeonggenun Lee',
-  },
-  {
-    koreanName: '공정인',
-    englishName: 'Jeongin Gong',
-  },
-  {
-    koreanName: '최희원',
-    englishName: 'Heewon Choi',
+    id: '회계팀',
+    list: [
+      {
+        koreanName: '최희원',
+        englishName: 'Heewon Choi',
+      },
+    ],
   },
 ];

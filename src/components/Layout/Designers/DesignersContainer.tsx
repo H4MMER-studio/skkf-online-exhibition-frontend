@@ -572,10 +572,10 @@ const CONTENTS_DATA: ContentsData = [
     koreanName: '오근택',
     englishName: 'Geuntaek oh',
     time: {
-      firstStartTime: 238,
-      firstEndTime: 246,
-      secondStartTime: 150,
-      secondEndTime: 157,
+      firstStartTime: 150,
+      firstEndTime: 157,
+      secondStartTime: 251,
+      secondEndTime: 254,
     },
     contents: [
       [
@@ -752,9 +752,9 @@ const CONTENTS_DATA: ContentsData = [
     koreanName: '공정인',
     englishName: 'Jeongin Gong',
     time: {
-      firstStartTime: 116,
+      firstStartTime: 117,
       firstEndTime: 145,
-      secondStartTime: 116,
+      secondStartTime: 117,
       secondEndTime: 145,
     },
     contents: [
@@ -1041,15 +1041,15 @@ const CONTENTS_DATA: ContentsData = [
           order: '(1/3)',
         },
         {
-          url: '/image/designers/designer_3_5_2.jpg',
-          type: 'column',
+          url: '/image/designers/designer_3_5_3.jpg',
+          type: 'row',
           order: '(2/3)',
         },
       ],
       [
         {
-          url: '/image/designers/designer_3_5_3.jpg',
-          type: 'row',
+          url: '/image/designers/designer_3_5_2.jpg',
+          type: 'column',
           order: '(3/3)',
         },
       ],
@@ -1209,9 +1209,9 @@ const CONTENTS_DATA: ContentsData = [
     englishName: 'Heejae Choi',
     time: {
       firstStartTime: 415,
-      firstEndTime: 417,
+      firstEndTime: 418,
       secondStartTime: 447,
-      secondEndTime: 451,
+      secondEndTime: 453,
     },
     contents: [
       [
@@ -1441,20 +1441,20 @@ const CONTENTS_DATA: ContentsData = [
     contents: [
       [
         {
-          url: '/image/designers/designer_4_7_1.jpg',
-          type: 'column',
-          order: '(1/3)',
-        },
-      ],
-      [
-        {
           url: '/image/designers/designer_4_7_2.jpg',
           type: 'row',
-          order: '(2/3)',
+          order: '(1/3)',
         },
         {
           url: '/image/designers/designer_4_7_3.jpg',
           type: 'row',
+          order: '(2/3)',
+        },
+      ],
+      [
+        {
+          url: '/image/designers/designer_4_7_1.jpg',
+          type: 'column',
           order: '(3/3)',
         },
       ],
