@@ -38,7 +38,23 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="ko">
-        <Head></Head>
+        <Head>
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/fonts/PPMondwestFontKit.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+          />
+          <link
+            href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,300"
+            rel="stylesheet"
+            type="text/css"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />

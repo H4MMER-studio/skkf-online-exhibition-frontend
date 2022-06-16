@@ -89,21 +89,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           key="og:site_name"
         />
         <meta property="og:image" content="/image/meta-img.png" />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="/fonts/PPMondwestFontKit.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
-        />
-        <link
-          href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,300"
-          rel="stylesheet"
-          type="text/css"
-        />
+        <meta charSet="utf-8" />
+        <meta content="ie=edge" httpEquiv="X-UA-Compatible" />
+        <meta content="ko_KR" property="og:locale" />
       </Head>
       <STDContainer height={height}>
         <MainNav selectedMenu={selectedMenu} onClickMenu={onClickMenu} />
