@@ -203,12 +203,12 @@ const CelebrationContents: React.FC<IProps> = ({ scrollState, headHeight }) => {
       </ImageLayout>
       <DescriptionLayout headHeight={headHeight}>
         <Title>
-          <p className="eng_style">2022</p>{' '}
-          <p className="kor_style">성균관대학교 예술대학</p>
+          <p className='eng_style'>2022</p>{' '}
+          <p className='kor_style'>성균관대학교 예술대학</p>
           <br />
-          <p className="kor_style">의상학과 졸업패션필름</p>
-          <br />«<p className="kor_style">좌표원점</p>{' '}
-          <p className="eng_style">: origin of coordinate</p>»
+          <p className='kor_style'>의상학과 졸업패션필름</p>
+          <br />«<p className='kor_style'>원점</p>{' '}
+          <p className='eng_style'>: Origin of Coordinate</p>»
         </Title>
         <br />
         <MainText>
@@ -216,7 +216,7 @@ const CelebrationContents: React.FC<IProps> = ({ scrollState, headHeight }) => {
           안녕하십니까! 총장 신동렬입니다.
           <br />
           <br />
-          <span className="eng_style">2022</span> 졸업작품 패션필름 온라인
+          <span className='eng_style'>2022</span> 졸업작품 패션필름 온라인
           발표를 진심으로 축하합니다.
           <br />
           우리 대학 의상학과는 매년 수준 높은 졸업작품패션쇼를 개최하는
@@ -225,9 +225,9 @@ const CelebrationContents: React.FC<IProps> = ({ scrollState, headHeight }) => {
           선보이고 있습니다.
           <br />
           <br /> 졸업 패션필름을 통해 패션을 향한 열정을 보여줄{' '}
-          <span className="eng_style">31</span>명의 졸업을 앞둔 여러분에게 많은
+          <span className='eng_style'>31</span>명의 졸업을 앞둔 여러분에게 많은
           기대와 응원을 표합니다. 앞으로 여러분은 지난{' '}
-          <span className="eng_style">4</span>년여간의 배움을 토대로 다양한
+          <span className='eng_style'>4</span>년여간의 배움을 토대로 다양한
           분야에 도전하며 다채로운 경험을 쌓아가게 될 것입니다. 그간의 값진
           노력에 뜨거운 격려의 박수를 보내며 글로벌 패션산업 및 문화를 선도하는
           패션 전문가로 성장해 자랑스런 성균인이 되어줄 것을 당부합니다.
@@ -239,19 +239,19 @@ const CelebrationContents: React.FC<IProps> = ({ scrollState, headHeight }) => {
         </MainText>
         <br />
         <EndText>
-          <span className="eng_style">2022.06.10</span>
+          <span className='eng_style'>2022.06.10</span>
           <br />
           성균관대학교 총장
           <br />신 동 렬
         </EndText>
         <MainText>
-          <span className="eng_style"> 21</span>세기 글로벌 패션 산업을 이끌어갈
+          <span className='eng_style'> 21</span>세기 글로벌 패션 산업을 이끌어갈
           성균관대학교 예술대학 의상학과의 졸업작품 발표를 축하합니다. 코로나
-          <span className="eng_style">19</span>가 지속되는 어려운 상황 속에서도
+          <span className='eng_style'>19</span>가 지속되는 어려운 상황 속에서도
           의상학과 교수님들과 학생들이 패션필름 발표를 통해 의상학과 졸업작품
           패션전의 역사를 이어가고 있습니다. 특히 이번 졸업작품은{' '}
-          <span className="eng_style">31</span>명의 학생들이{' '}
-          <span className="eng_style">“Origin of Coordinate”</span>라는 대주제
+          <span className='eng_style'>31</span>명의 학생들이{' '}
+          <span className='eng_style'>“Origin of Coordinate”</span>라는 대주제
           아래 완성도 높은 작품을 선보이게 되었습니다. 이러한 경험은 사회에
           나아가서도 마음껏 꿈을 펼칠 수 있도록 해 줄 원동력이 될 것입니다.
           <br />
@@ -271,7 +271,7 @@ const CelebrationContents: React.FC<IProps> = ({ scrollState, headHeight }) => {
         </MainText>
         <br />
         <EndText>
-          <span className="eng_style">2022.06.10</span>
+          <span className='eng_style'>2022.06.10</span>
           <br />
           성균관대학교 예술대학장
           <br />정 지 숙
@@ -295,7 +295,7 @@ const CelebrationContents: React.FC<IProps> = ({ scrollState, headHeight }) => {
         </MainText>
         <br />
         <EndText>
-          <span className="eng_style">2022.06.10</span>
+          <span className='eng_style'>2022.06.10</span>
           <br />
           성균관대학교 의상학과장
           <br />서 승 희
@@ -309,24 +309,24 @@ const CelebrationContents: React.FC<IProps> = ({ scrollState, headHeight }) => {
           필요했습니다. 모두 포기하지 않고 끝까지 프로젝트를 건강하고 무사히
           마칠 수 있게 되어 기쁩니다.
           <br />
-          <br /> 우선 <span className="eng_style">31</span>명의 디자이너를
-          <span className="eng_style">1</span>년동안 이끌어주신 조경숙, 장성은
+          <br /> 우선 <span className='eng_style'>31</span>명의 디자이너를
+          <span className='eng_style'>1</span>년동안 이끌어주신 조경숙, 장성은
           지도 교수님께 무한한 감사를 드리며, 저희를 믿고 묵묵히 응원과 보탬이
           되어주신 부모님들께도 감사드립니다. 그리고 항상 아낌없는 열정으로
           저희를 가르쳐 주시는 학과 교수님들, 의상학과 동문 선후배님을 비롯하여
           이번 졸업 패션 필름을 위해 도움 주신 분들께 진심으로 감사의 말씀을
           전합니다.
           <br />
-          <br /> 마찬가지로 <span className="eng_style">31</span>명의 예비
+          <br /> 마찬가지로 <span className='eng_style'>31</span>명의 예비
           졸업생 분들 모두 수고 많았고 부족한 저를 따르고 믿어주셔서
           감사했습니다. 모두의 값진 노력과 경험은 결코 배신하지 않을 것이며,
           앞으로의 패션 업계에서 빛을 발할 것이라 믿습니다.{' '}
-          <span className="eng_style">2022</span> 성균관대학교 의상학과
+          <span className='eng_style'>2022</span> 성균관대학교 의상학과
           졸업작품전 디자이너 모두 응원하겠습니다.
         </MainText>
         <br />
         <EndText isLast>
-          <span className="eng_style">2022.06.10</span>
+          <span className='eng_style'>2022.06.10</span>
           <br />
           졸업작품전 준비위원장
           <br />최 희 재

@@ -35,3 +35,9 @@ export const Archive = {
 import GusetContainer from './Layout/Guest/GuestContainer';
 
 export { GusetContainer };
+
+//Film
+
+import FilmContainer from './Layout/Film/FilmContainer';
+
+export { FilmContainer };

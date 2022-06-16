@@ -121,7 +121,7 @@ const ThanksToContents: React.VFC<IProps> = ({ scrollState }) => {
           <ItemLayout>
             <ProfileImg src={'/image/archive/arrangement_commitee.png'} />
             <ProfileDescriptionLayout>
-              <ProfileTitle>Arrangement Commitee</ProfileTitle>
+              <ProfileTitle>Preparatory Committee</ProfileTitle>
               <ProfileDescription>
                 공정인 / 정서희 / 정예송 / 구소윤 / 김민경 / 김성빈 / 오근택 /
                 이정근 / 이주은 /박서진 / 최희원 / 김헤준 / 최규빈 / 최희재 /
@@ -154,7 +154,7 @@ const ThanksToContents: React.VFC<IProps> = ({ scrollState }) => {
             </ProfileDescriptionLayout>
           </ItemLayout>
         </FlexLayout>
-        <FlexLayout className="last">
+        <FlexLayout className='last'>
           <ItemLayout style={{ marginRight: width < 1024 ? 0 : 16 }}>
             <ProfileImg src={'/image/archive/teleportto.png'} />
             <ProfileDescriptionLayout>
@@ -183,7 +183,7 @@ const ThanksToContents: React.VFC<IProps> = ({ scrollState }) => {
       </STDContentsInnerLayout>
       <TypoImage
         scrollState={scrollState}
-        src="/image/archive/thanks_to_typo.png"
+        src='/image/archive/thanks_to_typo.png'
       />
     </STDContentsLayout>
   );

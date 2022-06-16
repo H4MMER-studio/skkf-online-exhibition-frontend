@@ -555,8 +555,7 @@ const CONTENTS_DATA: ContentsData = [
     ],
     contentsText: {
       kor: `감출수록 드러나는 것, 모호함에서 느끼는 매력, 어둠에 대한 경외를 이해하고 통제할 때 은닉은 아름다움을 형용하는 수단이 된다. 부풀려진 검정의 외피 속에 신체를 숨겼지만 안으로 접힌 주름은 숨겨진 것에 대한 일말의 관심을 환기한다.`,
-      eng: `When one understands and controls what is revealed the more we hide it, the charm we feel from ambiguity, and the awe of the dark, concealment becomes a means of articulating beauty.
-      The inflated black coat hides the body, but the pleats within draw attention to what is concealed. concealment becomes a means of articulating beauty. The inflated black coat hides the body, but the pleats within draw attention to what is concealed.`,
+      eng: `When one understands and controls what is revealed the more we hide it, the charm we feel from ambiguity, and the awe of the dark, concealment becomes a means of articulating beauty. The inflated black coat hides the body, but the pleats within draw attention to what is concealed.`,
     },
     title: {
       kor: '은닉',

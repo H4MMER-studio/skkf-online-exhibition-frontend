@@ -177,16 +177,16 @@ const MainNav: React.FC<IProps> = ({ selectedMenu, onClickMenu }) => {
 
   return (
     <>
-      <STDContainer id="nav-bar">
-        <div className="wrapper">
+      <STDContainer id='nav-bar'>
+        <div className='wrapper'>
           <STDExhibitionInfoWrapperPhone>
-            <p className="mondwest_style" onClick={() => onClickMenu('')}>
+            <p className='mondwest_style' onClick={() => onClickMenu('')}>
               2022
             </p>
-            <p className="app_menu_style" onClick={() => onClickMenu('')}>
+            <p className='app_menu_style' onClick={() => onClickMenu('')}>
               성균관대학교 예술대학 의상학과 졸업패션필름
             </p>
-            <p className="app_menu_style" onClick={() => onClickMenu('')}>
+            <p className='app_menu_style' onClick={() => onClickMenu('')}>
               «원점 : Origin of Coordinate»
             </p>
           </STDExhibitionInfoWrapperPhone>
@@ -195,7 +195,13 @@ const MainNav: React.FC<IProps> = ({ selectedMenu, onClickMenu }) => {
             isDownScroll={scrollDir === 'down'}
             gnbHeight={gnbHeight}
           >
-            <div className="flex_column">
+            <div className='flex_column'>
+              <STDGnbButton
+                isSelected={selectedMenu.includes('film')}
+                onClick={() => onClickMenu('film')}
+              >
+                {selectedMenu.includes('film') ? '(Film)' : 'Film'}
+              </STDGnbButton>
               <STDGnbButton
                 isSelected={selectedMenu.includes('designers')}
                 onClick={() => onClickMenu('designers')}
@@ -204,6 +210,15 @@ const MainNav: React.FC<IProps> = ({ selectedMenu, onClickMenu }) => {
                   ? '(Designers)'
                   : 'Designers'}
               </STDGnbButton>
+
+              <STDGnbButton
+                isSelected={selectedMenu.includes('archive')}
+                onClick={() => onClickMenu('archive')}
+              >
+                {selectedMenu.includes('archive') ? '(Archive)' : 'Archive'}
+              </STDGnbButton>
+            </div>
+            <div className='flex_column'>
               <STDGnbButton
                 isSelected={selectedMenu.includes('documents')}
                 onClick={() => onClickMenu('documents')}
@@ -212,14 +227,6 @@ const MainNav: React.FC<IProps> = ({ selectedMenu, onClickMenu }) => {
                   ? '(Documents)'
                   : 'Documents'}
               </STDGnbButton>
-              <STDGnbButton
-                isSelected={selectedMenu.includes('archive')}
-                onClick={() => onClickMenu('archive')}
-              >
-                {selectedMenu.includes('archive') ? '(Archive)' : 'Archive'}
-              </STDGnbButton>
-            </div>
-            <div className="flex_column">
               <STDGnbButton
                 isSelected={selectedMenu.includes('guests')}
                 onClick={() => onClickMenu('guests')}
@@ -238,13 +245,13 @@ const MainNav: React.FC<IProps> = ({ selectedMenu, onClickMenu }) => {
             </div>
           </STDMenuWrapper>
           <STDExhibitionInfoWrapperDesktop>
-            <p className="menu_font_style" onClick={() => onClickMenu('')}>
+            <p className='menu_font_style' onClick={() => onClickMenu('')}>
               2022 성균관대학교 예술대학
             </p>
-            <p className="menu_font_style" onClick={() => onClickMenu('')}>
+            <p className='menu_font_style' onClick={() => onClickMenu('')}>
               의상학과 졸업패션필름
             </p>
-            <p className="menu_font_style" onClick={() => onClickMenu('')}>
+            <p className='menu_font_style' onClick={() => onClickMenu('')}>
               «원점 : Origin of Coordinate»
             </p>
           </STDExhibitionInfoWrapperDesktop>

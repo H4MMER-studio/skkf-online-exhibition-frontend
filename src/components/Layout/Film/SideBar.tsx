@@ -1,25 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { useResize } from '@/hooks';
+import { useRouter } from 'next/router';
 
 interface IProps {
-  selectedMenu: 'origin-of-coordinate' | 'celebration' | 'thanks-to';
-  clickMenu: (
-    menu: 'origin-of-coordinate' | 'celebration' | 'thanks-to'
-  ) => void;
+  navHeight: number;
 }
 
-const STDMenuBarLayout = styled.div<{ navHeight: number }>`
+const STDContainer = styled.div<{ navHeight: number }>`
   min-width: 256px;
   height: ${(props) => `calc(100vh - ${props.navHeight}px)`};
-  padding: 24px 0px 24px 24px;
+  padding: 24px;
+  padding-right: 0;
 
   @media (max-width: 1023px) {
     width: 100%;
-    height: 80px;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    padding: 0px 18px 0px 18px;
+    height: auto;
+    padding: 0px 16px 0px;
     margin-top: 24px;
 
     ::-webkit-scrollbar {
@@ -28,7 +24,7 @@ const STDMenuBarLayout = styled.div<{ navHeight: number }>`
   }
 `;
 
-const STDMenuBarInnerLayout = styled.div`
+const STDSideInputWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
@@ -36,7 +32,6 @@ const STDMenuBarInnerLayout = styled.div`
 
   @media (max-width: 1023px) {
     display: flex;
-    width: 361px;
     border-right: none;
   }
 `;
@@ -101,54 +96,41 @@ const CopyRightText = styled.div`
   color: #fff;
 `;
 
-const MenuBar: React.VFC<IProps> = ({ selectedMenu, clickMenu }) => {
-  const [navHeight, setNavHeight] = useState(157);
-  const { width } = useResize();
-
-  useEffect(() => {
-    const nav = document.getElementById('nav-bar');
-    setNavHeight(nav.offsetHeight);
-  }, [width]);
+const SideBar: React.VFC<IProps> = ({ navHeight }) => {
+  const router = useRouter();
+  const { tab } = router.query as { tab: string };
 
   return (
-    <STDMenuBarLayout navHeight={navHeight}>
-      <STDMenuBarInnerLayout>
+    <STDContainer navHeight={navHeight}>
+      <STDSideInputWrapper>
         <MenuItemLayout
-          selected={selectedMenu === 'origin-of-coordinate'}
-          onClick={() => clickMenu('origin-of-coordinate')}
+          selected={!tab || tab === 'film'}
+          onClick={() => router.replace('/film?tab=film')}
         >
-          <Text className='pp-mondwest'>1</Text>
-          <Text>원점</Text>
-          <Text className='pp-mondwest'>Origin of Coordinate</Text>
+          <Text className="pp-mondwest">❥❦❧☙❡</Text>
+          <Text>필름</Text>
+          <Text className="pp-mondwest">Film</Text>
         </MenuItemLayout>
         <MenuItemLayout
-          selected={selectedMenu === 'celebration'}
-          onClick={() => clickMenu('celebration')}
+          selected={tab === 'Making'}
+          onClick={() => router.replace('/film?tab=Making')}
         >
-          <Text className='pp-mondwest'>2</Text>
-          <Text>축사</Text>
-          <Text className='pp-mondwest'>Celebration</Text>
-        </MenuItemLayout>
-        <MenuItemLayout
-          selected={selectedMenu === 'thanks-to'}
-          onClick={() => clickMenu('thanks-to')}
-        >
-          <Text className='pp-mondwest'>3</Text>
-          <Text>감사</Text>
-          <Text className='pp-mondwest'>Thanks to</Text>
+          <Text className="pp-mondwest">❥❦❧☙❡</Text>
+          <Text>메이킹</Text>
+          <Text className="pp-mondwest">Making</Text>
         </MenuItemLayout>
         <CopyRightLayout>
           <CopyRightText style={{ marginBottom: 12 }}>
             62802 서울특별시 종로구 성균관로 25-2 수선관별관 02 - 760 - 0515
           </CopyRightText>
-          <CopyRightText className='pp-mondwest'>
+          <CopyRightText className="pp-mondwest">
             © Copyright, 2022 Sungkyunkwan University, Dept of Fashion Design,
             All right
           </CopyRightText>
         </CopyRightLayout>
-      </STDMenuBarInnerLayout>
-    </STDMenuBarLayout>
+      </STDSideInputWrapper>
+    </STDContainer>
   );
 };
 
-export default MenuBar;
+export default SideBar;
