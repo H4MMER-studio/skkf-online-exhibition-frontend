@@ -34,25 +34,51 @@ const STDContentsLayout = styled.div`
 
 const STDReviewBox = styled.div`
   width: 100%;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   padding: 20px 24px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 13px;
   font-family: inherit;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 170%;
   color: white;
+
+  @media (max-width: 1024px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const STDReviewerWrapper = styled.div`
   ${mixins.flexSet('space-between')}
   margin-bottom: 24px;
+
+  .name_style {
+    font-size: 18px;
+    line-height: 170%;
+    font-weight: 600;
+
+    @media (max-width: 1024px) {
+      font-size: 16px;
+      line-height: 174%;
+    }
+  }
+
+  .date_style {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 145%;
+
+    @media (max-width: 1024px) {
+      font-size: 16px;
+    }
+  }
 `;
 
 const STDReviewText = styled.p`
   white-space: pre-line;
+  font-weight: 300;
 
   @media (max-width: 1024px) {
     font-size: 16px;
@@ -81,8 +107,8 @@ const ReviewList: React.VFC<IProps> = ({
                 ref={reviewList.length === index + 1 ? setNode : undefined}
               >
                 <STDReviewerWrapper>
-                  <p>{guest_nickname}</p>
-                  <p>
+                  <p className="name_style">{guest_nickname}</p>
+                  <p className="date_style">
                     {year.toString().slice(2)}.{toTwinNum(month)}.
                     {toTwinNum(date)}
                   </p>

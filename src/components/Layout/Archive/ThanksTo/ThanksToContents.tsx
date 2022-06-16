@@ -158,7 +158,7 @@ const ThanksToContents: React.VFC<IProps> = ({ scrollState }) => {
           <ItemLayout style={{ marginRight: width < 1024 ? 0 : 16 }}>
             <ProfileImg src={'/image/archive/teleportto.png'} />
             <ProfileDescriptionLayout>
-              <ProfileTitle>Infinitas</ProfileTitle>
+              <ProfileTitle>Teleport to [ ]</ProfileTitle>
               <ProfileDescription>
                 김민아 / 박지완 / 최이준 / 최지현 / 정서희 / 이주은 / 이정근
               </ProfileDescription>
@@ -170,7 +170,7 @@ const ThanksToContents: React.VFC<IProps> = ({ scrollState }) => {
               style={{ marginRight: width < 1024 ? 0 : 16 }}
             />
             <ProfileDescriptionLayout>
-              <ProfileTitle>Spectrum</ProfileTitle>
+              <ProfileTitle>Textureacity</ProfileTitle>
               <ProfileDescription>
                 정예송 / 김민경 / 김희성 / 한희조 / 최희재 / 지레이 / 홍예진 /
                 구소윤
