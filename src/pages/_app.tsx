@@ -64,7 +64,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     name="keywords"
                 />
                 <link rel="shortcut icon" href="/image/favi.png" />
-                <meta property="og:image" content="https://2022skkfdoc.com/meta-img.png" />
+                <meta property="og:image" content="/image/meta-img.png" />
                 <meta property="og:url" content="https://2022skkfdoc.com" />
 
                 <title>Origin of Coordinate</title>
