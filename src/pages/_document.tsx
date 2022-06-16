@@ -50,7 +50,7 @@ export default class MyDocument extends Document {
             href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
           />
           <link
-            href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,300"
+            href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300"
             rel="stylesheet"
             type="text/css"
           />
