@@ -458,7 +458,7 @@ const Operation = [
     list: [
       {
         koreanName: '이정근',
-        englishName: 'Jeonggen Lee',
+        englishName: 'Jeonggeun Lee',
       },
       {
         koreanName: '김혜준',
