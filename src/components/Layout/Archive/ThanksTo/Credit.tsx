@@ -254,7 +254,7 @@ export default Credit;
 const DESIGNERS = [
   {
     koreanName: '김혜준',
-    englishName: 'Heyjune Kim',
+    englishName: 'Hyejune Kim',
   },
   {
     koreanName: '이명훈',
@@ -462,7 +462,7 @@ const Operation = [
       },
       {
         koreanName: '김혜준',
-        englishName: 'Jeonggenun Lee',
+        englishName: 'Hyejune Kim',
       },
       {
         koreanName: '공정인',
